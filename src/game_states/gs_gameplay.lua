@@ -16,6 +16,7 @@ function new_gs_gameplay()
 
     function gs.draw()
         if __debug__ then
+            rect(0, 0, u.screen_size - 1, u.screen_size - 1, u.colors.lime)
             u.print_with_outline("gs_gameplay", 1, 1, u.colors.yellow, u.colors.dark_blue)
         end
     end

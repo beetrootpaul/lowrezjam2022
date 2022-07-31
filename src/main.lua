@@ -7,6 +7,8 @@ __debug__ = true
 local current_gs, next_gs
 
 function _init()
+    u.set_64x64_mode()
+
     next_gs = new_gs_gameplay()
 end
 

@@ -36,8 +36,8 @@ u = {
     map_space_w = 128,
     map_space_h = 64,
 
-    screen_size = 128,
-    screen_size_tiles = 16,
+    screen_size = 64,
+    screen_size_tiles = 8,
 
     text_height = 5,
     text_line_gap = 1,
@@ -97,7 +97,7 @@ function u.next_table_index(current_index, table_length)
 end
 
 function u.print_with_outline(text, x, y, text_color, outline_color)
-    -- Docs on Control Codes: https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Control_Codes
+    -- docs on control codes: https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Control_Codes
     for control_code in all(split "\-f,\-h,\|f,\|h,\+ff,\+hh,\+fh,\+hf") do
         print(control_code .. text, x, y, outline_color)
     end
@@ -106,6 +106,11 @@ end
 
 function u.reload_map_from_cart()
     reload(0x2000, 0x2000, 0x1000)
+end
+
+function u.set_64x64_mode()
+    -- see: https://www.lexaloffle.com/bbs/?tid=2547
+    poke(0x5f2c, 3)
 end
 
 function u.set_btnp_delay(params)
