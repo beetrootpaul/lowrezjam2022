@@ -1,8 +1,8 @@
 pico-8 cartridge // http://www.pico-8.com
 version 36
 __lua__
--- lazy dev's roguelike tutorial
--- beetroot paul's take
+-- lowrezjam2022 entry
+-- by beetroot paul
 
 #include src/global/utils.lua
 #include src/global/assets.lua
