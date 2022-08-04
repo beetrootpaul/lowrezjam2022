@@ -26,7 +26,6 @@ function new_tilemap(params)
                 end
             end
         end
-
     end
 
     return {

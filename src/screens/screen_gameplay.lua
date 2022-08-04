@@ -22,7 +22,7 @@ function new_screen_gameplay()
         ground.tilemap.draw()
         road.tilemap.draw()
 
-        if __debug__ then
+        if d.enabled then
             u.print_with_outline("gameplay", 1, 1, a.colors.brown_light, a.colors.brown_mid)
         end
     end

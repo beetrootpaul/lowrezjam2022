@@ -4,6 +4,7 @@ __lua__
 -- lowrezjam2022 entry
 -- by beetroot paul
 
+#include src/debug.lua
 #include src/utils.lua
 #include src/assets.lua
 #include src/audio.lua

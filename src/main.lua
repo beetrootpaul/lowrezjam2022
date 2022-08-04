@@ -2,17 +2,19 @@
 -- main  --
 -- -- -- --
 
-__debug__ = true
-
 local current_screen, next_screen
 
 function _init()
+    d.configure()
+
     u.set_64x64_mode()
 
     next_screen = new_screen_title()
 end
 
 function _update60()
+    d.update()
+
     -- we intentionally reassign screen on the next "_update()" call,
     -- because we need the previous one to be there for "_draw()", while
     -- the next one might be still not ready for drawing before its first
