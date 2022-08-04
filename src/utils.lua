@@ -13,7 +13,7 @@ u = {
         o = 4,
         x = 5,
         -- button menu (Enter)
-        menu = 64,
+        menu = 6,
     },
 
     fps = 60,
@@ -28,7 +28,7 @@ u = {
 }
 
 function u.is_any_button_pressed()
-    return btn() ~= 0 and btn() ~= u.buttons.menu
+    return btn() ~= 0 and btn() ~= 2 ^ u.buttons.menu
 end
 
 function u.measure_text_width(text)
