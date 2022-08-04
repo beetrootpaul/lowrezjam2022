@@ -28,3 +28,7 @@ function _draw()
     cls()
     current_gs.draw()
 end
+
+-- TODO: 4 hardcoded maps
+
+-- TODO: final README: correct title, description, controls, screenshots, itch.io link
