@@ -24,6 +24,16 @@ a = {
         brown_purple = 14,
         sand = 15,
     },
+    enemies = {
+        small = {
+            sprite_right = {
+                x = 16,
+                y = 0,
+                w = 3,
+                h = 3,
+            },
+        },
+    },
     sounds = {
     },
     tiles = {

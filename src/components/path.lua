@@ -5,6 +5,9 @@
 function new_path(params)
     local waypoints = params.waypoints
 
+    -- TODO: path: validate waypoints: cannot change X and Y at the same time
+    -- TODO: path: validate waypoints: at least 1 of them
+    -- TODO: path: refactor
     local function points()
         local prev = waypoints[1]
         local next

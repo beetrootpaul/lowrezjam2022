@@ -4,6 +4,8 @@
 
 function new_road()
 
+    -- TODO: road: better format for serialized tiles
+    -- TODO: road: initial validation of serialized tiles
     local serialized_tiles = {
         "-2|3",
         "-1|3",
@@ -45,8 +47,10 @@ function new_road()
         "13|5",
     }
 
+    -- TODO: refactor
     local tilemap = new_tilemap {
         within_warzone_only = false,
+        -- TODO: road: line of plain ground around edges and corners
         get_tile_at = function(tile_x, tile_y)
             local tt = {}
             for st in all(serialized_tiles) do
@@ -62,6 +66,7 @@ function new_road()
         end,
     }
 
+    -- TODO: refactor
     local path = new_path {
         waypoints = (function()
             local ww = {}

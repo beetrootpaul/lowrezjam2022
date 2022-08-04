@@ -33,18 +33,12 @@ function _draw()
     u.set_display_palette(a.palette)
 end
 
+-- TODO: game over: when 5 enemies reach the last path point
+
+-- TODO: enemy: destroy entity on path end reached
+
 -- TODO: PICO-8 API: describe PSET
 -- TODO: PICO-8 API: describe TONUM
-
--- TODO: road: better format for serialized tiles
--- TODO: road: initial validation of serialized tiles
--- TODO: road: line of plain ground around edges and corners
--- TODO: road: refactor tile retrieval
--- TODO: road: refactor waypoints' generation
-
--- TODO: path: validate waypoints: cannot change X and Y at the same time
--- TODO: path: validate waypoints: at least 1 of them
--- TODO: path: refactor points generation
 
 -- TODO: 4 hardcoded maps
 
