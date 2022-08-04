@@ -25,6 +25,15 @@ function new_screen_gameplay()
         if d.enabled then
             u.print_with_outline("gameplay", 1, 1, a.colors.brown_light, a.colors.brown_mid)
         end
+
+        if d.enabled then
+            local road_points = road.path.points()
+            local color_toggle = true
+            for point in all(road_points) do
+                pset(point.x, point.y, color_toggle and a.colors.white or a.colors.blue_light)
+                color_toggle = not color_toggle
+            end
+        end
     end
 
     --

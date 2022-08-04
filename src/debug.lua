@@ -3,7 +3,7 @@
 -- -- -- --
 
 d = {
-    enabled = false
+    enabled = true
 }
 
 function d.configure()
@@ -16,9 +16,9 @@ function d.update()
     -- Scan codes taken from https://fossies.org/linux/SDL2/include/SDL_scancode.h
     local scancode_backslash = 49
     local scancode_tilde = 53
-    if stat(28, scancode_tilde) then
+    if stat(28, scancode_backslash) then
         d.enabled = true
-    elseif stat(28, scancode_backslash) then
+    elseif stat(28, scancode_tilde) then
         d.enabled = false
     end
 end

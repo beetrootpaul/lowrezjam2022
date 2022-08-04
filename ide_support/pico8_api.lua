@@ -28,6 +28,7 @@ end
 
 --- DISCOURAGED BECAUSE OF BAD PERFORMANCE, USE PAIRS INSTEAD.
 --- Used in FOR loops to iterate over all items in a table (that have a 1-based integer index), in the order they were added.
+---
 --- @param tbl table
 function all(tbl)
 end

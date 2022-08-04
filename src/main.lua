@@ -33,12 +33,24 @@ function _draw()
     u.set_display_palette(a.palette)
 end
 
+-- TODO: PICO-8 API: describe PSET
+-- TODO: PICO-8 API: describe TONUM
+
 -- TODO: road: better format for serialized tiles
 -- TODO: road: initial validation of serialized tiles
 -- TODO: road: line of plain ground around edges and corners
+-- TODO: road: refactor tile retrieval
+-- TODO: road: refactor waypoints' generation
+
+-- TODO: path: validate waypoints: cannot change X and Y at the same time
+-- TODO: path: validate waypoints: at least 1 of them
+-- TODO: path: refactor points generation
 
 -- TODO: 4 hardcoded maps
 
--- TODO: polished title screen
+-- TODO: title screen: polishing
+-- TODO: title screen: bigger TTL
+
+-- TODO: debug: false by default
 
 -- TODO: final README: correct title, description, controls, screenshots, itch.io link

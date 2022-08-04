@@ -9,6 +9,7 @@ __lua__
 #include src/assets.lua
 #include src/audio.lua
 
+#include src/components/path.lua
 #include src/components/tilemap.lua
 
 #include src/entities/ground.lua

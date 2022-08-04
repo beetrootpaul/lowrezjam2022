@@ -3,7 +3,7 @@
 -- -- -- -- -- -- -- -- --
 
 function new_screen_title()
-    local ttl = 4 * u.fps
+    local ttl = 0.4 * u.fps
 
     local st = {}
 
