@@ -450,6 +450,31 @@ end
 function sqrt(x)
 end
 
+--- Stretch an rectangle of the sprite sheet (sx, sy, sw, sh) to a destination rectangle
+--- on the screen (dx, dy, dw, dh). In both cases, the x and y values are coordinates
+--- (in pixels) of the rectangle's top left corner, with a width of w, h.
+---
+--- Colour 0 drawn as transparent by default (see PALT())
+---
+--- dw, dh defaults to sw, sh
+---
+--- When FLIP_X is TRUE, flip horizontally.
+---
+--- When FLIP_Y is TRUE, flip vertically.
+---
+--- @param sx number sprite sheet X
+--- @param sy number sprite sheet Y
+--- @param sw number sprite sheet width
+--- @param sh number sprite sheet height
+--- @param dx number screen destination X
+--- @param dy number screen destination Y
+--- @param dw number screen destination width, optional in pair with DH, default: SW
+--- @param dh number screen destination height, optional in pair with DW, default: SH
+--- @param flip_x boolean
+--- @param flip_y boolean
+function sspr(sx, sy, sw, sh, dx, dy, dw, dh, flip_x, flip_y)
+end
+
 --- Grab a substring from string str, from pos0 up to and including pos1.
 --- When POS1 is not specified, the remainder of the string is returned.
 --- When POS1 is specified, but not a number, a single character at POS0 is returned.

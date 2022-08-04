@@ -1,6 +1,6 @@
--- -- -- -- -- -- --
--- global/audio   --
--- -- -- -- -- -- --
+-- -- -- --
+-- audio --
+-- -- -- --
 
 audio = (function()
     local pico8_sfx = sfx
