@@ -40,10 +40,10 @@ u = {
     text_height = 5,
     text_line_gap = 1,
 
-    tile_size = 8,
+    tile_size = 4,
 
     viewport_size = 64,
-    viewport_size_tiles = 8,
+    viewport_size_tiles = 16,
 }
 
 function u.is_any_button_pressed()
