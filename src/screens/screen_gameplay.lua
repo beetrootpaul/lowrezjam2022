@@ -4,6 +4,7 @@
 
 function new_screen_gameplay()
     local ground = new_ground()
+    local road = new_road()
 
     local sg = {}
 
@@ -19,6 +20,7 @@ function new_screen_gameplay()
 
     function sg.draw()
         ground.tilemap.draw()
+        road.tilemap.draw()
 
         if __debug__ then
             u.print_with_outline("gameplay", 1, 1, a.colors.brown_light, a.colors.brown_mid)

@@ -28,10 +28,14 @@ a = {
     },
     tiles = {
         ground_textured = { x = 0, y = 8 },
+        road = { x = 0, y = 24 },
+        road_edge_bottom = { x = 0, y = 28 },
+        road_edge_top = { x = 0, y = 20 },
+        road_edge_right = { x = 4, y = 24 },
+        road_edge_left = { x = 4, y = 28 },
     },
-    warzone_offset_x = 8,
-    warzone_offset_y = 8,
     warzone_size_tiles = 12,
+    warzone_border_tiles = 2,
 }
 
 -- Made with Palette-Maker (https://www.lexaloffle.com/bbs/?tid=35462)

@@ -31,6 +31,10 @@ function _draw()
     u.set_display_palette(a.palette)
 end
 
+-- TODO: road: better format for serialized tiles
+-- TODO: road: initial validation of serialized tiles
+-- TODO: road: line of plain ground around edges and corners
+
 -- TODO: 4 hardcoded maps
 
 -- TODO: polished title screen
