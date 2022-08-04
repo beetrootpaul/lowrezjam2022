@@ -8,7 +8,8 @@ __lua__
 #include src/global/assets.lua
 #include src/global/audio.lua
 
-#include src/game_states/gs_gameplay.lua
+#include src/screens/screen_title.lua
+#include src/screens/screen_gameplay.lua
 
 #include src/main.lua
 

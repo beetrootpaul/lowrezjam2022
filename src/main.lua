@@ -4,21 +4,21 @@
 
 __debug__ = true
 
-local current_gs, next_gs
+local current_screen, next_screen
 
 function _init()
     u.set_64x64_mode()
 
-    next_gs = new_gs_gameplay()
+    next_screen = new_screen_title()
 end
 
-function _update()
-    -- we intentionally reassign game state on the next "_update()" call,
+function _update60()
+    -- we intentionally reassign screen on the next "_update()" call,
     -- because we need the previous one to be there for "_draw()", while
     -- the next one might be still not ready for drawing before its first
     -- "update()" call
-    current_gs = next_gs
-    next_gs = current_gs.update()
+    current_screen = next_screen
+    next_screen = current_screen.update()
 
     audio.play()
 end
@@ -26,9 +26,11 @@ end
 function _draw()
     pal()
     cls()
-    current_gs.draw()
+    current_screen.draw()
 end
 
 -- TODO: 4 hardcoded maps
+
+-- TODO: polished title screen
 
 -- TODO: final README: correct title, description, controls, screenshots, itch.io link
