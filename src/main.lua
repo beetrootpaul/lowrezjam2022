@@ -24,9 +24,11 @@ function _update60()
 end
 
 function _draw()
-    pal()
-    cls()
+    cls(a.colors.brown_dark)
+
     current_screen.draw()
+
+    u.set_display_palette(a.palette)
 end
 
 -- TODO: 4 hardcoded maps

@@ -16,25 +16,6 @@ u = {
         menu = 64,
     },
 
-    colors = {
-        black = 0,
-        dark_blue = 1,
-        purple = 2,
-        dark_green = 3,
-        brown = 4,
-        dark_grey = 5,
-        light_grey = 6,
-        white = 7,
-        red = 8,
-        orange = 9,
-        yellow = 10,
-        lime = 11,
-        blue = 12,
-        violet_grey = 13,
-        pink = 14,
-        salmon = 15,
-    },
-
     fps = 60,
 
     text_height = 5,
@@ -66,4 +47,8 @@ end
 function u.set_64x64_mode()
     -- see: https://www.lexaloffle.com/bbs/?tid=2547
     poke(0x5f2c, 3)
+end
+
+function u.set_display_palette(palette)
+    pal(palette, 1)
 end

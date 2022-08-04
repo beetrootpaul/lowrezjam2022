@@ -17,7 +17,7 @@ function new_screen_gameplay()
 
     function sg.draw()
         if __debug__ then
-            u.print_with_outline("gameplay", 1, 1, u.colors.dark_green, u.colors.dark_blue)
+            u.print_with_outline("gameplay", 1, 1, a.colors.brown_light, a.colors.ground_dark)
         end
     end
 

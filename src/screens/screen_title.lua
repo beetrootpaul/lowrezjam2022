@@ -28,10 +28,10 @@ function new_screen_title()
     --
 
     function st.draw()
-        print("todo: game title", 0, u.viewport_size / 2 - 8, u.colors.white)
-        print("by beetroot paul", 0, u.viewport_size / 2 + 8, u.colors.white)
+        print("todo: game title", 0, u.viewport_size / 2 - 8, a.colors.white)
+        print("by beetroot paul", 0, u.viewport_size / 2 + 8, a.colors.white)
         if __debug__ then
-            u.print_with_outline("title", 1, 1, u.colors.yellow, u.colors.dark_blue)
+            u.print_with_outline("title", 1, 1, a.colors.green, a.colors.ground_dark)
         end
     end
 
