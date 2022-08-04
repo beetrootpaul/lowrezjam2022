@@ -31,7 +31,7 @@ function new_screen_title()
         print("todo: game title", 0, u.viewport_size / 2 - 8, a.colors.white)
         print("by beetroot paul", 0, u.viewport_size / 2 + 8, a.colors.white)
         if __debug__ then
-            u.print_with_outline("title", 1, 1, a.colors.green, a.colors.ground_dark)
+            u.print_with_outline("title", 1, 1, a.colors.green, a.colors.brown_mid)
         end
     end
 
