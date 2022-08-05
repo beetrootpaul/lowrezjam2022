@@ -13,6 +13,7 @@ __lua__
 #include src/game_state/lives.lua
 
 #include src/screens/screen_gameplay.lua
+#include src/screens/screen_over.lua
 #include src/screens/screen_title.lua
 
 #include src/warzone/cores.lua

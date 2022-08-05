@@ -15,5 +15,11 @@ function new_game_state()
 
     --
 
+    function self.has_lost_all_lives()
+        return lives.left() <= 0
+    end
+
+    --
+
     return self
 end

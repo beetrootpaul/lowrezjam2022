@@ -10,6 +10,7 @@ function new_screen_gameplay()
     local waves = new_waves {
         path = warzone.path(),
         on_enemy_reached_path_end = function()
+            -- TODO: SFX
             game_state.lives().take_one()
         end
     }
@@ -20,6 +21,11 @@ function new_screen_gameplay()
 
     function self.update()
         local next_screen = self
+
+        if game_state.has_lost_all_lives() then
+            -- TODO: screen transition
+            next_screen = new_screen_over()
+        end
 
         waves.update()
 
