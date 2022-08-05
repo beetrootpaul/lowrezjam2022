@@ -3,31 +3,29 @@
 -- -- -- -- -- -- -- -- -- --
 
 function new_screen_gameplay()
-    local ground = new_ground()
-    local road = new_road()
-    local wave = new_wave {
-        path = road.path(),
+    local warzone = new_warzone()
+    local waves = new_waves {
+        path = warzone.path(),
     }
 
-    local sg = {}
+    local self = {}
 
     --
 
-    function sg.update()
-        local next_screen = sg
+    function self.update()
+        local next_screen = self
 
-        wave.update()
+        waves.update()
 
         return next_screen
     end
 
     --
 
-    function sg.draw()
-        ground.draw()
-        road.draw()
+    function self.draw()
+        warzone.draw()
 
-        wave.draw()
+        waves.draw()
 
         if d.enabled then
             u.print_with_outline("gameplay", 1, 1, a.colors.brown_light, a.colors.brown_mid)
@@ -36,5 +34,5 @@ function new_screen_gameplay()
 
     --
 
-    return sg
+    return self
 end

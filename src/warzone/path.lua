@@ -1,6 +1,6 @@
--- -- -- -- -- -- -- --
--- components/path   --
--- -- -- -- -- -- -- --
+-- -- -- -- -- -- --
+-- warzone/path   --
+-- -- -- -- -- -- --
 
 function new_path(params)
     local waypoints = params.waypoints
@@ -8,7 +8,7 @@ function new_path(params)
     -- TODO: path: validate waypoints: cannot change X and Y at the same time
     -- TODO: path: validate waypoints: at least 1 of them
     -- TODO: path: refactor
-    local function points()
+    local points = (function()
         local prev = waypoints[1]
         local next
         local pp = { prev }
@@ -46,9 +46,17 @@ function new_path(params)
             prev = next
         end
         return pp
+    end)()
+
+    local self = {}
+
+    --
+
+    function self.points()
+        return points
     end
 
-    return {
-        points = points,
-    }
+    --
+
+    return self
 end

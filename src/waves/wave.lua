@@ -1,6 +1,6 @@
--- -- -- -- -- -- --
--- entities/wave  --
--- -- -- -- -- -- --
+-- -- -- -- -- --
+-- waves/wave  --
+-- -- -- -- -- --
 
 function new_wave(params)
     local path = params.path

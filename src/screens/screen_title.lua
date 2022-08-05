@@ -5,12 +5,12 @@
 function new_screen_title()
     local ttl = 0.4 * u.fps
 
-    local st = {}
+    local self = {}
 
     --
 
-    function st.update()
-        local next_screen = st
+    function self.update()
+        local next_screen = self
 
         if u.is_any_button_pressed() then
             ttl = 0
@@ -27,7 +27,7 @@ function new_screen_title()
 
     --
 
-    function st.draw()
+    function self.draw()
         print("todo: game title", 0, u.viewport_size / 2 - 8, a.colors.white)
         print("by beetroot paul", 0, u.viewport_size / 2 + 8, a.colors.white)
         if d.enabled then
@@ -37,5 +37,5 @@ function new_screen_title()
 
     --
 
-    return st
+    return self
 end

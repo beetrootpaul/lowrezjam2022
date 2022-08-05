@@ -9,18 +9,18 @@ __lua__
 #include src/assets.lua
 #include src/audio.lua
 
-#include src/components/path.lua
-#include src/components/path_following_position.lua
-#include src/components/sprite.lua
-#include src/components/tilemap.lua
-
-#include src/entities/enemy.lua
-#include src/entities/ground.lua
-#include src/entities/road.lua
-#include src/entities/wave.lua
-
 #include src/screens/screen_gameplay.lua
 #include src/screens/screen_title.lua
+
+#include src/warzone/ground.lua
+#include src/warzone/path.lua
+#include src/warzone/road.lua
+#include src/warzone/warzone.lua
+
+#include src/waves/enemy.lua
+#include src/waves/path_following_position.lua
+#include src/waves/wave.lua
+#include src/waves/waves.lua
 
 #include src/main.lua
 
