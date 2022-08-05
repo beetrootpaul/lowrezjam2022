@@ -7,7 +7,7 @@ function new_path_following_position(params)
     local path_points = u.required(params.path).points()
 
     -- TODO: make sure enemy is invisible first and enters the screen on the first possible update
-    local frames_per_point = u.fps / 10
+    local frames_per_point = u.fps / 30
     local frame_counter = 1
     local point_index = 1
 
@@ -23,6 +23,13 @@ function new_path_following_position(params)
             y = y,
         }
     end
+
+    --
+
+    function self.has_reached_end()
+        return point_index >= #path_points
+    end
+
     --
 
     function self.update()

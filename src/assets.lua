@@ -34,6 +34,7 @@ a = {
             },
         },
     },
+    lives_max = 5,
     sounds = {
     },
     tiles = {

@@ -2,9 +2,14 @@
 -- warzone/warzone   --
 -- -- -- -- -- -- -- --
 
-function new_warzone()
+function new_warzone(params)
+    local lives = u.required(params.lives)
+
     local ground = new_ground()
     local road = new_road()
+    local cores = new_cores {
+        lives = lives,
+    }
 
     local self = {}
 
@@ -19,6 +24,7 @@ function new_warzone()
     function self.draw()
         ground.draw()
         road.draw()
+        cores.draw()
     end
 
     --

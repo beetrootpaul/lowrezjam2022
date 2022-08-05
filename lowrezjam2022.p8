@@ -9,9 +9,13 @@ __lua__
 #include src/assets.lua
 #include src/audio.lua
 
+#include src/game_state/game_state.lua
+#include src/game_state/lives.lua
+
 #include src/screens/screen_gameplay.lua
 #include src/screens/screen_title.lua
 
+#include src/warzone/cores.lua
 #include src/warzone/ground.lua
 #include src/warzone/path.lua
 #include src/warzone/road.lua

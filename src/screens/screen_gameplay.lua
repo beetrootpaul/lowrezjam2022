@@ -3,9 +3,15 @@
 -- -- -- -- -- -- -- -- -- --
 
 function new_screen_gameplay()
-    local warzone = new_warzone()
+    local game_state = new_game_state()
+    local warzone = new_warzone {
+        lives = game_state.lives(),
+    }
     local waves = new_waves {
         path = warzone.path(),
+        on_enemy_reached_path_end = function()
+            game_state.lives().take_one()
+        end
     }
 
     local self = {}

@@ -4,6 +4,7 @@
 
 function new_wave(params)
     local path = u.required(params.path)
+    local on_enemy_reached_path_end = u.required(params.on_enemy_reached_path_end)
 
     local ttl = u.fps * 6
     -- TODO: store type of enemies instead of "true"
@@ -24,9 +25,16 @@ function new_wave(params)
     --
 
     function self.update()
+        for enemy in all(enemies) do
+            if enemy.has_finished() then
+                del(enemies, enemy)
+            end
+        end
+
         if spawns[ttl] then
             add(enemies, new_enemy {
                 path = path,
+                on_reached_path_end = on_enemy_reached_path_end,
             })
         end
 
