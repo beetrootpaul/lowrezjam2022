@@ -37,9 +37,6 @@ end
 
 -- TODO: enemy: destroy entity on path end reached
 
--- TODO: PICO-8 API: describe PSET
--- TODO: PICO-8 API: describe TONUM
-
 -- TODO: 4 hardcoded maps
 
 -- TODO: title screen: polishing

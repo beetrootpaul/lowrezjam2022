@@ -17,6 +17,7 @@ __lua__
 #include src/entities/enemy.lua
 #include src/entities/ground.lua
 #include src/entities/road.lua
+#include src/entities/wave.lua
 
 #include src/screens/screen_gameplay.lua
 #include src/screens/screen_title.lua

@@ -11,7 +11,15 @@ function new_ground()
         end,
     }
 
-    return {
-        tilemap = tilemap,
-    }
+    local self = {}
+
+    --
+
+    function self.draw()
+        tilemap.draw()
+    end
+
+    --
+
+    return self
 end

@@ -23,8 +23,21 @@ function new_enemy(params)
         end,
     }
 
-    return {
-        path_following_position = path_following_position,
-        sprite = sprite,
-    }
+    local self = {}
+
+    --
+
+    function self.update()
+        path_following_position.follow()
+    end
+
+    --
+
+    function self.draw()
+        sprite.draw()
+    end
+
+    --
+
+    return self
 end

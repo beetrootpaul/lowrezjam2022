@@ -71,6 +71,7 @@ function new_road()
         waypoints = (function()
             local ww = {}
             for i = 1, #serialized_tiles do
+                -- TODO: PICO-8 API: describe TONUM
                 local tile_x = tonum(split(serialized_tiles[i], '|')[1])
                 local tile_y = tonum(split(serialized_tiles[i], '|')[2])
                 if i == 1 then
@@ -87,8 +88,30 @@ function new_road()
         end)(),
     }
 
-    return {
-        tilemap = tilemap,
-        path = path,
-    }
+    local self = {}
+
+    --
+
+    function self.path()
+        return path
+    end
+
+    --
+
+    function self.draw()
+        tilemap.draw()
+
+        if d.enabled then
+            local color_toggle = true
+            for point in all(path.points()) do
+                -- TODO: PICO-8 API: describe PSET
+                pset(point.x, point.y, color_toggle and a.colors.white or a.colors.blue_light)
+                color_toggle = not color_toggle
+            end
+        end
+    end
+
+    --
+
+    return self
 end

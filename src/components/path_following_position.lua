@@ -10,9 +10,9 @@ function new_path_following_position(params)
     local frame_counter = 1
     local point_index = 1
 
-    local pfp = {}
+    local self = {}
 
-    function pfp.follow()
+    function self.follow()
         -- TODO: refactor, use smarter solution for incrementing table index every N frames
         if frame_counter == 0 then
             if point_index < #path_points then
@@ -22,9 +22,9 @@ function new_path_following_position(params)
         else
             frame_counter = (frame_counter + 1) % frames_per_point
         end
-        pfp.x = path_points[point_index].x
-        pfp.y = path_points[point_index].y
+        self.x = path_points[point_index].x
+        self.y = path_points[point_index].y
     end
 
-    return pfp
+    return self
 end
