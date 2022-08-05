@@ -4,7 +4,7 @@
 
 -- TODO: refactor
 function new_path_following_position(params)
-    local path_points = params.path.points()
+    local path_points = u.required(params.path).points()
 
     -- TODO: make sure enemy is invisible first and enters the screen on the first possible update
     local frames_per_point = u.fps / 10

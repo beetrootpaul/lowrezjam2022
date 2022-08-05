@@ -3,7 +3,7 @@
 -- -- -- -- -- --
 
 function new_enemy(params)
-    local path = params.path
+    local path = u.required(params.path)
 
     local path_following_position = new_path_following_position {
         path = path,

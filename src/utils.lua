@@ -44,6 +44,11 @@ function u.print_with_outline(text, x, y, text_color, outline_color)
     print(text, x, y, text_color)
 end
 
+function u.required(value)
+    assert(value, "required value is missing")
+    return value
+end
+
 function u.set_64x64_mode()
     -- see: https://www.lexaloffle.com/bbs/?tid=2547
     poke(0x5f2c, 3)

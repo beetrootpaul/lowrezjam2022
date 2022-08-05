@@ -3,7 +3,7 @@
 -- -- -- -- -- --
 
 function new_wave(params)
-    local path = params.path
+    local path = u.required(params.path)
 
     local ttl = u.fps * 6
     -- TODO: store type of enemies instead of "true"

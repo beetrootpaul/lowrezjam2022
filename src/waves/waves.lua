@@ -3,7 +3,7 @@
 -- -- -- -- -- --
 
 function new_waves(params)
-    local path = params.path
+    local path = u.required(params.path)
 
     local wave = new_wave {
         path = path,

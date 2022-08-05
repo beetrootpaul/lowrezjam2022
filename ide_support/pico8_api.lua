@@ -33,6 +33,14 @@ end
 function all(tbl)
 end
 
+--- If CONDITION is false, stop the program and print MESSAGE if it is given.
+--- This can be useful for debugging cartridges, by ASSERT()'ing that things that you expect to be true are indeed true.
+---
+--- @param condition any
+--- @param message string optional
+function assert(condition, message)
+end
+
 --- Get button B state for player PL (default 0)
 ---
 --- If no parameters supplied, returns a bitfield of all 12 button states for player 0 & 1 (P0: bits 0..5 P1: bits 8..13)
