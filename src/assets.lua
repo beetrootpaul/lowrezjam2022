@@ -24,6 +24,20 @@ a = {
         brown_purple = 14,
         sand = 15,
     },
+    cores = {
+        sprites = {
+            healthy_1 = { x = 120, y = 0, w = 8, h = 8 },
+            healthy_2 = { x = 120, y = 8, w = 8, h = 8 },
+            healthy_3 = { x = 120, y = 8, w = 8, h = 8 },
+            healthy_4 = { x = 120, y = 16, w = 8, h = 8 },
+            healthy_5 = { x = 120, y = 24, w = 8, h = 8 },
+            broken_1 = { x = 112, y = 0, w = 8, h = 8 },
+            broken_2 = { x = 112, y = 8, w = 8, h = 8 },
+            broken_3 = { x = 112, y = 8, w = 8, h = 8 },
+            broken_4 = { x = 112, y = 16, w = 8, h = 8 },
+            broken_5 = { x = 112, y = 24, w = 8, h = 8 },
+        }
+    },
     enemies = {
         small = {
             sprite_right = {
@@ -32,7 +46,9 @@ a = {
                 w = 3,
                 h = 3,
             },
+            -- TODO: hit box?
         },
+        --TODO: other enemy types
     },
     lives_max = 5,
     sounds = {
@@ -46,6 +62,7 @@ a = {
         road_edge_left = { x = 4, y = 28 },
     },
     warzone_size_tiles = 12,
+    warzone_border = 8,
     warzone_border_tiles = 2,
 }
 

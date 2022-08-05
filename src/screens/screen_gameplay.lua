@@ -12,6 +12,7 @@ function new_screen_gameplay()
         path = warzone.path(),
         on_enemy_reached_path_end = function()
             -- TODO: SFX
+            -- TODO: VFX
             game_state.lives().take_one()
         end
     }
