@@ -3,7 +3,9 @@
 -- -- -- -- -- -- -- -- --
 
 function new_screen_title()
-    local ttl = 0.4 * u.fps
+    local timer = new_timer {
+        start = 0.4 * u.fps,
+    }
 
     local self = {}
 
@@ -13,15 +15,15 @@ function new_screen_title()
         local next_screen = self
 
         if u.is_any_button_pressed() then
-            ttl = 0
+            timer.skip_to_end()
         end
 
-        if ttl <= 0 then
+        if timer.has_finished() then
             -- TODO: screen transition
             next_screen = new_screen_gameplay()
         end
 
-        ttl = ttl - 1
+        timer.update()
 
         return next_screen
     end

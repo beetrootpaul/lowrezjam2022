@@ -7,6 +7,7 @@ function new_screen_gameplay()
     local warzone = new_warzone {
         lives = game_state.lives(),
     }
+    -- TODO: draw wave progress bar
     local waves = new_waves {
         path = warzone.path(),
         on_enemy_reached_path_end = function()
