@@ -28,7 +28,7 @@ u = {
 }
 
 function u.is_any_button_pressed()
-    return btn() ~= 0 and btn() ~= 2 ^ u.buttons.menu
+    return btnp() ~= 0 and btnp() ~= 2 ^ u.buttons.menu
 end
 
 function u.measure_text_width(text)
