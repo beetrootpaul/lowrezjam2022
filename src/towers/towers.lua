@@ -9,9 +9,10 @@ function new_towers(params)
     -- TODO: initial validation of serialized tiles
     -- TODO: towers placed on a warzone by a user
     local serialized_tiles = {
-        "0|9",
+        --"0|9",
+        "2|8",
         --"3|5",
-        "5|6",
+        --"5|6",
         --"6|8",
         --"7|2",
         --"8|2",

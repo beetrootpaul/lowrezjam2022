@@ -18,11 +18,13 @@ function new_tower(params)
     --
 
     function self.update()
-        enemies.for_each(function(enemy)
-            if collisions.are_circles_colliding(
+        local is_attacking = false
+        enemies.for_each_from_furthest(function(enemy)
+            if not is_attacking and collisions.are_circles_colliding(
                 range.circle(),
                 enemy.hitbox_circle()
             ) then
+                is_attacking = true
                 -- TODO: SFX
                 -- TODO: VFX tower
                 -- TODO: VFX enemy

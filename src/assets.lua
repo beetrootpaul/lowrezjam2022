@@ -43,7 +43,7 @@ a = {
             sprite_right = { x = 16, y = 0, w = 3, h = 3 },
             sprite_damage_right = { x = 16, y = 4, w = 3, h = 3 },
             hitbox_r = 1,
-            health = 20,
+            health = 40,
         },
         --TODO: other enemy types
     },

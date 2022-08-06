@@ -21,7 +21,7 @@ function new_enemies(params)
 
     --
 
-    function self.for_each(callback)
+    function self.for_each_from_furthest(callback)
         foreach(enemies, callback)
     end
 
@@ -30,6 +30,8 @@ function new_enemies(params)
     function self.update()
         for enemy in all(enemies) do
             if enemy.has_finished() then
+                -- TODO: SFX
+                -- TODO: VFX
                 del(enemies, enemy)
             else
                 enemy.update()
