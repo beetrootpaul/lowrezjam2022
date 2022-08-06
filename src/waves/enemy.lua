@@ -43,6 +43,7 @@ function new_enemy(params)
         local position = path_following_position.position()
         assert(position.x, "x is nil")
         assert(position.y, "y is nil")
+        -- TODO: rotate enemy depending on movement direction
         sspr(
             sprite.x,
             sprite.y,

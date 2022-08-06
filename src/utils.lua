@@ -57,3 +57,10 @@ end
 function u.set_display_palette(palette)
     pal(palette, 1)
 end
+
+function u.sprite_xy(sprite_number)
+    return {
+        x = (sprite_number % 16) * 8,
+        y = flr(sprite_number / 16) * 8,
+    }
+end
