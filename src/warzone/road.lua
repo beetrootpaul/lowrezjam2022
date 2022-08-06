@@ -7,8 +7,8 @@ function new_road()
     -- TODO: better format for serialized tiles
     -- TODO: initial validation of serialized tiles
     local serialized_tiles = {
-        --"-2|3",
-        --"-1|3",
+        "-2|3",
+        "-1|3",
         "0|3",
         "1|3",
         "1|4",
@@ -43,8 +43,8 @@ function new_road()
         "11|3",
         "11|4",
         "11|5",
-        --"12|5",
-        --"13|5",
+        "12|5",
+        "13|5",
     }
 
     -- TODO: refactor

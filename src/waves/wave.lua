@@ -28,6 +28,13 @@ function new_wave(params)
 
     --
 
+    function self.wave_number()
+        -- TODO: implement multiple waves of incrementing numbers
+        return 1
+    end
+
+    --
+
     function self.progress()
         return timer.progress()
     end

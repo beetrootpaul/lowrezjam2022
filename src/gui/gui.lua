@@ -10,10 +10,13 @@ function new_gui(params)
     --
 
     function self.draw()
-        -- TODO: make it dynamic based on a text length
-        local progress_width_max = 25
-        local x = u.viewport_size / 2 - ceil(progress_width_max / 2)
-        local y = a.warzone_border - 2
+        local wave_label = new_text("wave " .. waves.current_wave().wave_number())
+
+        local progress_width_max = wave_label.width()
+        local progress_x = u.viewport_size / 2 - ceil(progress_width_max / 2)
+        local progress_y = a.warzone_border - 2
+
+        wave_label.draw(progress_x, progress_y - u.text_height - 1, a.colors.grey_light)
 
         local progress = waves.current_wave().progress()
         local progress_width = flr(progress * progress_width_max)
@@ -22,19 +25,19 @@ function new_gui(params)
 
         if progress_width > 0 then
             line(
-                x,
-                y,
-                x + progress_width - 1,
-                y,
+                progress_x,
+                progress_y,
+                progress_x + progress_width - 1,
+                progress_y,
                 a.colors.salmon
             )
         end
         if remaining_progress_width > 0 then
             line(
-                x + progress_width_max - remaining_progress_width,
-                y,
-                x + progress_width_max - 1,
-                y,
+                progress_x + progress_width_max - remaining_progress_width,
+                progress_y,
+                progress_x + progress_width_max - 1,
+                progress_y,
                 a.colors.brown_purple
             )
         end

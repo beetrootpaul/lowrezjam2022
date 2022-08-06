@@ -18,8 +18,7 @@ u = {
 
     fps = 60,
 
-    text_height = 5,
-    text_line_gap = 1,
+    text_height = 4,
 
     tile_size = 4,
 
@@ -29,11 +28,6 @@ u = {
 
 function u.is_any_button_pressed()
     return btnp() ~= 0 and btnp() ~= 2 ^ u.buttons.menu
-end
-
-function u.measure_text_width(text)
-    local y_to_print_outside_viewport = -u.text_height
-    return print(text, 0, y_to_print_outside_viewport) - 1
 end
 
 function u.noop()
