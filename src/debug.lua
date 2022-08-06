@@ -3,7 +3,7 @@
 -- -- -- --
 
 d = {
-    enabled = false
+    enabled = true
 }
 
 function d.configure()

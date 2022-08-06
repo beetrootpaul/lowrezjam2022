@@ -11,13 +11,20 @@ function new_range_circle(params)
 
     --
 
-    function self.draw()
+    function self.circle()
+        return { x = x, y = y, r = r }
+    end
+
+    --
+
+    function self.draw(opts)
+        opts = opts or {}
         oval(
             x - r,
             y - r,
             x + r,
             y + r,
-            a.colors.white
+            opts.color or a.colors.white
         )
     end
 

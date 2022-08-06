@@ -40,13 +40,9 @@ a = {
     },
     enemies = {
         small = {
-            sprite_right = {
-                x = 16,
-                y = 0,
-                w = 3,
-                h = 3,
-            },
-            -- TODO: hit box?
+            sprite_right = { x = 16, y = 0, w = 3, h = 3 },
+            sprite_damage_right = { x = 16, y = 4, w = 3, h = 3 },
+            hitbox_r = 1,
         },
         --TODO: other enemy types
     },
@@ -60,7 +56,15 @@ a = {
         road_edge_top = { x = 0, y = 20 },
         road_edge_right = { x = 4, y = 24 },
         road_edge_left = { x = 4, y = 28 },
+        --TODO: consolidate tower descriptors in this file
         tower_laser = { x = 48, y = 0 },
+    },
+    --TODO: consolidate tower descriptors in this file
+    towers = {
+        --TODO: other tower types
+        laser = {
+            dps = 100,
+        },
     },
     warzone_size_tiles = 12,
     warzone_border = 8,

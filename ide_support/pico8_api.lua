@@ -288,6 +288,16 @@ end
 function fget(n, f)
 end
 
+--- For each item in table TBL, call function FUNC with the item as a single parameter.
+---
+---
+--- - API docs: https://www.lexaloffle.com/dl/docs/pico-8_manual.html#FOREACH
+---
+--- - Wiki: https://pico-8.fandom.com/wiki/Foreach
+---
+function foreach(tbl, func)
+end
+
 --- Returns the closest integer that is equal to or below x
 ---
 ---

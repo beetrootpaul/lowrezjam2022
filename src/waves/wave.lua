@@ -3,10 +3,7 @@
 -- -- -- -- -- --
 
 function new_wave(params)
-    local path = u.required(params.path)
-    local on_enemy_reached_path_end = u.required(params.on_enemy_reached_path_end)
-
-    local enemies = {}
+    local enemies = u.required(params.enemies)
 
     local timer = new_timer {
         start = u.fps * 6,
@@ -22,10 +19,7 @@ function new_wave(params)
         },
         on_key_moment = function(type)
             if type == "enemy" then
-                add(enemies, new_enemy {
-                    path = path,
-                    on_reached_path_end = on_enemy_reached_path_end,
-                })
+                enemies.spawn()
             end
         end,
     }
@@ -35,23 +29,7 @@ function new_wave(params)
     --
 
     function self.update()
-        for enemy in all(enemies) do
-            if enemy.has_finished() then
-                del(enemies, enemy)
-            else
-                enemy.update()
-            end
-        end
-
         timer.update()
-    end
-
-    --
-
-    function self.draw()
-        for enemy in all(enemies) do
-            enemy.draw()
-        end
     end
 
     --

@@ -1,6 +1,6 @@
--- -- -- -- -- -- -- -- -- -- -- --
--- waves/path_following_position --
--- -- -- -- -- -- -- -- -- -- -- --
+-- -- -- -- -- -- -- -- -- -- -- -- --
+-- enemies/path_following_position  --
+-- -- -- -- -- -- -- -- -- -- -- -- --
 
 -- TODO: change its name
 -- TODO: refactor
