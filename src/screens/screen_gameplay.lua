@@ -7,6 +7,7 @@ function new_screen_gameplay()
     local warzone = new_warzone {
         lives = game_state.lives(),
     }
+    local towers = new_towers()
     -- TODO: draw wave progress bar
     local waves = new_waves {
         path = warzone.path(),
@@ -38,7 +39,7 @@ function new_screen_gameplay()
 
     function self.draw()
         warzone.draw()
-
+        towers.draw()
         waves.draw()
 
         if d.enabled then

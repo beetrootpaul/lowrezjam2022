@@ -3,9 +3,9 @@
 -- -- -- -- -- -- --
 
 function new_road()
-
-    -- TODO: road: better format for serialized tiles
-    -- TODO: road: initial validation of serialized tiles
+    -- TODO: various warzones with their unique roads
+    -- TODO: better format for serialized tiles
+    -- TODO: initial validation of serialized tiles
     local serialized_tiles = {
         "-2|3",
         "-1|3",
@@ -51,7 +51,6 @@ function new_road()
     local waypoints = (function()
         local ww = {}
         for i = 1, #serialized_tiles do
-            -- TODO: PICO-8 API: describe TONUM
             local tile_x = tonum(split(serialized_tiles[i], '|')[1])
             local tile_y = tonum(split(serialized_tiles[i], '|')[2])
             if i == 1 then

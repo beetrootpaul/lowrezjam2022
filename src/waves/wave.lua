@@ -10,6 +10,7 @@ function new_wave(params)
 
     local timer = new_timer {
         start = u.fps * 6,
+        -- TODO: various waves
         key_moments = {
             [u.fps * 6] = "enemy",
             [u.fps * 5] = "enemy",

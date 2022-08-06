@@ -8,7 +8,7 @@ function new_ground()
     --
 
     function self.draw()
-        local tile = a.tiles.ground_textured
+        local tile = u.required(a.tiles.ground_textured)
 
         for tile_x = 0, a.warzone_size_tiles - 1 do
             for tile_y = 0, a.warzone_size_tiles - 1 do

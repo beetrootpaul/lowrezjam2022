@@ -60,6 +60,7 @@ a = {
         road_edge_top = { x = 0, y = 20 },
         road_edge_right = { x = 4, y = 24 },
         road_edge_left = { x = 4, y = 28 },
+        tower_laser = { x = 48, y = 0 },
     },
     warzone_size_tiles = 12,
     warzone_border = 8,
