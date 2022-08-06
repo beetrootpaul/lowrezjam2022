@@ -9,8 +9,10 @@ function new_tower(params)
     local fight = u.required(params.fight)
 
     local range = new_range_circle {
-        x = (a.warzone_border_tiles + tile_x + .5) * u.tile_size - .5,
-        y = (a.warzone_border_tiles + tile_y + .5) * u.tile_size - .5,
+        xy = new_xy(
+            (a.warzone_border_tiles + tile_x + .5) * u.tile_size - .5,
+            (a.warzone_border_tiles + tile_y + .5) * u.tile_size - .5
+        ),
         r = 2.5 * u.tile_size - .5,
     }
 
@@ -33,11 +35,11 @@ function new_tower(params)
                 -- TODO: support multiple tower types
                 enemy.take_damage(a.towers.laser.dps / u.fps)
                 fight.show_laser {
-                    source_xy = {
-                        -- TODO: support multiple tower types
-                        x = (a.warzone_border_tiles + tile_x) * u.tile_size + a.towers.laser.laser_source_offset_x,
-                        y = (a.warzone_border_tiles + tile_y) * u.tile_size + a.towers.laser.laser_source_offset_y,
-                    },
+                    source_xy = new_xy(
+                    -- TODO: support multiple tower types
+                        (a.warzone_border_tiles + tile_x) * u.tile_size + a.towers.laser.laser_source_offset_x,
+                        (a.warzone_border_tiles + tile_y) * u.tile_size + a.towers.laser.laser_source_offset_y
+                    ),
                     target_xy = enemy.center_xy(),
                 }
             end

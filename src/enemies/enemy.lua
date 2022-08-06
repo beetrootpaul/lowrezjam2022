@@ -16,15 +16,11 @@ function new_enemy(params)
     }
 
     local function center_xy()
-        return {
-            x = path_following_position.position().x + 1,
-            y = path_following_position.position().y + 1,
-        }
+        return path_following_position.current_xy().plus(1,1)
     end
 
     local hitbox_range = new_range_circle {
-        x = center_xy().x,
-        y = center_xy().y,
+        xy = center_xy(),
         -- TODO: implement multiple enemy types
         r = u.required(a.enemies.small.hitbox_r),
     }
@@ -74,10 +70,8 @@ function new_enemy(params)
             on_reached_path_end = u.noop
         end
 
-        local center = center_xy()
         hitbox_range = new_range_circle {
-            x = center.x,
-            y = center.y,
+            xy = center_xy(),
             -- TODO: implement multiple enemy types
             r = u.required(a.enemies.small.hitbox_r),
         }
@@ -92,9 +86,7 @@ function new_enemy(params)
 
         -- TODO: implement multiple enemy types
         local sprite = u.required(a.enemies.small.sprite_right)
-        local position = path_following_position.position()
-        assert(position.x, "x is nil")
-        assert(position.y, "y is nil")
+        local position = path_following_position.current_xy()
         -- TODO: rotate enemy depending on movement direction
         sspr(
             sprite.x,
@@ -132,9 +124,7 @@ function new_enemy(params)
 
         -- TODO: implement multiple enemy types
         local sprite = u.required(a.enemies.small.sprite_damage_right)
-        local position = path_following_position.position()
-        assert(position.x, "x is nil")
-        assert(position.y, "y is nil")
+        local position = path_following_position.current_xy()
         -- TODO: rotate enemy depending on movement direction
         sspr(
             sprite.x,

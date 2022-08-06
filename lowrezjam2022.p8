@@ -8,6 +8,7 @@ __lua__
 #include src/utils.lua
 #include src/assets.lua
 #include src/audio.lua
+#include src/xy.lua
 #include src/collisions.lua
 
 #include src/enemies/enemies.lua

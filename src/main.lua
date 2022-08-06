@@ -39,8 +39,6 @@ function _draw()
     u.set_display_palette(a.palette)
 end
 
--- TODO: operate on points instead of X and Y separately
-
 -- TODO: 4 hardcoded maps
 
 -- TODO: title screen: polishing

@@ -58,10 +58,10 @@ function new_road()
             elseif i == #serialized_tiles then
                 tile_x = tile_x + 1
             end
-            add(ww, {
-                x = (a.warzone_border_tiles + tile_x) * u.tile_size,
-                y = (a.warzone_border_tiles + tile_y) * u.tile_size,
-            })
+            add(ww, new_xy(
+                (a.warzone_border_tiles + tile_x) * u.tile_size,
+                (a.warzone_border_tiles + tile_y) * u.tile_size
+            ))
         end
         return ww
     end)()
