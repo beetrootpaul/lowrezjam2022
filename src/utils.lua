@@ -36,6 +36,10 @@ function u.measure_text_width(text)
     return print(text, 0, y_to_print_outside_viewport) - 1
 end
 
+function u.noop()
+    -- do nothing
+end
+
 function u.print_with_outline(text, x, y, text_color, outline_color)
     -- docs on control codes: https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Control_Codes
     for control_code in all(split "\-f,\-h,\|f,\|h,\+ff,\+hh,\+fh,\+hf") do

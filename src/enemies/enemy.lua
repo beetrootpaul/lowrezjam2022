@@ -16,7 +16,6 @@ function new_enemy(params)
     }
 
     local function center_xy()
-        assert(path_following_position)
         return {
             x = path_following_position.position().x + 1,
             y = path_following_position.position().y + 1,
@@ -37,7 +36,7 @@ function new_enemy(params)
     --
 
     function self.has_finished()
-        return health.value() == 0 or not path_following_position
+        return health.value() == 0 or path_following_position.has_reached_end()
     end
 
     --
@@ -69,8 +68,10 @@ function new_enemy(params)
     --
 
     function self.update()
-        if not path_following_position then
-            return
+        path_following_position.update()
+        if path_following_position.has_reached_end() then
+            on_reached_path_end()
+            on_reached_path_end = u.noop
         end
 
         local center = center_xy()
@@ -80,18 +81,12 @@ function new_enemy(params)
             -- TODO: implement multiple enemy types
             r = u.required(a.enemies.small.hitbox_r),
         }
-
-        path_following_position.update()
-        if path_following_position.has_reached_end() then
-            on_reached_path_end()
-            path_following_position = nil
-        end
     end
 
     --
 
     function self.draw()
-        if not path_following_position then
+        if path_following_position.has_reached_end() then
             return
         end
 
@@ -131,9 +126,6 @@ function new_enemy(params)
     --
 
     function self.draw_vfx()
-        if not path_following_position then
-            return
-        end
         if not is_taking_damage then
             return
         end
