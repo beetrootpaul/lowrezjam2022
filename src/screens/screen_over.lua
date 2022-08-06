@@ -32,9 +32,6 @@ function new_screen_over()
 
     function self.draw()
         print("todo: game over", 0, u.viewport_size / 2 - 8, a.colors.brown_mid)
-        if d.enabled then
-            u.print_with_outline("over", 1, 1, a.colors.red_dark, a.colors.brown_mid)
-        end
     end
 
     --

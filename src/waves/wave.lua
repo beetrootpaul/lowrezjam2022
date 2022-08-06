@@ -28,6 +28,12 @@ function new_wave(params)
 
     --
 
+    function self.progress()
+        return timer.progress()
+    end
+
+    --
+
     function self.update()
         timer.update()
     end

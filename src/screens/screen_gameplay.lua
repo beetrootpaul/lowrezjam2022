@@ -24,6 +24,9 @@ function new_screen_gameplay()
     local waves = new_waves {
         enemies = enemies,
     }
+    local gui = new_gui {
+        waves = waves,
+    }
 
     local self = {}
 
@@ -55,10 +58,7 @@ function new_screen_gameplay()
         enemies.draw()
         fight.draw()
         enemies.draw_vfx()
-
-        if d.enabled then
-            u.print_with_outline("gameplay", 1, 1, a.colors.brown_light, a.colors.brown_mid)
-        end
+        gui.draw()
     end
 
     --

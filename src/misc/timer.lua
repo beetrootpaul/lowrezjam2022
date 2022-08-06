@@ -26,6 +26,12 @@ function new_timer(params)
 
     --
 
+    function self.progress()
+        return 1 - (max(0, t) / start)
+    end
+
+    --
+
     function self.update()
         if key_moments[t] then
             on_key_moment(key_moments[t])

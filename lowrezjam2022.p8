@@ -21,6 +21,8 @@ __lua__
 #include src/game_state/game_state.lua
 #include src/game_state/lives.lua
 
+#include src/gui/gui.lua
+
 #include src/misc/timer.lua
 
 #include src/screens/screen_gameplay.lua
