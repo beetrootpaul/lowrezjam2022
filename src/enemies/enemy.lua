@@ -10,6 +10,11 @@ function new_enemy(params)
         path = path,
     }
 
+    local health = new_health {
+        -- TODO: implement multiple enemy types
+        max_health = a.enemies.small.health,
+    }
+
     local hitbox_range = new_range_circle {
         x = path_following_position.position().x + 1,
         y = path_following_position.position().y + 1,
@@ -35,9 +40,10 @@ function new_enemy(params)
 
     --
 
-    function self.take_damage()
+    function self.take_damage(damage)
         -- TODO: decrease health and make enemy destroyed in the end
         is_taking_damage = true
+        health.subtract(u.required(damage))
     end
 
     --
@@ -86,6 +92,17 @@ function new_enemy(params)
             position.x,
             position.y
         )
+
+        if d.enabled and health.value() > 0 then
+            local health_bar_length = ceil(health.value() / 4)
+            line(
+                position.x,
+                position.y - 2,
+                position.x + health_bar_length - 1,
+                position.y - 2,
+                a.colors.red_light
+            )
+        end
 
         if d.enabled and hitbox_range then
             hitbox_range.draw {

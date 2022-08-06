@@ -43,6 +43,7 @@ a = {
             sprite_right = { x = 16, y = 0, w = 3, h = 3 },
             sprite_damage_right = { x = 16, y = 4, w = 3, h = 3 },
             hitbox_r = 1,
+            health = 20,
         },
         --TODO: other enemy types
     },
@@ -63,7 +64,7 @@ a = {
     towers = {
         --TODO: other tower types
         laser = {
-            dps = 100,
+            dps = 10,
         },
     },
     warzone_size_tiles = 12,

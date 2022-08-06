@@ -12,6 +12,7 @@ __lua__
 
 #include src/enemies/enemies.lua
 #include src/enemies/enemy.lua
+#include src/enemies/health.lua
 #include src/enemies/path_following_position.lua
 
 #include src/game_state/game_state.lua
