@@ -49,5 +49,13 @@ function new_enemies(params)
 
     --
 
+    function self.draw_vfx()
+        for enemy in all(enemies) do
+            enemy.draw_vfx()
+        end
+    end
+
+    --
+
     return self
 end

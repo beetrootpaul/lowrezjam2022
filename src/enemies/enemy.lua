@@ -92,9 +92,7 @@ function new_enemy(params)
         end
 
         -- TODO: implement multiple enemy types
-        local sprite = is_taking_damage
-            and u.required(a.enemies.small.sprite_damage_right)
-            or u.required(a.enemies.small.sprite_right)
+        local sprite = u.required(a.enemies.small.sprite_right)
         local position = path_following_position.position()
         assert(position.x, "x is nil")
         assert(position.y, "y is nil")
@@ -124,6 +122,32 @@ function new_enemy(params)
                 color = a.colors.brown_light,
             }
         end
+    end
+
+    --
+
+    function self.draw_vfx()
+        if not path_following_position then
+            return
+        end
+        if not is_taking_damage then
+            return
+        end
+
+        -- TODO: implement multiple enemy types
+        local sprite = u.required(a.enemies.small.sprite_damage_right)
+        local position = path_following_position.position()
+        assert(position.x, "x is nil")
+        assert(position.y, "y is nil")
+        -- TODO: rotate enemy depending on movement direction
+        sspr(
+            sprite.x,
+            sprite.y,
+            sprite.w,
+            sprite.h,
+            position.x,
+            position.y
+        )
     end
 
     --

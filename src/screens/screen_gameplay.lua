@@ -52,6 +52,7 @@ function new_screen_gameplay()
         towers.draw()
         enemies.draw()
         fight.draw()
+        enemies.draw_vfx()
 
         if d.enabled then
             u.print_with_outline("gameplay", 1, 1, a.colors.brown_light, a.colors.brown_mid)
