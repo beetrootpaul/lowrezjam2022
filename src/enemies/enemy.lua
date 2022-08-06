@@ -62,9 +62,13 @@ function new_enemy(params)
 
     --
 
-    function self.update()
+    function self.pre_update()
         is_taking_damage = false
+    end
 
+    --
+
+    function self.update()
         if not path_following_position then
             return
         end
@@ -113,13 +117,13 @@ function new_enemy(params)
                 position.y - 2,
                 position.x + health_bar_length - 1,
                 position.y - 2,
-                a.colors.red_light
+                a.colors.red_dark
             )
         end
 
         if d.enabled and hitbox_range then
             hitbox_range.draw {
-                color = a.colors.brown_light,
+                color = a.colors.yellow,
             }
         end
     end

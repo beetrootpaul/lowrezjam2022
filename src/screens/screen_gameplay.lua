@@ -37,6 +37,8 @@ function new_screen_gameplay()
             next_screen = new_screen_over()
         end
 
+        enemies.pre_update()
+
         fight.update()
         waves.update()
         enemies.update()

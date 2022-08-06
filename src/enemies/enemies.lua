@@ -27,6 +27,14 @@ function new_enemies(params)
 
     --
 
+    function self.pre_update()
+        for enemy in all(enemies) do
+            enemy.pre_update()
+        end
+    end
+
+    --
+
     function self.update()
         for enemy in all(enemies) do
             if enemy.has_finished() then
