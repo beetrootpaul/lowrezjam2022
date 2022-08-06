@@ -15,8 +15,10 @@ function new_screen_gameplay()
             game_state.lives().take_one()
         end,
     }
+    local fight = new_fight()
     local towers = new_towers {
         enemies = enemies,
+        fight = fight,
     }
     -- TODO: draw wave progress bar
     local waves = new_waves {
@@ -35,6 +37,7 @@ function new_screen_gameplay()
             next_screen = new_screen_over()
         end
 
+        fight.update()
         waves.update()
         enemies.update()
         towers.update()
@@ -48,6 +51,7 @@ function new_screen_gameplay()
         warzone.draw()
         towers.draw()
         enemies.draw()
+        fight.draw()
 
         if d.enabled then
             u.print_with_outline("gameplay", 1, 1, a.colors.brown_light, a.colors.brown_mid)

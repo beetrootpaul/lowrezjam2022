@@ -4,6 +4,7 @@
 
 function new_towers(params)
     local enemies = u.required(params.enemies)
+    local fight = u.required(params.fight)
 
     -- TODO: better format for serialized tiles
     -- TODO: initial validation of serialized tiles
@@ -27,6 +28,7 @@ function new_towers(params)
             tile_x = tonum(split(st, '|')[1]),
             tile_y = tonum(split(st, '|')[2]),
             enemies = enemies,
+            fight = fight,
         })
     end
 

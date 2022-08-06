@@ -36,9 +36,7 @@ function _draw()
     u.set_display_palette(a.palette)
 end
 
--- TODO: game over: when 5 enemies reach the last path point
-
--- TODO: enemy: destroy entity on path end reached
+-- TODO: operate on points instead of X and Y separately
 
 -- TODO: 4 hardcoded maps
 

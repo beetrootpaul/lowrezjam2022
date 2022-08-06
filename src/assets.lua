@@ -65,6 +65,8 @@ a = {
         --TODO: other tower types
         laser = {
             dps = 10,
+            laser_source_offset_x = 2,
+            laser_source_offset_y = 0,
         },
     },
     warzone_size_tiles = 12,

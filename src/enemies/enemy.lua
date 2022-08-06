@@ -15,9 +15,17 @@ function new_enemy(params)
         max_health = a.enemies.small.health,
     }
 
+    local function center_xy()
+        assert(path_following_position)
+        return {
+            x = path_following_position.position().x + 1,
+            y = path_following_position.position().y + 1,
+        }
+    end
+
     local hitbox_range = new_range_circle {
-        x = path_following_position.position().x + 1,
-        y = path_following_position.position().y + 1,
+        x = center_xy().x,
+        y = center_xy().y,
         -- TODO: implement multiple enemy types
         r = u.required(a.enemies.small.hitbox_r),
     }
@@ -40,6 +48,12 @@ function new_enemy(params)
 
     --
 
+    function self.center_xy()
+        return center_xy()
+    end
+
+    --
+
     function self.take_damage(damage)
         -- TODO: decrease health and make enemy destroyed in the end
         is_taking_damage = true
@@ -55,9 +69,10 @@ function new_enemy(params)
             return
         end
 
+        local center = center_xy()
         hitbox_range = new_range_circle {
-            x = path_following_position.position().x + 1,
-            y = path_following_position.position().y + 1,
+            x = center.x,
+            y = center.y,
             -- TODO: implement multiple enemy types
             r = u.required(a.enemies.small.hitbox_r),
         }

@@ -6,6 +6,7 @@ function new_tower(params)
     local tile_x = u.required(params.tile_x)
     local tile_y = u.required(params.tile_y)
     local enemies = u.required(params.enemies)
+    local fight = u.required(params.fight)
 
     local range = new_range_circle {
         x = (a.warzone_border_tiles + tile_x + .5) * u.tile_size - .5,
@@ -17,6 +18,7 @@ function new_tower(params)
 
     --
 
+    -- TODO: make laser shoot in short burst, so thanks to boost towers it can be faster
     function self.update()
         local is_attacking = false
         enemies.for_each_from_furthest(function(enemy)
@@ -28,7 +30,16 @@ function new_tower(params)
                 -- TODO: SFX
                 -- TODO: VFX tower
                 -- TODO: VFX enemy
+                -- TODO: support multiple tower types
                 enemy.take_damage(a.towers.laser.dps / u.fps)
+                fight.show_laser {
+                    source_xy = {
+                        -- TODO: support multiple tower types
+                        x = (a.warzone_border_tiles + tile_x) * u.tile_size + a.towers.laser.laser_source_offset_x,
+                        y = (a.warzone_border_tiles + tile_y) * u.tile_size + a.towers.laser.laser_source_offset_y,
+                    },
+                    target_xy = enemy.center_xy(),
+                }
             end
         end)
     end

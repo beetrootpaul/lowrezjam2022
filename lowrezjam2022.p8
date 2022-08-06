@@ -15,6 +15,8 @@ __lua__
 #include src/enemies/health.lua
 #include src/enemies/path_following_position.lua
 
+#include src/fight/fight.lua
+
 #include src/game_state/game_state.lua
 #include src/game_state/lives.lua
 
