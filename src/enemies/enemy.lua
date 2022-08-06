@@ -29,7 +29,7 @@ function new_enemy(params)
     --
 
     function self.has_finished()
-        return not path_following_position
+        return health.value() == 0 or not path_following_position
     end
 
     --
