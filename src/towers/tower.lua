@@ -6,6 +6,12 @@ function new_tower(params)
     local tile_x = u.required(params.tile_x)
     local tile_y = u.required(params.tile_y)
 
+    local range = new_range_circle {
+        x = (a.warzone_border_tiles + tile_x + .5) * u.tile_size - .5,
+        y = (a.warzone_border_tiles + tile_y + .5) * u.tile_size - .5,
+        r = 2.5 * u.tile_size - .5,
+    }
+
     local self = {}
 
     --
@@ -20,6 +26,10 @@ function new_tower(params)
             (a.warzone_border_tiles + tile_x) * u.tile_size,
             (a.warzone_border_tiles + tile_y) * u.tile_size
         )
+
+        if d.enabled then
+            range.draw()
+        end
     end
 
     --

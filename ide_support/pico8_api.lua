@@ -399,6 +399,21 @@ end
 function mset(x, y, val)
 end
 
+--- Draw an oval that is symmetrical in x and y (an ellipse), with the given bounding rectangle.
+---
+---
+--- - API docs: https://www.lexaloffle.com/dl/docs/pico-8_manual.html#OVAL
+---
+--- - Wiki: https://pico-8.fandom.com/wiki/Oval
+---
+--- @param x0 number top-left corner
+--- @param y0 number top-left corner
+--- @param x1 number bottom-right corner
+--- @param y1 number bottom-right corner
+--- @param col number color, optional
+function oval(x0, y0, x1, y1, col)
+end
+
 --- Creates a table from the given parameters.
 ---
 --- - Wiki: https://pico-8.fandom.com/wiki/Pack
