@@ -4,6 +4,7 @@
 
 local current_screen, next_screen
 
+-- wiki: https://pico-8.fandom.com/wiki/Init
 function _init()
     d.configure()
 
@@ -12,6 +13,7 @@ function _init()
     next_screen = new_screen_title()
 end
 
+-- wiki: https://pico-8.fandom.com/wiki/Update
 function _update60()
     d.update()
 
@@ -25,6 +27,7 @@ function _update60()
     audio.play()
 end
 
+-- wiki: https://pico-8.fandom.com/wiki/Draw
 function _draw()
     cls(a.colors.brown_dark)
 
