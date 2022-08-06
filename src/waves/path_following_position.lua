@@ -2,6 +2,7 @@
 -- waves/path_following_position --
 -- -- -- -- -- -- -- -- -- -- -- --
 
+-- TODO: change its name
 -- TODO: refactor
 function new_path_following_position(params)
     local path_points = u.required(params.path).points()
@@ -11,16 +12,14 @@ function new_path_following_position(params)
     local frame_counter = 1
     local point_index = 1
 
-    local x, y
-
     local self = {}
 
     --
 
     function self.position()
         return {
-            x = x,
-            y = y,
+            x = path_points[point_index].x,
+            y = path_points[point_index].y,
         }
     end
 
@@ -42,8 +41,6 @@ function new_path_following_position(params)
         else
             frame_counter = (frame_counter + 1) % frames_per_point
         end
-        x = path_points[point_index].x
-        y = path_points[point_index].y
     end
 
     --

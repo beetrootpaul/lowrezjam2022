@@ -40,6 +40,9 @@ function new_enemy(params)
         end
 
         local sprite = a.enemies.small.sprite_right
+        local position = path_following_position.position()
+        assert(position.x, "x is nil")
+        assert(position.y, "y is nil")
         sspr(
             sprite.x,
             sprite.y,
