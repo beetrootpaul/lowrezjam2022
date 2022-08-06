@@ -3,7 +3,8 @@
 -- -- -- --
 
 d = (function()
-    local is_expecting_alternate_step_button = false
+    local is_toggle_button_pressed_already = false
+    local is_step_button_pressed_already = false
 
     local self = {
         enabled = false,
@@ -52,27 +53,28 @@ d = (function()
     -- TODO: extract `stat(28, …)` to utils
     function self.update()
         -- Scan codes taken from https://fossies.org/linux/SDL2/include/SDL_scancode.h
-        local scancode_left_bracket = 47
         local scancode_right_bracket = 48
         local scancode_backslash = 49
-        local scancode_tilde = 53
 
         if self.enabled then
             self.is_next_frame = false
-            if is_expecting_alternate_step_button and stat(28, scancode_left_bracket) then
-                is_expecting_alternate_step_button = false
-                self.is_next_frame = true
-            elseif not is_expecting_alternate_step_button and stat(28, scancode_right_bracket) then
-                is_expecting_alternate_step_button = true
-                self.is_next_frame = true
+            if stat(28, scancode_right_bracket) then
+                if not is_step_button_pressed_already then
+                    self.is_next_frame = true
+                end
+                is_step_button_pressed_already = true
+            else
+                is_step_button_pressed_already = false
             end
         end
 
         if stat(28, scancode_backslash) then
-            self.enabled = true
-            is_expecting_alternate_step_button = false
-        elseif stat(28, scancode_tilde) then
-            self.enabled = false
+            if not is_toggle_button_pressed_already then
+                self.enabled = not self.enabled
+            end
+            is_toggle_button_pressed_already = true
+        else
+            is_toggle_button_pressed_already = false
         end
     end
 
