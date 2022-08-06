@@ -22,3 +22,38 @@ function d.update()
         d.enabled = false
     end
 end
+
+function d.log(...)
+    if d.enabled then
+        printh(d._log_string_from_args(...))
+    end
+end
+
+-- Based on #printh_helpers cart (https://www.lexaloffle.com/bbs/?tid=42367)
+function d._log_string_from_args(...)
+    local args = pack(...)
+    if #args == 0 then
+        return ""
+    elseif #args == 1 then
+        return type(args[1]) == "table"
+            and d._log_string_from_table(args[1])
+            or tostr(args[1])
+    else
+        local s = ""
+        for i = 1, args.n do
+            s = s .. (d._log_string_from_args(args[i])) .. " "
+        end
+        return s
+    end
+end
+
+-- Based on #printh_helpers cart (https://www.lexaloffle.com/bbs/?tid=42367)
+function d._log_string_from_table(table)
+    local s = "{"
+    for key, value in pairs(table) do
+        s = s .. d._log_string_from_args(key)
+        s = s .. "=" .. d._log_string_from_args(value)
+        s = s .. ","
+    end
+    return s .. "}"
+end
