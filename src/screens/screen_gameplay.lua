@@ -24,9 +24,19 @@ function new_screen_gameplay()
     local waves = new_waves {
         enemies = enemies,
     }
+    local button_x = new_button {
+        on_release = function()
+            if game_state.building_state().is_idle() then
+                game_state.building_state().enter_tower_placement()
+            elseif game_state.building_state().is_tower_placement() then
+                game_state.building_state().enter_idle()
+            end
+        end
+    }
     local gui = new_gui {
         waves = waves,
         building_state = game_state.building_state(),
+        button_x = button_x,
     }
 
     local self = {}
@@ -41,13 +51,15 @@ function new_screen_gameplay()
             next_screen = new_screen_over()
         end
 
-        gui.pre_update()
         enemies.pre_update()
 
         if btn(u.buttons.x) then
-            gui.indicate_x_pressed()
+            button_x.set_pressed(true)
+        else
+            button_x.set_pressed(false)
         end
 
+        button_x.update()
         fight.update()
         waves.update()
         enemies.update()
