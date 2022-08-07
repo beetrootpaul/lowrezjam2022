@@ -27,7 +27,13 @@ function new_screen_gameplay()
     local button_o = new_button {
         on_release = function(self)
             -- TODO: button SFX
-            extcmd("pause")
+            if game_state.building_state().is_idle() then
+                -- TODO: custom menu item to go back to warzone selection
+                extcmd("pause")
+            elseif game_state.building_state().is_tower_placement() then
+                game_state.building_state().enter_idle()
+                placement = nil
+            end
         end
     }
     -- TODO: incentivize player to press X for the first time to build their first tower

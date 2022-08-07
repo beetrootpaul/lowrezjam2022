@@ -84,9 +84,11 @@ a = {
         ["x"] = { x = 88, y = 32, w = 3 },
         ["y"] = { x = 92, y = 32, w = 3 },
         ["z"] = { x = 96, y = 32, w = 3 },
+        --
         ["-"] = { x = 100, y = 32, w = 2 },
         ["."] = { x = 103, y = 32, w = 1 },
         [" "] = { x = 126, y = 32, w = 2 },
+        --
         ["1"] = { x = 0, y = 40, w = 2 },
         ["2"] = { x = 3, y = 40, w = 3 },
         ["3"] = { x = 7, y = 40, w = 3 },
@@ -97,6 +99,8 @@ a = {
         ["8"] = { x = 27, y = 40, w = 3 },
         ["9"] = { x = 31, y = 40, w = 3 },
         ["0"] = { x = 35, y = 40, w = 3 },
+        -- we represent back arrow as "<" here in order to avoid dealing with UTF characters longer than one position in a string
+        ["<"] = { x = 121, y = 32, w = 4 },
     },
     lives_max = 5,
     sounds = {

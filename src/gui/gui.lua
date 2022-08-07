@@ -2,8 +2,6 @@
 -- gui/gui  --
 -- -- -- -- --
 
--- TODO: idle building state -> menu button with ability to go back to warzone selection
--- TODO: placement building state -> back button
 -- TODO: tower choice state (in general)
 -- TODO: tower choice state -> back button
 function new_gui(params)
@@ -20,6 +18,7 @@ function new_gui(params)
 
     --
 
+    -- TODO: refactor
     function self.draw()
         wave_status.draw()
 
@@ -64,6 +63,24 @@ function new_gui(params)
                 a.colors.brown_mid
             )
         elseif building_state.is_tower_placement() then
+            local back_text = new_text("<")
+            back_text.draw(
+                a.warzone_border,
+                u.viewport_size - a.warzone_border + 2,
+                is_o_pressed and a.colors.grey_light or a.colors.brown_purple
+            )
+            local menu_button = new_button_glyph(
+                is_o_pressed
+                    and a.button_sprites.o.pressed
+                    or a.button_sprites.o.raised
+            )
+            menu_button.draw(
+                1,
+                u.viewport_size - a.warzone_border + 1,
+                is_o_pressed and a.colors.grey_light or a.colors.brown_purple,
+                a.colors.brown_mid
+            )
+
             local build_text = new_text("place")
             build_text.draw(
                 u.viewport_size - a.warzone_border - build_text.width(),
