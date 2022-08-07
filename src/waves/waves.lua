@@ -20,6 +20,11 @@ function new_waves(params)
         return wave
     end
 
+    function self.have_spawn_all_enemies()
+        -- TODO: implement check if it's the last wave
+        return wave.progress() >= 1
+    end
+
     --
 
     function self.update()

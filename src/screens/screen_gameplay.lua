@@ -66,6 +66,9 @@ function new_screen_gameplay()
         if game_state.has_lost_all_lives() then
             -- TODO: screen transition
             next_screen = new_screen_over()
+        elseif waves.have_spawn_all_enemies() and enemies.are_none_left() then
+            -- TODO: screen transition
+            next_screen = new_screen_win()
         end
 
         enemies.pre_update()
