@@ -25,7 +25,7 @@ function new_text(text_value)
     --
 
     function self.draw(x, y, color)
-        pal(a.colors.green, color, 0)
+        pal(a.font_template_color, color, 0)
         local current_x = x
         for sprite in all(sprites) do
             sspr(
@@ -38,7 +38,7 @@ function new_text(text_value)
             )
             current_x = current_x + sprite.w + 1
         end
-        pal(a.colors.green, a.colors.green, 0)
+        pal(a.font_template_color, a.font_template_color, 0)
     end
 
     --

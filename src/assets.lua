@@ -3,6 +3,16 @@
 -- -- -- -- --
 
 a = {
+    button_sprites = {
+        x = {
+            raised = { x = 115, y = 32, w = 5, h = 6 },
+            pressed = { x = 115, y = 40, w = 5, h = 6 },
+        },
+        o = {
+            raised = { x = 109, y = 32, w = 5, h = 6 },
+            pressed = { x = 109, y = 40, w = 5, h = 6 },
+        },
+    },
     colors = {
         brown_dark = 0,
         blue_dark = 1,
@@ -114,6 +124,11 @@ a = {
     warzone_border = 8,
     warzone_border_tiles = 2,
 }
+
+a.button_template_color_1 = a.colors.green
+a.button_template_color_2 = a.colors.red_light
+
+a.font_template_color = a.colors.green
 
 -- Made with Palette-Maker (https://www.lexaloffle.com/bbs/?tid=35462)
 a.palette = {

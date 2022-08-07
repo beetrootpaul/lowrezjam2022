@@ -2,8 +2,10 @@
 -- game_state/game_state   --
 -- -- -- -- -- -- -- -- -- --
 
+-- TODO: reconsider names
 function new_game_state()
     local lives = new_lives()
+    local building_state = new_building_state()
 
     local self = {}
 
@@ -11,6 +13,12 @@ function new_game_state()
 
     function self.lives()
         return lives
+    end
+
+    --
+
+    function self.building_state()
+        return building_state
     end
 
     --

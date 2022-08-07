@@ -4,43 +4,52 @@
 
 function new_gui(params)
     local waves = u.required(params.waves)
+    -- TODO: use it
+    local building_state = u.required(params.building_state)
+
+    local is_x_pressed = false
+
+    local wave_status = new_wave_status {
+        waves = waves,
+    }
 
     local self = {}
 
     --
 
+    function self.indicate_x_pressed()
+        is_x_pressed = true
+    end
+
+    --
+
+    function self.pre_update()
+        is_x_pressed = false
+    end
+
+    --
+
     function self.draw()
-        local wave_label = new_text("wave " .. waves.current_wave().wave_number())
+        wave_status.draw()
 
-        local progress_width_max = wave_label.width()
-        local progress_x = u.viewport_size / 2 - ceil(progress_width_max / 2)
-        local progress_y = a.warzone_border - 2
+        local build_text = new_text("build")
+        build_text.draw(
+            u.viewport_size - a.warzone_border - build_text.width(),
+            u.viewport_size - a.warzone_border + 2,
+            is_x_pressed and a.colors.grey_light or a.colors.brown_purple
+        )
 
-        wave_label.draw(progress_x, progress_y - u.text_height - 1, a.colors.grey_light)
-
-        local progress = waves.current_wave().progress()
-        local progress_width = flr(progress * progress_width_max)
-        local gap = 1
-        local remaining_progress_width = progress_width_max - progress_width - gap
-
-        if progress_width > 0 then
-            line(
-                progress_x,
-                progress_y,
-                progress_x + progress_width - 1,
-                progress_y,
-                a.colors.salmon
-            )
-        end
-        if remaining_progress_width > 0 then
-            line(
-                progress_x + progress_width_max - remaining_progress_width,
-                progress_y,
-                progress_x + progress_width_max - 1,
-                progress_y,
-                a.colors.brown_purple
-            )
-        end
+        local build_button = new_button_glyph(
+            is_x_pressed
+                and a.button_sprites.x.pressed
+                or a.button_sprites.x.raised
+        )
+        build_button.draw(
+            u.viewport_size - a.warzone_border + 2,
+            u.viewport_size - a.warzone_border + 1,
+            is_x_pressed and a.colors.grey_light or a.colors.brown_purple,
+            a.colors.brown_mid
+        )
     end
 
     --

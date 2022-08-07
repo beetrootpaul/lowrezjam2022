@@ -26,6 +26,7 @@ function new_screen_gameplay()
     }
     local gui = new_gui {
         waves = waves,
+        building_state = game_state.building_state(),
     }
 
     local self = {}
@@ -40,7 +41,12 @@ function new_screen_gameplay()
             next_screen = new_screen_over()
         end
 
+        gui.pre_update()
         enemies.pre_update()
+
+        if btn(u.buttons.x) then
+            gui.indicate_x_pressed()
+        end
 
         fight.update()
         waves.update()
