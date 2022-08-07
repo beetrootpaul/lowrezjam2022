@@ -39,6 +39,10 @@ function _draw()
     u.set_display_palette(a.palette)
 end
 
+-- TODO: music
+-- TODO: different music on every screen
+-- TODO: extra music layer during tower choise and placement
+
 -- TODO: 4 hardcoded maps
 
 -- TODO: title screen: polishing

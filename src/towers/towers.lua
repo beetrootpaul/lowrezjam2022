@@ -25,14 +25,26 @@ function new_towers(params)
 
     for st in all(serialized_tiles) do
         add(towers, new_tower {
-            tile_x = tonum(split(st, '|')[1]),
-            tile_y = tonum(split(st, '|')[2]),
+            tile = new_tile(
+                tonum(split(st, '|')[1]),
+                tonum(split(st, '|')[2])
+            ),
             enemies = enemies,
             fight = fight,
         })
     end
 
     local self = {}
+
+    --
+
+    function self.add_tower(p)
+        add(towers, new_tower {
+            tile = u.required(p.tile),
+            enemies = enemies,
+            fight = fight,
+        })
+    end
 
     --
 

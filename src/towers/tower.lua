@@ -3,15 +3,14 @@
 -- -- -- -- -- -- --
 
 function new_tower(params)
-    local tile_x = u.required(params.tile_x)
-    local tile_y = u.required(params.tile_y)
+    local tile = u.required(params.tile)
     local enemies = u.required(params.enemies)
     local fight = u.required(params.fight)
 
     local range = new_range_circle {
         xy = new_xy(
-            (a.warzone_border_tiles + tile_x + .5) * u.tile_size - .5,
-            (a.warzone_border_tiles + tile_y + .5) * u.tile_size - .5
+            (a.warzone_border_tiles + tile.x + .5) * u.tile_size - .5,
+            (a.warzone_border_tiles + tile.y + .5) * u.tile_size - .5
         ),
         r = 2.5 * u.tile_size - .5,
     }
@@ -37,8 +36,8 @@ function new_tower(params)
                 fight.show_laser {
                     source_xy = new_xy(
                     -- TODO: support multiple tower types
-                        (a.warzone_border_tiles + tile_x) * u.tile_size + a.towers.laser.laser_source_offset_x,
-                        (a.warzone_border_tiles + tile_y) * u.tile_size + a.towers.laser.laser_source_offset_y
+                        (a.warzone_border_tiles + tile.x) * u.tile_size + a.towers.laser.laser_source_offset_x,
+                        (a.warzone_border_tiles + tile.y) * u.tile_size + a.towers.laser.laser_source_offset_y
                     ),
                     target_xy = enemy.center_xy(),
                 }
@@ -49,14 +48,15 @@ function new_tower(params)
     --
 
     function self.draw()
-        local tile = u.required(a.tiles.tower_laser)
+        -- TODO: support various tower types
+        local sprite = u.required(a.tiles.tower_laser)
         sspr(
-            tile.x,
-            tile.y,
+            sprite.x,
+            sprite.y,
             u.tile_size,
             u.tile_size,
-            (a.warzone_border_tiles + tile_x) * u.tile_size,
-            (a.warzone_border_tiles + tile_y) * u.tile_size
+            (a.warzone_border_tiles + tile.x) * u.tile_size,
+            (a.warzone_border_tiles + tile.y) * u.tile_size
         )
 
         if d.enabled then

@@ -20,16 +20,27 @@ function new_screen_gameplay()
         enemies = enemies,
         fight = fight,
     }
-    -- TODO: draw wave progress bar
     local waves = new_waves {
         enemies = enemies,
     }
+    local placement
     local button_x = new_button {
         on_release = function()
+            -- TODO: button SFX
             if game_state.building_state().is_idle() then
                 game_state.building_state().enter_tower_placement()
+                placement = new_placement {
+                    warzone = warzone,
+                    towers = towers,
+                }
             elseif game_state.building_state().is_tower_placement() then
+                -- TODO: placement & construction SFX
+                -- TODO: construction VFX
+                towers.add_tower {
+                    tile = placement.chosen_tile(),
+                }
                 game_state.building_state().enter_idle()
+                placement = nil
             end
         end
     }
@@ -57,6 +68,13 @@ function new_screen_gameplay()
             button_x.set_pressed(true)
         else
             button_x.set_pressed(false)
+            for arrow_button, direction in pairs(u.arrow_buttons_to_directions) do
+                if btnp(arrow_button) then
+                    if placement then
+                        placement.move_chosen_tile(direction)
+                    end
+                end
+            end
         end
 
         button_x.update()
@@ -76,6 +94,9 @@ function new_screen_gameplay()
         enemies.draw()
         fight.draw()
         enemies.draw_vfx()
+        if placement then
+            placement.draw()
+        end
         gui.draw()
     end
 

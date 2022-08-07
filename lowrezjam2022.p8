@@ -8,8 +8,6 @@ __lua__
 #include src/utils.lua
 #include src/assets.lua
 #include src/audio.lua
-#include src/xy.lua
-#include src/collisions.lua
 
 #include src/enemies/enemies.lua
 #include src/enemies/enemy.lua
@@ -28,7 +26,13 @@ __lua__
 #include src/gui/text.lua
 #include src/gui/wave_status.lua
 
+#include src/misc/collisions.lua
+#include src/misc/tile.lua
 #include src/misc/timer.lua
+#include src/misc/xy.lua
+
+#include src/placement/chosen_tile_border.lua
+#include src/placement/placement.lua
 
 #include src/screens/screen_gameplay.lua
 #include src/screens/screen_over.lua

@@ -18,6 +18,12 @@ function new_range_circle(params)
 
     function self.draw(opts)
         opts = opts or {}
+        clip(
+            0,
+            a.warzone_border,
+            u.viewport_size,
+            u.viewport_size - a.warzone_border
+        )
         oval(
             xy.x - r,
             xy.y - r,
@@ -25,6 +31,7 @@ function new_range_circle(params)
             xy.y + r,
             opts.color or a.colors.white
         )
+        clip()
     end
 
     --

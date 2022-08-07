@@ -26,6 +26,13 @@ u = {
     viewport_size_tiles = 16,
 }
 
+u.arrow_buttons_to_directions = {
+    [u.buttons.l] = { x = -1, y = 0 },
+    [u.buttons.r] = { x = 1, y = 0 },
+    [u.buttons.u] = { x = 0, y = -1 },
+    [u.buttons.d] = { x = 0, y = 1 },
+}
+
 function u.is_any_button_pressed()
     return btnp() ~= 0 and btnp() ~= 2 ^ u.buttons.menu
 end
