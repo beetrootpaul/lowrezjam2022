@@ -38,7 +38,18 @@ function new_towers(params)
 
     --
 
-    function self.add_tower(p)
+    function self.can_build(p)
+        for tower in all(towers) do
+            if tower.is_at(u.required(p.tile)) then
+                return false
+            end
+        end
+        return true
+    end
+
+    --
+
+    function self.build_tower(p)
         add(towers, new_tower {
             tile = u.required(p.tile),
             enemies = enemies,

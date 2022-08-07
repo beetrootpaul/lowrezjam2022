@@ -26,7 +26,7 @@ function new_screen_gameplay()
     local placement
     -- TODO: incentivize player to press X for the first time to build their first tower
     local button_x = new_button {
-        on_release = function()
+        on_release = function(self)
             -- TODO: button SFX
             if game_state.building_state().is_idle() then
                 game_state.building_state().enter_tower_placement()
@@ -34,14 +34,19 @@ function new_screen_gameplay()
                     warzone = warzone,
                     towers = towers,
                 }
+                self.set_enabled(placement.can_build())
             elseif game_state.building_state().is_tower_placement() then
-                -- TODO: placement & construction SFX
-                -- TODO: construction VFX
-                towers.add_tower {
-                    tile = placement.chosen_tile(),
-                }
-                game_state.building_state().enter_idle()
-                placement = nil
+                if placement.can_build() then
+                    -- TODO: placement & construction SFX
+                    -- TODO: construction VFX
+                    towers.build_tower {
+                        tile = placement.chosen_tile(),
+                    }
+                    game_state.building_state().enter_idle()
+                    placement = nil
+                else
+                    -- TODO: cannot build SFX
+                end
             end
         end
     }
@@ -73,6 +78,7 @@ function new_screen_gameplay()
                 if btnp(arrow_button) then
                     if placement then
                         placement.move_chosen_tile(direction)
+                        button_x.set_enabled(placement.can_build())
                     end
                 end
             end

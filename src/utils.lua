@@ -50,7 +50,11 @@ function u.print_with_outline(text, x, y, text_color, outline_color)
 end
 
 function u.required(value)
-    assert(value, "required value is missing")
+    if type(value) == "boolean" then
+        assert(value ~= nil, "required value is missing")
+    else
+        assert(value, "required value is missing")
+    end
     return value
 end
 

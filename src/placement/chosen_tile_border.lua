@@ -4,6 +4,7 @@
 
 function new_chosen_tile_border(params)
     local tile = u.required(params.tile)
+    local can_build = u.required(params.can_build)
 
     local points = {
         { offset_x = -1, offset_y = 0 },
@@ -35,7 +36,7 @@ function new_chosen_tile_border(params)
             pset(
                 x + point.offset_x,
                 y + point.offset_y,
-                a.colors.green
+                can_build and a.colors.green or a.colors.red_light
             )
         end
     end

@@ -23,6 +23,7 @@ function new_gui(params)
         wave_status.draw()
 
         local is_x_pressed = button_x.is_pressed()
+        local is_x_enabled = button_x.is_enabled()
 
         if building_state.is_idle() then
             local build_text = new_text("build")
@@ -47,7 +48,9 @@ function new_gui(params)
             build_text.draw(
                 u.viewport_size - a.warzone_border - build_text.width(),
                 u.viewport_size - a.warzone_border + 2,
-                is_x_pressed and a.colors.grey_light or a.colors.grey_violet
+                is_x_enabled
+                    and (is_x_pressed and a.colors.grey_light or a.colors.grey_violet)
+                    or a.colors.brown_mid
             )
             local build_button = new_button_glyph(
                 is_x_pressed
@@ -57,7 +60,9 @@ function new_gui(params)
             build_button.draw(
                 u.viewport_size - a.warzone_border + 2,
                 u.viewport_size - a.warzone_border + 1,
-                is_x_pressed and a.colors.grey_light or a.colors.grey_violet,
+                is_x_enabled
+                    and (is_x_pressed and a.colors.grey_light or a.colors.grey_violet)
+                    or a.colors.brown_mid,
                 a.colors.brown_mid
             )
         end

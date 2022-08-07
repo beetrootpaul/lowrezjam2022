@@ -19,6 +19,12 @@ function new_tower(params)
 
     --
 
+    function self.is_at(tile_to_check)
+        return tile_to_check.is_same_as(tile)
+    end
+
+    --
+
     -- TODO: make laser shoot in short burst, so thanks to boost towers it can be faster
     function self.update()
         local is_attacking = false
