@@ -17,11 +17,8 @@ function new_path_following_position(params)
 
     --
 
-    function self.position()
-        return {
-            x = path_points[point_index].x,
-            y = path_points[point_index].y,
-        }
+    function self.current_xy()
+        return path_points[point_index]
     end
 
     --

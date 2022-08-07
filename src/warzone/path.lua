@@ -16,31 +16,31 @@ function new_path(params)
             next = waypoints[i]
             if prev.x > next.x then
                 for offset = 1, prev.x - next.x do
-                    add(pp, {
-                        x = prev.x - offset,
-                        y = prev.y,
-                    })
+                    add(pp, new_xy(
+                        prev.x - offset,
+                        prev.y
+                    ))
                 end
             elseif prev.x < next.x then
                 for offset = 1, next.x - prev.x do
-                    add(pp, {
-                        x = prev.x + offset,
-                        y = prev.y,
-                    })
+                    add(pp, new_xy(
+                        prev.x + offset,
+                        prev.y
+                    ))
                 end
             elseif prev.y > next.y then
                 for offset = 1, prev.y - next.y do
-                    add(pp, {
-                        x = prev.x,
-                        y = prev.y - offset,
-                    })
+                    add(pp, new_xy(
+                        prev.x,
+                        prev.y - offset
+                    ))
                 end
             elseif prev.y < next.y then
                 for offset = 1, next.y - prev.y do
-                    add(pp, {
-                        x = prev.x,
-                        y = prev.y + offset,
-                    })
+                    add(pp, new_xy(
+                        prev.x,
+                        prev.y + offset
+                    ))
                 end
             end
             prev = next

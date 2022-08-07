@@ -21,6 +21,13 @@ function new_warzone(params)
 
     --
 
+    -- TODO: check if it within allowed area at all (but should not happen, because placement takes care of that?)
+    function self.can_build(p)
+        return not road.is_at(u.required(p.tile))
+    end
+
+    --
+
     function self.draw()
         ground.draw()
         road.draw()

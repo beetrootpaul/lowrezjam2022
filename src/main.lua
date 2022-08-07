@@ -11,20 +11,23 @@ function _init()
     u.set_64x64_mode()
 
     next_screen = new_screen_title()
+    current_screen = next_screen
 end
 
 -- wiki: https://pico-8.fandom.com/wiki/Update
 function _update60()
     d.update()
+    if (not d.enabled) or (d.enabled and d.is_next_frame) then
 
-    -- we intentionally reassign screen on the next "_update()" call,
-    -- because we need the previous one to be there for "_draw()", while
-    -- the next one might be still not ready for drawing before its first
-    -- "update()" call
-    current_screen = next_screen
-    next_screen = current_screen.update()
+        -- we intentionally reassign screen on the next "_update()" call,
+        -- because we need the previous one to be there for "_draw()", while
+        -- the next one might be still not ready for drawing before its first
+        -- "update()" call
+        current_screen = next_screen
+        next_screen = current_screen.update()
 
-    audio.play()
+        audio.play()
+    end
 end
 
 -- wiki: https://pico-8.fandom.com/wiki/Draw
@@ -36,7 +39,9 @@ function _draw()
     u.set_display_palette(a.palette)
 end
 
--- TODO: operate on points instead of X and Y separately
+-- TODO: music
+-- TODO: different music on every screen
+-- TODO: extra music layer during tower choise and placement
 
 -- TODO: 4 hardcoded maps
 

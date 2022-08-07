@@ -12,6 +12,7 @@ function new_ground()
 
         for tile_x = 0, a.warzone_size_tiles - 1 do
             for tile_y = 0, a.warzone_size_tiles - 1 do
+                -- TODO: draw plain ground around towers
                 sspr(
                     tile.x,
                     tile.y,

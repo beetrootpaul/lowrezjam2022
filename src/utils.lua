@@ -18,8 +18,7 @@ u = {
 
     fps = 60,
 
-    text_height = 5,
-    text_line_gap = 1,
+    text_height = 4,
 
     tile_size = 4,
 
@@ -27,13 +26,19 @@ u = {
     viewport_size_tiles = 16,
 }
 
+u.arrow_buttons_to_directions = {
+    [u.buttons.l] = { x = -1, y = 0 },
+    [u.buttons.r] = { x = 1, y = 0 },
+    [u.buttons.u] = { x = 0, y = -1 },
+    [u.buttons.d] = { x = 0, y = 1 },
+}
+
 function u.is_any_button_pressed()
     return btnp() ~= 0 and btnp() ~= 2 ^ u.buttons.menu
 end
 
-function u.measure_text_width(text)
-    local y_to_print_outside_viewport = -u.text_height
-    return print(text, 0, y_to_print_outside_viewport) - 1
+function u.noop()
+    -- do nothing
 end
 
 function u.print_with_outline(text, x, y, text_color, outline_color)
@@ -45,7 +50,11 @@ function u.print_with_outline(text, x, y, text_color, outline_color)
 end
 
 function u.required(value)
-    assert(value, "required value is missing")
+    if type(value) == "boolean" then
+        assert(value ~= nil, "required value is missing")
+    else
+        assert(value, "required value is missing")
+    end
     return value
 end
 

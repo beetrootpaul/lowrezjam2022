@@ -3,8 +3,7 @@
 -- -- -- -- -- -- -- -- -- -- --
 
 function new_range_circle(params)
-    local x = u.required(params.x)
-    local y = u.required(params.y)
+    local xy = u.required(params.xy)
     local r = u.required(params.r)
 
     local self = {}
@@ -12,20 +11,27 @@ function new_range_circle(params)
     --
 
     function self.circle()
-        return { x = x, y = y, r = r }
+        return { xy = xy, r = r }
     end
 
     --
 
     function self.draw(opts)
         opts = opts or {}
+        clip(
+            0,
+            a.warzone_border,
+            u.viewport_size,
+            u.viewport_size - a.warzone_border
+        )
         oval(
-            x - r,
-            y - r,
-            x + r,
-            y + r,
+            xy.x - r,
+            xy.y - r,
+            xy.x + r,
+            xy.y + r,
             opts.color or a.colors.white
         )
+        clip()
     end
 
     --

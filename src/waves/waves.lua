@@ -14,6 +14,14 @@ function new_waves(params)
 
     --
 
+
+    -- TODO: what between waves?
+    function self.current_wave()
+        return wave
+    end
+
+    --
+
     function self.update()
         wave.update()
     end

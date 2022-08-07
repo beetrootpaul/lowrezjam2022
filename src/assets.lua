@@ -3,6 +3,16 @@
 -- -- -- -- --
 
 a = {
+    button_sprites = {
+        x = {
+            raised = { x = 115, y = 32, w = 5, h = 6 },
+            pressed = { x = 115, y = 40, w = 5, h = 6 },
+        },
+        o = {
+            raised = { x = 109, y = 32, w = 5, h = 6 },
+            pressed = { x = 109, y = 40, w = 5, h = 6 },
+        },
+    },
     colors = {
         brown_dark = 0,
         blue_dark = 1,
@@ -47,6 +57,47 @@ a = {
         },
         --TODO: other enemy types
     },
+    font_sprites = {
+        ["a"] = { x = 0, y = 32, w = 3 },
+        ["b"] = { x = 4, y = 32, w = 3 },
+        ["c"] = { x = 8, y = 32, w = 3 },
+        ["d"] = { x = 12, y = 32, w = 3 },
+        ["e"] = { x = 16, y = 32, w = 3 },
+        ["f"] = { x = 20, y = 32, w = 3 },
+        ["g"] = { x = 24, y = 32, w = 3 },
+        ["h"] = { x = 28, y = 32, w = 3 },
+        ["i"] = { x = 32, y = 32, w = 1 },
+        ["j"] = { x = 34, y = 32, w = 2 },
+        ["k"] = { x = 37, y = 32, w = 3 },
+        ["l"] = { x = 41, y = 32, w = 2 },
+        ["m"] = { x = 44, y = 32, w = 3 },
+        ["n"] = { x = 48, y = 32, w = 3 },
+        ["o"] = { x = 52, y = 32, w = 3 },
+        ["p"] = { x = 56, y = 32, w = 3 },
+        ["q"] = { x = 60, y = 32, w = 3 },
+        ["r"] = { x = 64, y = 32, w = 3 },
+        ["s"] = { x = 68, y = 32, w = 3 },
+        ["t"] = { x = 72, y = 32, w = 3 },
+        ["u"] = { x = 76, y = 32, w = 3 },
+        ["v"] = { x = 80, y = 32, w = 3 },
+        ["w"] = { x = 84, y = 32, w = 3 },
+        ["x"] = { x = 88, y = 32, w = 3 },
+        ["y"] = { x = 92, y = 32, w = 3 },
+        ["z"] = { x = 96, y = 32, w = 3 },
+        ["-"] = { x = 100, y = 32, w = 2 },
+        ["."] = { x = 103, y = 32, w = 1 },
+        [" "] = { x = 126, y = 32, w = 2 },
+        ["1"] = { x = 0, y = 40, w = 2 },
+        ["2"] = { x = 3, y = 40, w = 3 },
+        ["3"] = { x = 7, y = 40, w = 3 },
+        ["4"] = { x = 11, y = 40, w = 3 },
+        ["5"] = { x = 15, y = 40, w = 3 },
+        ["6"] = { x = 19, y = 40, w = 3 },
+        ["7"] = { x = 23, y = 40, w = 3 },
+        ["8"] = { x = 27, y = 40, w = 3 },
+        ["9"] = { x = 31, y = 40, w = 3 },
+        ["0"] = { x = 35, y = 40, w = 3 },
+    },
     lives_max = 5,
     sounds = {
     },
@@ -73,6 +124,11 @@ a = {
     warzone_border = 8,
     warzone_border_tiles = 2,
 }
+
+a.button_template_color_1 = a.colors.green
+a.button_template_color_2 = a.colors.red_light
+
+a.font_template_color = a.colors.green
 
 -- Made with Palette-Maker (https://www.lexaloffle.com/bbs/?tid=35462)
 a.palette = {

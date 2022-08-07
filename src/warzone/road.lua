@@ -58,10 +58,10 @@ function new_road()
             elseif i == #serialized_tiles then
                 tile_x = tile_x + 1
             end
-            add(ww, {
-                x = (a.warzone_border_tiles + tile_x) * u.tile_size,
-                y = (a.warzone_border_tiles + tile_y) * u.tile_size,
-            })
+            add(ww, new_xy(
+                (a.warzone_border_tiles + tile_x) * u.tile_size,
+                (a.warzone_border_tiles + tile_y) * u.tile_size
+            ))
         end
         return ww
     end)()
@@ -76,6 +76,18 @@ function new_road()
 
     function self.path()
         return path
+    end
+
+    --
+
+    -- TODO: in theory it should check for extended road start and beginning as well
+    function self.is_at(tile_to_check)
+        -- TODO: refactor it, please…
+        local tt = {}
+        for st in all(serialized_tiles) do
+            tt[st] = true
+        end
+        return tt[tile_to_check.x .. "|" .. tile_to_check.y]
     end
 
     --
