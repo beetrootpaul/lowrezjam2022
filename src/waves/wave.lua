@@ -3,12 +3,9 @@
 -- -- -- -- -- --
 
 function new_wave(params)
+    local wave_number = u.required(params.wave_number)
+    local descriptor = u.required(params.descriptor)
     local enemies = u.required(params.enemies)
-
-    -- TODO: support multiple waves
-    local descriptor = a.waves[1]
-
-    -- TODO: make user of `descriptor.wait`
 
     local key_moments = {}
     for i = 1, #descriptor.spawns do
@@ -38,9 +35,8 @@ function new_wave(params)
     --
 
     function self.wave_number()
-        -- TODO: implement multiple waves of incrementing numbers
         -- TODO: consider moving it to "waves", there is no need for it here
-        return 1
+        return wave_number
     end
 
     --
