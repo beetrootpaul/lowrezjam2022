@@ -6,6 +6,7 @@ function new_waves(params)
     local enemies = u.required(params.enemies)
 
     -- TODO: infinite waves
+    -- TODO: consider limited number of waves instead of an infinite ones
     local wave = new_wave {
         enemies = enemies,
     }
@@ -13,7 +14,6 @@ function new_waves(params)
     local self = {}
 
     --
-
 
     -- TODO: what between waves?
     function self.current_wave()

@@ -14,6 +14,7 @@ function new_screen_over()
     function self.update()
         local next_screen = self
 
+        -- TODO: prevent scenario when over screen is immediately skipped just beacause player was placing a tower (using arrows) while lost all lives
         if u.is_any_button_pressed() then
             timer.skip_to_end()
         end

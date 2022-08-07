@@ -123,6 +123,20 @@ a = {
     warzone_size_tiles = 12,
     warzone_border = 8,
     warzone_border_tiles = 2,
+    waves = {
+        -- "-" = nothing
+        -- "s" = small
+        -- TODO: more enemy types
+        { spawns = {
+            "s",
+            "-",
+            "-",
+            "s",
+            "-",
+            "-",
+            "s",
+        } },
+    },
 }
 
 a.button_template_color_1 = a.colors.green
