@@ -37,6 +37,7 @@ __lua__
 #include src/screens/screen_gameplay.lua
 #include src/screens/screen_over.lua
 #include src/screens/screen_title.lua
+#include src/screens/screen_win.lua
 
 #include src/towers/range/range_circle.lua
 #include src/towers/tower.lua
@@ -48,6 +49,7 @@ __lua__
 #include src/warzone/road.lua
 #include src/warzone/warzone.lua
 
+#include src/waves/wait.lua
 #include src/waves/wave.lua
 #include src/waves/waves.lua
 

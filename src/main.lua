@@ -45,9 +45,4 @@ end
 
 -- TODO: 4 hardcoded maps
 
--- TODO: title screen: polishing
--- TODO: title screen: bigger TTL
-
--- TODO: debug: false by default
-
 -- TODO: final README: correct title, description, controls, screenshots, itch.io link

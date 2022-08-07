@@ -1,9 +1,9 @@
 -- -- -- -- -- -- -- -- --
--- screens/screen_over  --
+-- screens/screen_win   --
 -- -- -- -- -- -- -- -- --
 
 -- TODO: screen polish
-function new_screen_over()
+function new_screen_win()
     local timer = new_timer {
         -- TODO: final duration
         start = 0.8 * u.fps,
@@ -16,7 +16,7 @@ function new_screen_over()
     function self.update()
         local next_screen = self
 
-        -- TODO: prevent scenario when over screen is immediately skipped just because player was placing a tower (using arrows) while lost all lives
+        -- TODO: prevent scenario when win screen is immediately skipped just because player was placing a tower (using arrows) while lost all lives
         if u.is_any_button_pressed() then
             timer.skip_to_end()
         end
@@ -34,7 +34,7 @@ function new_screen_over()
     --
 
     function self.draw()
-        print("todo: game over", 0, u.viewport_size / 2 - 8, a.colors.red_light)
+        print("todo: win!", 0, u.viewport_size / 2 - 8, a.colors.yellow)
     end
 
     --

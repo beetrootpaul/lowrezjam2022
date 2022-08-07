@@ -27,6 +27,12 @@ function new_enemies(params)
 
     --
 
+    function self.are_none_left()
+        return #enemies <= 0
+    end
+
+    --
+
     function self.pre_update()
         for enemy in all(enemies) do
             enemy.pre_update()
