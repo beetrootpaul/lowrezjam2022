@@ -64,6 +64,7 @@ function new_screen_gameplay()
     }
     local gui = new_gui {
         waves = waves,
+        money = game_state.money(),
         building_state = game_state.building_state(),
         button_x = button_x,
         button_o = button_o,

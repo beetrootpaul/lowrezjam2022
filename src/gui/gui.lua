@@ -6,6 +6,7 @@
 -- TODO: tower choice state -> back button
 function new_gui(params)
     local waves = u.required(params.waves)
+    local money = u.required(params.money)
     local building_state = u.required(params.building_state)
     local button_x = u.required(params.button_x)
     local button_o = u.required(params.button_o)
@@ -20,13 +21,13 @@ function new_gui(params)
 
     -- TODO: refactor
     function self.draw()
-        wave_status.draw()
-
         local is_o_pressed = button_o.is_pressed()
         local is_x_pressed = button_x.is_pressed()
         local is_x_enabled = button_x.is_enabled()
 
         if building_state.is_idle() then
+            wave_status.draw()
+
             local menu_text = new_text("menu")
             menu_text.draw(
                 a.warzone_border,
@@ -63,6 +64,19 @@ function new_gui(params)
                 a.colors.brown_mid
             )
         elseif building_state.is_tower_placement() then
+            local money_text = new_text(tostr(money.available()))
+            money_text.draw(
+                u.viewport_size - a.warzone_border - money_text.width(),
+                2,
+                a.colors.grey_light
+            )
+            local dollar_text = new_text("$")
+            dollar_text.draw(
+                u.viewport_size - a.warzone_border + 2,
+                2,
+                a.colors.grey_violet
+            )
+
             local back_text = new_text("<")
             back_text.draw(
                 a.warzone_border,
