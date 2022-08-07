@@ -11,14 +11,14 @@ function new_towers(params)
     -- TODO: towers placed on a warzone by a user
     local serialized_tiles = {
         --"0|9",
-        "2|8",
+        --"2|8",
         --"3|5",
         --"5|6",
         --"6|8",
         --"7|2",
         --"8|2",
-        "8|0",
-        "9|0",
+        --"8|0",
+        --"9|0",
     }
 
     local towers = {}

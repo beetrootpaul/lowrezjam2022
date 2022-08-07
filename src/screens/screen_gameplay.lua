@@ -24,6 +24,7 @@ function new_screen_gameplay()
         enemies = enemies,
     }
     local placement
+    -- TODO: incentivize player to press X for the first time to build their first tower
     local button_x = new_button {
         on_release = function()
             -- TODO: button SFX
