@@ -3,7 +3,6 @@
 -- -- -- -- -- --
 
 function new_wave(params)
-    local wave_number = u.required(params.wave_number)
     local descriptor = u.required(params.descriptor)
     local enemies = u.required(params.enemies)
 
@@ -31,13 +30,6 @@ function new_wave(params)
     }
 
     local self = {}
-
-    --
-
-    function self.wave_number()
-        -- TODO: consider moving it to "waves", there is no need for it here
-        return wave_number
-    end
 
     --
 

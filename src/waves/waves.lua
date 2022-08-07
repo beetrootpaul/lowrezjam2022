@@ -6,12 +6,9 @@ function new_waves(params)
     local enemies = u.required(params.enemies)
 
     local wave_number = 1
-    local wave = new_wave {
-        wave_number = wave_number,
-        -- TODO: make user of `descriptor.wait`
-        -- TODO: support multiple waves
-        descriptor = a.waves[wave_number],
-        enemies = enemies,
+    local wave
+    local wait = new_wait {
+        duration = a.waves[wave_number].wait,
     }
 
     local function is_last_wave()
@@ -22,27 +19,54 @@ function new_waves(params)
 
     --
 
-    -- TODO: what between waves?
+    function self.current_wait()
+        return wait
+    end
+
+    --
+
     function self.current_wave()
         return wave
     end
 
+    --
+
+    function self.wave_number()
+        return wave_number
+    end
+
+    --
+
     function self.have_spawn_all_enemies()
-        return is_last_wave() and wave.progress() >= 1
+        return is_last_wave() and wave and wave.progress() >= 1
     end
 
     --
 
     function self.update()
-        if not is_last_wave() and wave.progress() >= 1 and enemies.are_none_left() then
-            wave_number = wave_number + 1
+        if wait and wait.progress() >= 1 then
+            wait = nil
             wave = new_wave {
-                wave_number = wave_number,
                 descriptor = a.waves[wave_number],
                 enemies = enemies,
             }
         end
-        wave.update()
+
+        if wave and wave.progress() >= 1 and not is_last_wave() and enemies.are_none_left() then
+            wave = nil
+            wave_number = wave_number + 1
+            wait = new_wait {
+                duration = a.waves[wave_number].wait,
+            }
+        end
+
+        if wait then
+            wait.update()
+        end
+
+        if wave then
+            wave.update()
+        end
     end
 
     --

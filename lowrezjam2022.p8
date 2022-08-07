@@ -49,6 +49,7 @@ __lua__
 #include src/warzone/road.lua
 #include src/warzone/warzone.lua
 
+#include src/waves/wait.lua
 #include src/waves/wave.lua
 #include src/waves/waves.lua
 

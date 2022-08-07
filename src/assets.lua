@@ -127,7 +127,7 @@ a = {
         -- "-" = nothing
         -- "s" = small
         -- TODO: more enemy types
-        { spawns = {
+        { wait = 4, spawns = {
             "s",
             "-",
             "-",
@@ -136,7 +136,7 @@ a = {
             "-",
             "s",
         } },
-        { spawns = {
+        { wait = 4, spawns = {
             "s",
             "s",
             "-",
