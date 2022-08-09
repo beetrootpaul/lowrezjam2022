@@ -45,6 +45,7 @@ function new_screen_gameplay()
                 placement = new_placement {
                     warzone = warzone,
                     towers = towers,
+                    money = game_state.money(),
                 }
                 self.set_enabled(placement.can_build())
             elseif game_state.building_state().is_tower_placement() then

@@ -24,6 +24,8 @@ function new_gui(params)
         local is_o_pressed = button_o.is_pressed()
         local is_x_pressed = button_x.is_pressed()
         local is_x_enabled = button_x.is_enabled()
+        -- TODO: support multiple tower costs
+        local has_enough_money = money.available() >= a.towers.laser.cost
 
         if building_state.is_idle() then
             wave_status.draw()
@@ -142,9 +144,9 @@ function new_gui(params)
             cost_text.draw(
                 u.viewport_size - a.warzone_border - place_text.width() - 3 - dollar_text.width() - 2 - cost_text.width(),
                 u.viewport_size - a.warzone_border + 2,
-                is_x_enabled
-                    and a.colors.grey_light
-                    or a.colors.brown_mid
+                has_enough_money
+                    and (is_x_enabled and a.colors.grey_light or a.colors.brown_mid)
+                    or a.colors.red_dark
             )
         end
     end
