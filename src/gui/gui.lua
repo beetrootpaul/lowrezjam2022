@@ -32,7 +32,9 @@ function new_gui(params)
             menu_text.draw(
                 a.warzone_border,
                 u.viewport_size - a.warzone_border + 2,
-                is_o_pressed and a.colors.grey_light or a.colors.brown_purple
+                is_o_pressed
+                    and a.colors.grey_light
+                    or a.colors.brown_purple
             )
             local menu_button = new_button_glyph(
                 is_o_pressed
@@ -42,7 +44,9 @@ function new_gui(params)
             menu_button.draw(
                 1,
                 u.viewport_size - a.warzone_border + 1,
-                is_o_pressed and a.colors.grey_light or a.colors.brown_purple,
+                is_o_pressed
+                    and a.colors.grey_light
+                    or a.colors.brown_purple,
                 a.colors.brown_mid
             )
 
@@ -50,7 +54,9 @@ function new_gui(params)
             build_text.draw(
                 u.viewport_size - a.warzone_border - build_text.width(),
                 u.viewport_size - a.warzone_border + 2,
-                is_x_pressed and a.colors.grey_light or a.colors.brown_purple
+                is_x_pressed
+                    and a.colors.grey_light
+                    or a.colors.brown_purple
             )
             local build_button = new_button_glyph(
                 is_x_pressed
@@ -60,7 +66,9 @@ function new_gui(params)
             build_button.draw(
                 u.viewport_size - a.warzone_border + 2,
                 u.viewport_size - a.warzone_border + 1,
-                is_x_pressed and a.colors.grey_light or a.colors.brown_purple,
+                is_x_pressed
+                    and a.colors.grey_light
+                    or a.colors.brown_purple,
                 a.colors.brown_mid
             )
         elseif building_state.is_tower_placement() then
@@ -81,7 +89,9 @@ function new_gui(params)
             back_text.draw(
                 a.warzone_border,
                 u.viewport_size - a.warzone_border + 2,
-                is_o_pressed and a.colors.grey_light or a.colors.brown_purple
+                is_o_pressed
+                    and a.colors.grey_light
+                    or a.colors.brown_purple
             )
             local menu_button = new_button_glyph(
                 is_o_pressed
@@ -91,30 +101,50 @@ function new_gui(params)
             menu_button.draw(
                 1,
                 u.viewport_size - a.warzone_border + 1,
-                is_o_pressed and a.colors.grey_light or a.colors.brown_purple,
+                is_o_pressed
+                    and a.colors.grey_light
+                    or a.colors.brown_purple,
                 a.colors.brown_mid
             )
 
-            local build_text = new_text("place")
-            build_text.draw(
-                u.viewport_size - a.warzone_border - build_text.width(),
+            local place_text = new_text("place")
+            place_text.draw(
+                u.viewport_size - a.warzone_border - place_text.width(),
                 u.viewport_size - a.warzone_border + 2,
                 is_x_enabled
                     and (is_x_pressed and a.colors.grey_light or a.colors.grey_violet)
                     or a.colors.brown_mid
             )
-            local build_button = new_button_glyph(
+            local place_button = new_button_glyph(
                 is_x_pressed
                     and a.button_sprites.x.pressed
                     or a.button_sprites.x.raised
             )
-            build_button.draw(
+            place_button.draw(
                 u.viewport_size - a.warzone_border + 2,
                 u.viewport_size - a.warzone_border + 1,
                 is_x_enabled
                     and (is_x_pressed and a.colors.grey_light or a.colors.grey_violet)
                     or a.colors.brown_mid,
                 a.colors.brown_mid
+            )
+
+            dollar_text.draw(
+                u.viewport_size - a.warzone_border - place_text.width() - 3 - dollar_text.width(),
+                u.viewport_size - a.warzone_border + 2,
+                is_x_enabled
+                    and a.colors.grey_violet
+                    or a.colors.brown_mid
+            )
+
+            -- TODO: support multiple tower costs
+            local cost_text = new_text("-" .. a.towers.laser.cost)
+            cost_text.draw(
+                u.viewport_size - a.warzone_border - place_text.width() - 3 - dollar_text.width() - 2 - cost_text.width(),
+                u.viewport_size - a.warzone_border + 2,
+                is_x_enabled
+                    and a.colors.grey_light
+                    or a.colors.brown_mid
             )
         end
     end
