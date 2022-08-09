@@ -104,7 +104,8 @@ a = {
         ["<"] = { x = 121, y = 32, w = 4 },
     },
     lives_max = 5,
-    money_initial = 20,
+    money_increase_seconds = 0.5,
+    money_initial = 40,
     sounds = {
     },
     tiles = {

@@ -36,5 +36,11 @@ function new_game_state()
 
     --
 
+    function self.update()
+        money.update()
+    end
+
+    --
+
     return self
 end

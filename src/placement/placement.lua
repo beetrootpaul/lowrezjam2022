@@ -90,6 +90,24 @@ function new_placement(params)
 
     --
 
+    function self.update()
+        -- TODO: duplicated, share it
+        -- TODO: support multiple tower costs
+        if money.available() >= a.towers.laser.cost and towers.can_build  { tile = chosen_tile } and warzone.can_build { tile = chosen_tile } then
+            can_build = true
+        else
+            can_build = false
+        end
+
+        -- TODO: duplicated, share it
+        chosen_tile_border = new_chosen_tile_border {
+            tile = chosen_tile,
+            can_build = can_build,
+        }
+    end
+
+    --
+
     function self.draw()
         -- TODO: support various tower types
         local sprite = u.required(a.tiles.tower_laser)
@@ -106,6 +124,7 @@ function new_placement(params)
             (a.warzone_border_tiles + chosen_tile.y) * u.tile_size
         )
 
+        -- TODO: draw dimmed range if cannot build
         tower_range.draw {
             color = a.colors.white,
         }

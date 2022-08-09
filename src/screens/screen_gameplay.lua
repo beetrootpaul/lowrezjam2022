@@ -50,8 +50,10 @@ function new_screen_gameplay()
                 self.set_enabled(placement.can_build())
             elseif game_state.building_state().is_tower_placement() then
                 if placement.can_build() then
-                    -- TODO: placement & construction SFX
+                    -- TODO: placement & construction & money spent SFX
                     -- TODO: construction VFX
+                    -- TODO: support multiple tower costs
+                    game_state.money().subtract(a.towers.laser.cost)
                     towers.build_tower {
                         tile = placement.chosen_tile(),
                     }
@@ -108,10 +110,14 @@ function new_screen_gameplay()
 
         button_o.update()
         button_x.update()
+        game_state.update()
         fight.update()
         waves.update()
         enemies.update()
         towers.update()
+        if placement then
+            placement.update()
+        end
 
         return next_screen
     end
