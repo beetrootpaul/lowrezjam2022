@@ -1,5 +1,6 @@
 function new_fight()
     local lasers = {}
+    local beams = {}
 
     local s = {}
 
@@ -16,8 +17,15 @@ function new_fight()
         })
     end
 
+    function s.show_beam(p)
+        add(beams, {
+            tile_x = u.r(p.tile_x),
+        })
+    end
+
     function s.update()
         lasers = {}
+        beams = {}
     end
 
     function s.draw()
@@ -27,6 +35,22 @@ function new_fight()
                 laser.y1,
                 laser.x2,
                 laser.y2,
+                a.colors.white
+            )
+        end
+        for beam in all(beams) do
+            line(
+                (a.warzone_border_tiles + beam.tile_x) * u.ts + 1,
+                a.warzone_border,
+                (a.warzone_border_tiles + beam.tile_x) * u.ts + 1,
+                u.viewport_size - a.warzone_border,
+                a.colors.white
+            )
+            line(
+                (a.warzone_border_tiles + beam.tile_x) * u.ts + 2,
+                a.warzone_border,
+                (a.warzone_border_tiles + beam.tile_x) * u.ts + 2,
+                u.viewport_size - a.warzone_border,
                 a.colors.white
             )
         end

@@ -58,7 +58,7 @@ function new_screen_gameplay()
                     game_state.money().subtract(tower.cost)
                     towers.build_tower {
                         tile = placement.chosen_tile(),
-                        tower = tower,
+                        tower_descriptor = tower,
                     }
                     bs.enter_idle()
                     placement = nil
@@ -141,7 +141,6 @@ function new_screen_gameplay()
         towers.draw()
         enemies.draw()
         fight.draw()
-        enemies.draw_vfx()
         if placement then
             placement.draw()
         end

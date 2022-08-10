@@ -5,6 +5,7 @@ function new_tower_choice()
         add(towers, {
             type = tower_type,
             cost = a.towers[tower_type].cost,
+            dps = a.towers[tower_type].dps,
         })
     end
     local chosen = 1

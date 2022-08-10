@@ -24,8 +24,7 @@ function new_gui(params)
         local is_o_pressed = button_o.is_pressed()
         local is_x_pressed = button_x.is_pressed()
         local is_x_enabled = button_x.is_enabled()
-        -- TODO: support multiple tower costs
-        local has_enough_money = money.available() >= a.towers.laser.cost
+        local has_enough_money = money.available() >= tower_choice.chosen_tower().cost
 
         if building_state.is_idle() then
             wave_status.draw()

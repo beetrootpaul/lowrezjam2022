@@ -21,7 +21,7 @@ function new_towers(params)
 
     function s.build_tower(p)
         add(towers, new_tower {
-            tower = u.r(p.tower),
+            tower_descriptor = u.r(p.tower_descriptor),
             tile = u.r(p.tile),
             enemies = enemies,
             fight = fight,

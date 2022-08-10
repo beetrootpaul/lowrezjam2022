@@ -127,6 +127,7 @@ a = {
         },
         v_beam = {
             cost = 50,
+            dps = 30,
         },
     },
     warzone_size_tiles = 12,
