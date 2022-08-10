@@ -1,7 +1,3 @@
--- -- -- -- -- --
--- misc/tile   --
--- -- -- -- -- --
-
 function new_tile(x, y)
     return {
         x = x,

@@ -1,15 +1,11 @@
--- -- -- -- -- -- --
--- warzone/cores  --
--- -- -- -- -- -- --
-
 function new_cores(params)
-    local lives = u.required(params.lives)
+    local lives = u.r(params.lives)
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.draw()
+    function s.draw()
         local destination_x = { 4, 11, 25, 32, 39 }
         for live = 1, 5 do
             local sprite = lives.left() >= live and a.cores.sprites["healthy_" .. live] or a.cores.sprites["broken_" .. live]
@@ -26,5 +22,5 @@ function new_cores(params)
 
     --
 
-    return self
+    return s
 end

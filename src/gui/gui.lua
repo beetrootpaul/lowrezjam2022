@@ -1,16 +1,12 @@
--- -- -- -- --
--- gui/gui  --
--- -- -- -- --
-
 -- TODO: tower choice state (in general)
 -- TODO: tower choice state -> back button
 function new_gui(params)
-    local waves = u.required(params.waves)
-    local money = u.required(params.money)
-    local tower_choice = u.required(params.tower_choice)
-    local building_state = u.required(params.building_state)
-    local button_x = u.required(params.button_x)
-    local button_o = u.required(params.button_o)
+    local waves = u.r(params.waves)
+    local money = u.r(params.money)
+    local tower_choice = u.r(params.tower_choice)
+    local building_state = u.r(params.building_state)
+    local button_x = u.r(params.button_x)
+    local button_o = u.r(params.button_o)
 
     local wave_status = new_wave_status {
         waves = waves,
@@ -19,12 +15,12 @@ function new_gui(params)
         tower_choice = tower_choice,
     }
 
-    local self = {}
+    local s = {}
 
     --
 
     -- TODO: refactor
-    function self.draw()
+    function s.draw()
         local is_o_pressed = button_o.is_pressed()
         local is_x_pressed = button_x.is_pressed()
         local is_x_enabled = button_x.is_enabled()
@@ -207,5 +203,5 @@ function new_gui(params)
 
     --
 
-    return self
+    return s
 end

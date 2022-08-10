@@ -1,7 +1,3 @@
--- -- -- -- -- -- -- -- -- --
--- screens/screen_gameplay --
--- -- -- -- -- -- -- -- -- --
-
 function new_screen_gameplay()
     local game_state = new_game_state()
     local warzone = new_warzone {
@@ -42,10 +38,11 @@ function new_screen_gameplay()
     local button_x = new_button {
         on_release = function(self)
             -- TODO: button SFX
-            if game_state.building_state().is_idle() then
-                game_state.building_state().enter_tower_choice()
-            elseif game_state.building_state().is_tower_choice() then
-                game_state.building_state().enter_tower_placement()
+            local bs = game_state.building_state()
+            if bs.is_idle() then
+                bs.enter_tower_choice()
+            elseif bs.is_tower_choice() then
+                bs.enter_tower_placement()
                 placement = new_placement {
                     tower_choice = game_state.tower_choice(),
                     warzone = warzone,
@@ -53,7 +50,7 @@ function new_screen_gameplay()
                     money = game_state.money(),
                 }
                 self.set_enabled(placement.can_build())
-            elseif game_state.building_state().is_tower_placement() then
+            elseif bs.is_tower_placement() then
                 if placement.can_build() then
                     -- TODO: placement & construction & money spent SFX
                     -- TODO: construction VFX
@@ -63,7 +60,7 @@ function new_screen_gameplay()
                         tile = placement.chosen_tile(),
                         tower = tower,
                     }
-                    game_state.building_state().enter_idle()
+                    bs.enter_idle()
                     placement = nil
                 else
                     -- TODO: cannot build SFX
@@ -80,12 +77,12 @@ function new_screen_gameplay()
         button_o = button_o,
     }
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.update()
-        local next_screen = self
+    function s.update()
+        local next_screen = s
 
         if game_state.has_lost_all_lives() then
             -- TODO: screen transition
@@ -139,7 +136,7 @@ function new_screen_gameplay()
         return next_screen
     end
 
-    function self.draw()
+    function s.draw()
         warzone.draw()
         towers.draw()
         enemies.draw()
@@ -153,5 +150,5 @@ function new_screen_gameplay()
 
     --
 
-    return self
+    return s
 end

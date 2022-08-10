@@ -1,17 +1,13 @@
--- -- -- -- -- -- -- --
--- gui/wave_status   --
--- -- -- -- -- -- -- --
-
 function new_wave_status(params)
-    local waves = u.required(params.waves)
+    local waves = u.r(params.waves)
 
-    local self = {}
+    local s = {}
 
     --
 
     -- TODO: wait label slide in and slide out animation
     -- TODO: refactor
-    function self.draw()
+    function s.draw()
         if waves.current_wait() then
             local wave_label = new_text("wave " .. waves.wave_number())
 
@@ -73,5 +69,5 @@ function new_wave_status(params)
 
     --
 
-    return self
+    return s
 end

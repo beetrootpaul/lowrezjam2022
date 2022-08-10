@@ -1,10 +1,6 @@
--- -- -- -- -- --
--- waves/wave  --
--- -- -- -- -- --
-
 function new_wave(params)
-    local descriptor = u.required(params.descriptor)
-    local enemies = u.required(params.enemies)
+    local descriptor = u.r(params.descriptor)
+    local enemies = u.r(params.enemies)
 
     local key_moments = {}
     for i = 1, #descriptor.spawns do
@@ -29,19 +25,19 @@ function new_wave(params)
         end,
     }
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.progress()
+    function s.progress()
         return timer.progress()
     end
 
-    function self.update()
+    function s.update()
         timer.update()
     end
 
     --
 
-    return self
+    return s
 end

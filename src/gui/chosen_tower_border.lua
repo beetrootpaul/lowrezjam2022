@@ -1,37 +1,33 @@
--- -- -- -- -- -- -- -- -- --
--- gui/chosen_tower_border --
--- -- -- -- -- -- -- -- -- --
-
 function new_chosen_tower_border()
 
-    local points = {
-        { offset_x = -1, offset_y = 0 },
-        { offset_x = -1, offset_y = -1 },
-        { offset_x = 0, offset_y = -1 },
+    local offsets = {
+        { x = -1, y = 0 },
+        { x = -1, y = -1 },
+        { x = 0, y = -1 },
         --
-        { offset_x = u.tile_size - 1, offset_y = -1 },
-        { offset_x = u.tile_size, offset_y = -1 },
-        { offset_x = u.tile_size, offset_y = 0 },
+        { x = u.ts - 1, y = -1 },
+        { x = u.ts, y = -1 },
+        { x = u.ts, y = 0 },
         --
-        { offset_x = u.tile_size, offset_y = u.tile_size - 1 },
-        { offset_x = u.tile_size, offset_y = u.tile_size },
-        { offset_x = u.tile_size - 1, offset_y = u.tile_size },
+        { x = u.ts, y = u.ts - 1 },
+        { x = u.ts, y = u.ts },
+        { x = u.ts - 1, y = u.ts },
         --
-        { offset_x = 0, offset_y = u.tile_size },
-        { offset_x = -1, offset_y = u.tile_size },
-        { offset_x = -1, offset_y = u.tile_size - 1 },
+        { x = 0, y = u.ts },
+        { x = -1, y = u.ts },
+        { x = -1, y = u.ts - 1 },
     }
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.draw(x , y)
-        for point in all(points) do
+    function s.draw(x , y)
+        for point in all(offsets) do
             -- TODO: PICO-8 API: describe PSET
             pset(
-                x + point.offset_x,
-                y + point.offset_y,
+                x + point.x,
+                y + point.y,
                 a.colors.grey_light
             )
         end
@@ -39,5 +35,5 @@ function new_chosen_tower_border()
 
     --
 
-    return self
+    return s
 end

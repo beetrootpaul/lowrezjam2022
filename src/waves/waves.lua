@@ -1,9 +1,5 @@
--- -- -- -- -- --
--- waves/waves --
--- -- -- -- -- --
-
 function new_waves(params)
-    local enemies = u.required(params.enemies)
+    local enemies = u.r(params.enemies)
 
     local wave_number = 1
     local wave
@@ -15,27 +11,27 @@ function new_waves(params)
         return wave_number >= #a.waves
     end
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.current_wait()
+    function s.current_wait()
         return wait
     end
 
-    function self.current_wave()
+    function s.current_wave()
         return wave
     end
 
-    function self.wave_number()
+    function s.wave_number()
         return wave_number
     end
 
-    function self.have_spawn_all_enemies()
+    function s.have_spawn_all_enemies()
         return is_last_wave() and wave and wave.progress() >= 1
     end
 
-    function self.update()
+    function s.update()
         if wait and wait.progress() >= 1 then
             wait = nil
             wave = new_wave {
@@ -63,5 +59,5 @@ function new_waves(params)
 
     --
 
-    return self
+    return s
 end

@@ -1,20 +1,16 @@
--- -- -- -- -- -- -- -- -- -- --
--- towers/range/range_circle  --
--- -- -- -- -- -- -- -- -- -- --
-
 function new_range_circle(params)
-    local xy = u.required(params.xy)
-    local r = u.required(params.r)
+    local xy = u.r(params.xy)
+    local r = u.r(params.r)
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.circle()
+    function s.circle()
         return { xy = xy, r = r }
     end
 
-    function self.draw(opts)
+    function s.draw(opts)
         opts = opts or {}
         clip(
             0,
@@ -34,5 +30,5 @@ function new_range_circle(params)
 
     --
 
-    return self
+    return s
 end

@@ -1,7 +1,3 @@
--- -- -- -- -- -- --
--- warzone/road  --
--- -- -- -- -- -- --
-
 function new_road()
     -- TODO: various warzones with their unique roads
     -- TODO: better format for serialized tiles
@@ -59,8 +55,8 @@ function new_road()
                 tile_x = tile_x + 1
             end
             add(ww, new_xy(
-                (a.warzone_border_tiles + tile_x) * u.tile_size,
-                (a.warzone_border_tiles + tile_y) * u.tile_size
+                (a.warzone_border_tiles + tile_x) * u.ts,
+                (a.warzone_border_tiles + tile_y) * u.ts
             ))
         end
         return ww
@@ -70,16 +66,16 @@ function new_road()
         waypoints = waypoints,
     }
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.path()
+    function s.path()
         return path
     end
 
     -- TODO: in theory it should check for extended road start and beginning as well
-    function self.is_at(tile_to_check)
+    function s.is_at(tile_to_check)
         -- TODO: refactor it, please…
         local tt = {}
         for st in all(serialized_tiles) do
@@ -90,7 +86,7 @@ function new_road()
 
     -- TODO: road: line of plain ground around edges and corners
     -- TODO: refactor
-    function self.draw()
+    function s.draw()
         local tt = {}
         for st in all(serialized_tiles) do
             tt[st] = true
@@ -107,10 +103,10 @@ function new_road()
                     sspr(
                         tile.x,
                         tile.y,
-                        u.tile_size,
-                        u.tile_size,
-                        (a.warzone_border_tiles + tile_x) * u.tile_size,
-                        (a.warzone_border_tiles + tile_y) * u.tile_size
+                        u.ts,
+                        u.ts,
+                        (a.warzone_border_tiles + tile_x) * u.ts,
+                        (a.warzone_border_tiles + tile_y) * u.ts
                     )
                 end
             end
@@ -128,5 +124,5 @@ function new_road()
 
     --
 
-    return self
+    return s
 end

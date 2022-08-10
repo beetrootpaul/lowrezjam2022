@@ -1,17 +1,13 @@
--- -- -- -- -- --
--- fight/fight --
--- -- -- -- -- --
-
 function new_fight()
     local lasers = {}
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.show_laser(p)
-        local source_xy = u.required(p.source_xy)
-        local target_xy = u.required(p.target_xy)
+    function s.show_laser(p)
+        local source_xy = u.r(p.source_xy)
+        local target_xy = u.r(p.target_xy)
         add(lasers, {
             x1 = source_xy.x,
             y1 = source_xy.y,
@@ -20,11 +16,11 @@ function new_fight()
         })
     end
 
-    function self.update()
+    function s.update()
         lasers = {}
     end
 
-    function self.draw()
+    function s.draw()
         for laser in all(lasers) do
             line(
                 laser.x1,
@@ -38,5 +34,5 @@ function new_fight()
 
     --
 
-    return self
+    return s
 end

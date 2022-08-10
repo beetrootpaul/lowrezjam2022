@@ -1,31 +1,27 @@
--- -- -- -- -- -- --
--- towers/tower   --
--- -- -- -- -- -- --
-
 function new_tower(params)
-    local tower = u.required(params.tower)
-    local tile = u.required(params.tile)
-    local enemies = u.required(params.enemies)
-    local fight = u.required(params.fight)
+    local tower = u.r(params.tower)
+    local tile = u.r(params.tile)
+    local enemies = u.r(params.enemies)
+    local fight = u.r(params.fight)
 
     local range = new_range_circle {
         xy = new_xy(
-            (a.warzone_border_tiles + tile.x + .5) * u.tile_size - .5,
-            (a.warzone_border_tiles + tile.y + .5) * u.tile_size - .5
+            (a.warzone_border_tiles + tile.x + .5) * u.ts - .5,
+            (a.warzone_border_tiles + tile.y + .5) * u.ts - .5
         ),
-        r = 2.5 * u.tile_size - .5,
+        r = 2.5 * u.ts - .5,
     }
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.is_at(tile_to_check)
+    function s.is_at(tile_to_check)
         return tile_to_check.is_same_as(tile)
     end
 
     -- TODO: make laser shoot in short burst, so thanks to boost towers it can be faster
-    function self.update()
+    function s.update()
         local is_attacking = false
         enemies.for_each_from_furthest(function(enemy)
             if not is_attacking and collisions.are_circles_colliding(
@@ -41,8 +37,8 @@ function new_tower(params)
                 fight.show_laser {
                     source_xy = new_xy(
                     -- TODO: support multiple tower types
-                        (a.warzone_border_tiles + tile.x) * u.tile_size + a.towers.laser.laser_source_offset_x,
-                        (a.warzone_border_tiles + tile.y) * u.tile_size + a.towers.laser.laser_source_offset_y
+                        (a.warzone_border_tiles + tile.x) * u.ts + a.towers.laser.laser_source_offset_x,
+                        (a.warzone_border_tiles + tile.y) * u.ts + a.towers.laser.laser_source_offset_y
                     ),
                     target_xy = enemy.center_xy(),
                 }
@@ -50,15 +46,15 @@ function new_tower(params)
         end)
     end
 
-    function self.draw()
-        local sprite = u.required(a.tiles["tower_" .. tower.type])
+    function s.draw()
+        local sprite = u.r(a.tiles["tower_" .. tower.type])
         sspr(
             sprite.x,
             sprite.y,
-            u.tile_size,
-            u.tile_size,
-            (a.warzone_border_tiles + tile.x) * u.tile_size,
-            (a.warzone_border_tiles + tile.y) * u.tile_size
+            u.ts,
+            u.ts,
+            (a.warzone_border_tiles + tile.x) * u.ts,
+            (a.warzone_border_tiles + tile.y) * u.ts
         )
 
         if d.enabled then
@@ -70,5 +66,5 @@ function new_tower(params)
 
     --
 
-    return self
+    return s
 end

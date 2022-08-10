@@ -1,7 +1,3 @@
--- -- -- -- -- -- -- -- --
--- screens/screen_title --
--- -- -- -- -- -- -- -- --
-
 -- TODO: screen polish
 function new_screen_title()
     local timer = new_timer {
@@ -9,12 +5,12 @@ function new_screen_title()
         start = 0.4 * u.fps,
     }
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.update()
-        local next_screen = self
+    function s.update()
+        local next_screen = s
 
         if u.is_any_button_pressed() then
             timer.skip_to_end()
@@ -30,12 +26,12 @@ function new_screen_title()
         return next_screen
     end
 
-    function self.draw()
+    function s.draw()
         print("todo: game title", 0, u.viewport_size / 2 - 8, a.colors.white)
         print("by beetroot paul", 0, u.viewport_size / 2 + 8, a.colors.white)
     end
 
     --
 
-    return self
+    return s
 end

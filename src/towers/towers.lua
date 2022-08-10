@@ -1,20 +1,16 @@
--- -- -- -- -- -- --
--- towers/towers  --
--- -- -- -- -- -- --
-
 function new_towers(params)
-    local enemies = u.required(params.enemies)
-    local fight = u.required(params.fight)
+    local enemies = u.r(params.enemies)
+    local fight = u.r(params.fight)
 
     local towers = {}
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.can_build(p)
+    function s.can_build(p)
         for tower in all(towers) do
-            if tower.is_at(u.required(p.tile)) then
+            if tower.is_at(u.r(p.tile)) then
                 return false
             end
         end
@@ -23,10 +19,10 @@ function new_towers(params)
 
     --
 
-    function self.build_tower(p)
+    function s.build_tower(p)
         add(towers, new_tower {
-            tower = u.required(p.tower),
-            tile = u.required(p.tile),
+            tower = u.r(p.tower),
+            tile = u.r(p.tile),
             enemies = enemies,
             fight = fight,
         })
@@ -34,13 +30,13 @@ function new_towers(params)
 
     --
 
-    function self.update()
+    function s.update()
         for tower in all(towers) do
             tower.update()
         end
     end
 
-    function self.draw()
+    function s.draw()
         for tower in all(towers) do
             tower.draw()
         end
@@ -48,5 +44,5 @@ function new_towers(params)
 
     --
 
-    return self
+    return s
 end

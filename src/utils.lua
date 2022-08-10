@@ -1,7 +1,3 @@
--- -- -- --
--- utils --
--- -- -- --
-
 u = {
     buttons = {
         -- left, right, up, down
@@ -20,7 +16,8 @@ u = {
 
     text_height = 4,
 
-    tile_size = 4,
+    -- tile size
+    ts = 4,
 
     viewport_size = 64,
     viewport_size_tiles = 16,
@@ -41,7 +38,8 @@ function u.noop()
     -- do nothing
 end
 
-function u.required(value)
+-- assert if required value is there and returns it
+function u.r(value)
     if type(value) == "boolean" then
         assert(value ~= nil, "required value is missing")
     else

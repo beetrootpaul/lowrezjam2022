@@ -1,39 +1,35 @@
--- -- -- -- -- -- -- --
--- enemies/enemies   --
--- -- -- -- -- -- -- --
-
 function new_enemies(params)
-    local path = u.required(params.path)
-    local on_enemy_reached_path_end = u.required(params.on_enemy_reached_path_end)
+    local path = u.r(params.path)
+    local on_enemy_reached_path_end = u.r(params.on_enemy_reached_path_end)
 
     local enemies = {}
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.spawn()
+    function s.spawn()
         add(enemies, new_enemy {
             path = path,
             on_reached_path_end = on_enemy_reached_path_end,
         })
     end
 
-    function self.for_each_from_furthest(callback)
+    function s.for_each_from_furthest(callback)
         foreach(enemies, callback)
     end
 
-    function self.are_none_left()
+    function s.are_none_left()
         return #enemies <= 0
     end
 
-    function self.pre_update()
+    function s.pre_update()
         for enemy in all(enemies) do
             enemy.pre_update()
         end
     end
 
-    function self.update()
+    function s.update()
         for enemy in all(enemies) do
             if enemy.has_finished() then
                 -- TODO: SFX
@@ -45,13 +41,13 @@ function new_enemies(params)
         end
     end
 
-    function self.draw()
+    function s.draw()
         for enemy in all(enemies) do
             enemy.draw()
         end
     end
 
-    function self.draw_vfx()
+    function s.draw_vfx()
         for enemy in all(enemies) do
             enemy.draw_vfx()
         end
@@ -59,5 +55,5 @@ function new_enemies(params)
 
     --
 
-    return self
+    return s
 end

@@ -1,23 +1,19 @@
--- -- -- -- -- -- -- --
--- game_state/lives  --
--- -- -- -- -- -- -- --
-
 function new_lives()
     local left = a.lives_max
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.left()
+    function s.left()
         return left
     end
 
-    function self.take_one()
+    function s.take_one()
         left = max(0, left - 1)
     end
 
     --
 
-    return self
+    return s
 end

@@ -1,10 +1,6 @@
--- -- -- -- -- -- --
--- enemies/enemy  --
--- -- -- -- -- -- --
-
 function new_enemy(params)
-    local path = u.required(params.path)
-    local on_reached_path_end = u.required(params.on_reached_path_end)
+    local path = u.r(params.path)
+    local on_reached_path_end = u.r(params.on_reached_path_end)
 
     local path_following_position = new_path_following_position {
         path = path,
@@ -22,38 +18,38 @@ function new_enemy(params)
     local hitbox_range = new_range_circle {
         xy = center_xy(),
         -- TODO: implement multiple enemy types
-        r = u.required(a.enemies.small.hitbox_r),
+        r = u.r(a.enemies.small.hitbox_r),
     }
 
     local is_taking_damage = false
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.has_finished()
+    function s.has_finished()
         return health.value() == 0 or path_following_position.has_reached_end()
     end
 
-    function self.hitbox_circle()
+    function s.hitbox_circle()
         return hitbox_range.circle()
     end
 
-    function self.center_xy()
+    function s.center_xy()
         return center_xy()
     end
 
-    function self.take_damage(damage)
+    function s.take_damage(damage)
         -- TODO: decrease health and make enemy destroyed in the end
         is_taking_damage = true
-        health.subtract(u.required(damage))
+        health.subtract(u.r(damage))
     end
 
-    function self.pre_update()
+    function s.pre_update()
         is_taking_damage = false
     end
 
-    function self.update()
+    function s.update()
         path_following_position.update()
         if path_following_position.has_reached_end() then
             on_reached_path_end()
@@ -63,17 +59,17 @@ function new_enemy(params)
         hitbox_range = new_range_circle {
             xy = center_xy(),
             -- TODO: implement multiple enemy types
-            r = u.required(a.enemies.small.hitbox_r),
+            r = u.r(a.enemies.small.hitbox_r),
         }
     end
 
-    function self.draw()
+    function s.draw()
         if path_following_position.has_reached_end() then
             return
         end
 
         -- TODO: implement multiple enemy types
-        local sprite = u.required(a.enemies.small.sprite_right)
+        local sprite = u.r(a.enemies.small.sprite_right)
         local position = path_following_position.current_xy()
         -- TODO: rotate enemy depending on movement direction
         sspr(
@@ -105,13 +101,13 @@ function new_enemy(params)
 
     --
 
-    function self.draw_vfx()
+    function s.draw_vfx()
         if not is_taking_damage then
             return
         end
 
         -- TODO: implement multiple enemy types
-        local sprite = u.required(a.enemies.small.sprite_damage_right)
+        local sprite = u.r(a.enemies.small.sprite_damage_right)
         local position = path_following_position.current_xy()
         -- TODO: rotate enemy depending on movement direction
         sspr(
@@ -126,5 +122,5 @@ function new_enemy(params)
 
     --
 
-    return self
+    return s
 end

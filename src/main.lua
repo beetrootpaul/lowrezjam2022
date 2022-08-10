@@ -1,7 +1,3 @@
--- -- -- --
--- main  --
--- -- -- --
-
 local current_screen, next_screen
 
 -- wiki: https://pico-8.fandom.com/wiki/Init

@@ -1,27 +1,23 @@
--- -- -- -- -- --
--- waits/wait  --
--- -- -- -- -- --
-
 function new_wait(params)
-    local duration = u.required(params.duration)
+    local duration = u.r(params.duration)
 
     local timer = new_timer {
         start = u.fps * duration,
     }
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.progress()
+    function s.progress()
         return timer.progress()
     end
 
-    function self.update()
+    function s.update()
         timer.update()
     end
 
     --
 
-    return self
+    return s
 end

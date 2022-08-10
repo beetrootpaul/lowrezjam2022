@@ -1,7 +1,3 @@
--- -- -- -- -- -- -- -- -- --
--- game_state/tower_choice --
--- -- -- -- -- -- -- -- -- --
-
 function new_tower_choice()
     local towers = {}
     -- TODO: support all 4 tower types
@@ -13,28 +9,28 @@ function new_tower_choice()
     end
     local chosen = 1
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.towers_in_cost_order()
+    function s.towers_in_cost_order()
         --TODO: sort by cost instead of hardcoding the order
         return towers
     end
 
-    function self.chosen_tower()
+    function s.chosen_tower()
         return towers[chosen]
     end
 
-    function self.choose_prev_tower()
+    function s.choose_prev_tower()
         chosen = max(chosen - 1, 1)
     end
 
-    function self.choose_next_tower()
+    function s.choose_next_tower()
         chosen = min(chosen + 1, #towers)
     end
 
     --
 
-    return self
+    return s
 end

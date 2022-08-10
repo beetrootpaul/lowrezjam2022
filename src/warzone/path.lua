@@ -1,9 +1,5 @@
--- -- -- -- -- -- --
--- warzone/path   --
--- -- -- -- -- -- --
-
 function new_path(params)
-    local waypoints = u.required(params.waypoints)
+    local waypoints = u.r(params.waypoints)
 
     -- TODO: path: validate waypoints: cannot change X and Y at the same time
     -- TODO: path: validate waypoints: at least 1 of them
@@ -48,15 +44,15 @@ function new_path(params)
         return pp
     end)()
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.points()
+    function s.points()
         return points
     end
 
     --
 
-    return self
+    return s
 end

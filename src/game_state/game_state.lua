@@ -1,7 +1,3 @@
--- -- -- -- -- -- -- -- -- --
--- game_state/game_state   --
--- -- -- -- -- -- -- -- -- --
-
 -- TODO: reconsider names
 function new_game_state()
     local lives = new_lives()
@@ -9,35 +5,35 @@ function new_game_state()
     local tower_choice = new_tower_choice()
     local building_state = new_building_state()
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.lives()
+    function s.lives()
         return lives
     end
 
-    function self.money()
+    function s.money()
         return money
     end
 
-    function self.tower_choice()
+    function s.tower_choice()
         return tower_choice
     end
 
-    function self.building_state()
+    function s.building_state()
         return building_state
     end
 
-    function self.has_lost_all_lives()
+    function s.has_lost_all_lives()
         return lives.left() <= 0
     end
 
-    function self.update()
+    function s.update()
         money.update()
     end
 
     --
 
-    return self
+    return s
 end
