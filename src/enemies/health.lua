@@ -1,18 +1,14 @@
 function new_health(params)
-    local max_health = u.r(params.max_health)
+    local max_value = u.r(params.max_value)
 
-    local health = max_health
-
-    local s = {}
+    local s = {
+        value = max_value,
+    }
 
     --
 
     function s.subtract(damage)
-        health = max(0, health - damage)
-    end
-
-    function s.value()
-        return health
+        s.value = max(0, s.value - damage)
     end
 
     --

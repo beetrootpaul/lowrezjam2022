@@ -21,7 +21,7 @@ function new_placement(params)
 
     -- TODO: duplicated, share it
     local can_build = false
-    if money.available() >= tower_choice.chosen_tower().cost
+    if money.available >= tower_choice.chosen_tower().cost
         and other_towers.can_build { tile = chosen_tile }
         and warzone.can_build { tile = chosen_tile }
     then
@@ -59,7 +59,7 @@ function new_placement(params)
         )
 
         -- TODO: duplicated, share it
-        if money.available() >= tower_choice.chosen_tower().cost
+        if money.available >= tower_choice.chosen_tower().cost
             and other_towers.can_build { tile = chosen_tile }
             and warzone.can_build { tile = chosen_tile }
         then
@@ -87,7 +87,7 @@ function new_placement(params)
 
     function s.update()
         -- TODO: duplicated, share it
-        if money.available() >= tower_choice.chosen_tower().cost
+        if money.available >= tower_choice.chosen_tower().cost
             and other_towers.can_build { tile = chosen_tile }
             and warzone.can_build { tile = chosen_tile }
         then
@@ -109,14 +109,7 @@ function new_placement(params)
         -- TODO: indicate conflicting tiles and other reasons that cannot build
 
         -- TODO: draw dimmed sprite if cannot build
-        sspr(
-            sprite.x,
-            sprite.y,
-            u.ts,
-            u.ts,
-            (a.warzone_border_tiles + chosen_tile.x) * u.ts,
-            (a.warzone_border_tiles + chosen_tile.y) * u.ts
-        )
+        sspr(sprite.x, sprite.y, u.ts, u.ts, (a.warzone_border_tiles + chosen_tile.x) * u.ts, (a.warzone_border_tiles + chosen_tile.y) * u.ts)
 
         -- TODO: draw dimmed range if cannot build
         tower_range.draw {

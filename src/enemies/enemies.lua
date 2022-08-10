@@ -45,9 +45,6 @@ function new_enemies(params)
         for enemy in all(enemies) do
             enemy.draw()
         end
-        for enemy in all(enemies) do
-            enemy.draw_vfx()
-        end
     end
 
     --

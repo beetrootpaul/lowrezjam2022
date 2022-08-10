@@ -16,7 +16,6 @@ __lua__
 
 #include src/fight/fight.lua
 
-#include src/game_state/building_state.lua
 #include src/game_state/game_state.lua
 #include src/game_state/lives.lua
 #include src/game_state/money.lua

@@ -68,14 +68,7 @@ function new_tower(params)
 
     function s.draw()
         local sprite = u.r(a.tiles["tower_" .. tower_descriptor.type])
-        sspr(
-            sprite.x,
-            sprite.y,
-            u.ts,
-            u.ts,
-            (a.warzone_border_tiles + tile.x) * u.ts,
-            (a.warzone_border_tiles + tile.y) * u.ts
-        )
+        sspr(sprite.x, sprite.y, u.ts, u.ts, (a.warzone_border_tiles + tile.x) * u.ts, (a.warzone_border_tiles + tile.y) * u.ts)
 
         if d.enabled then
             range.draw {

@@ -5,7 +5,7 @@ function new_text(text_value)
         add(sprites, {
             x = a.font_sprites[char][1],
             y = a.font_sprites[char][2],
-            w = a.font_sprites[char][3],
+            w = a.font_sprites[char][3] or 3,
         })
     end
 
@@ -26,14 +26,7 @@ function new_text(text_value)
         pal(a.font_template_color, color, 0)
         local current_x = x
         for sprite in all(sprites) do
-            sspr(
-                sprite.x,
-                sprite.y,
-                sprite.w,
-                u.text_height,
-                current_x,
-                y
-            )
+            sspr(sprite.x, sprite.y, sprite.w, u.text_height, current_x, y)
             current_x = current_x + sprite.w + 1
         end
         pal(a.font_template_color, a.font_template_color, 0)

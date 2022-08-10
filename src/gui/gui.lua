@@ -2,9 +2,7 @@
 -- TODO: tower choice state -> back button
 function new_gui(params)
     local waves = u.r(params.waves)
-    local money = u.r(params.money)
-    local tower_choice = u.r(params.tower_choice)
-    local building_state = u.r(params.building_state)
+    local game_state = u.r(params.game_state)
     local button_x = u.r(params.button_x)
     local button_o = u.r(params.button_o)
 
@@ -12,7 +10,7 @@ function new_gui(params)
         waves = waves,
     }
     local tower_choice_gui = new_tower_choice_gui {
-        tower_choice = tower_choice,
+        tower_choice = game_state.tower_choice,
     }
 
     local s = {}
@@ -24,15 +22,15 @@ function new_gui(params)
         local is_o_pressed = button_o.is_pressed()
         local is_x_pressed = button_x.is_pressed()
         local is_x_enabled = button_x.is_enabled()
-        local has_enough_money = money.available() >= tower_choice.chosen_tower().cost
+        local has_enough_money = game_state.money.available >= game_state.tower_choice.chosen_tower().cost
 
-        if building_state.is_idle() then
+        if game_state.building_state == "idle" then
             wave_status.draw()
 
             local menu_text = new_text("menu")
             menu_text.draw(
                 a.warzone_border,
-                u.viewport_size - a.warzone_border + 2,
+                u.vs - a.warzone_border + 2,
                 is_o_pressed
                     and a.colors.grey_light
                     or a.colors.brown_purple
@@ -44,7 +42,7 @@ function new_gui(params)
             )
             menu_button.draw(
                 1,
-                u.viewport_size - a.warzone_border + 1,
+                u.vs - a.warzone_border + 1,
                 is_o_pressed
                     and a.colors.grey_light
                     or a.colors.brown_purple,
@@ -53,8 +51,8 @@ function new_gui(params)
 
             local build_text = new_text("build")
             build_text.draw(
-                u.viewport_size - a.warzone_border - build_text.width(),
-                u.viewport_size - a.warzone_border + 2,
+                u.vs - a.warzone_border - build_text.width(),
+                u.vs - a.warzone_border + 2,
                 is_x_pressed
                     and a.colors.grey_light
                     or a.colors.brown_purple
@@ -65,23 +63,23 @@ function new_gui(params)
                     or a.button_sprites.x.raised
             )
             build_button.draw(
-                u.viewport_size - a.warzone_border + 2,
-                u.viewport_size - a.warzone_border + 1,
+                u.vs - a.warzone_border + 2,
+                u.vs - a.warzone_border + 1,
                 is_x_pressed
                     and a.colors.grey_light
                     or a.colors.brown_purple,
                 a.colors.brown_mid
             )
-        elseif building_state.is_tower_choice() then
-            local money_text = new_text(tostr(money.available()))
+        elseif game_state.building_state == "tower-choice" then
+            local money_text = new_text(tostr(game_state.money.available))
             money_text.draw(
-                u.viewport_size - a.warzone_border - money_text.width(),
+                u.vs - a.warzone_border - money_text.width(),
                 2,
                 a.colors.grey_light
             )
             local dollar_text = new_text("$")
             dollar_text.draw(
-                u.viewport_size - a.warzone_border + 2,
+                u.vs - a.warzone_border + 2,
                 2,
                 a.colors.grey_violet
             )
@@ -89,7 +87,7 @@ function new_gui(params)
             local back_text = new_text("<")
             back_text.draw(
                 a.warzone_border,
-                u.viewport_size - a.warzone_border + 2,
+                u.vs - a.warzone_border + 2,
                 is_o_pressed
                     and a.colors.grey_light
                     or a.colors.brown_purple
@@ -101,7 +99,7 @@ function new_gui(params)
             )
             back_button.draw(
                 1,
-                u.viewport_size - a.warzone_border + 1,
+                u.vs - a.warzone_border + 1,
                 is_o_pressed
                     and a.colors.grey_light
                     or a.colors.brown_purple,
@@ -116,23 +114,23 @@ function new_gui(params)
                     or a.button_sprites.x.raised
             )
             choose_button.draw(
-                u.viewport_size - a.warzone_border + 2,
-                u.viewport_size - a.warzone_border + 1,
+                u.vs - a.warzone_border + 2,
+                u.vs - a.warzone_border + 1,
                 is_x_enabled
                     and (is_x_pressed and a.colors.grey_light or a.colors.grey_violet)
                     or a.colors.brown_mid,
                 a.colors.brown_mid
             )
-        elseif building_state.is_tower_placement() then
-            local money_text = new_text(tostr(money.available()))
+        elseif game_state.building_state == "tower-placement" then
+            local money_text = new_text(tostr(game_state.money.available))
             money_text.draw(
-                u.viewport_size - a.warzone_border - money_text.width(),
+                u.vs - a.warzone_border - money_text.width(),
                 2,
                 a.colors.grey_light
             )
             local dollar_text = new_text("$")
             dollar_text.draw(
-                u.viewport_size - a.warzone_border + 2,
+                u.vs - a.warzone_border + 2,
                 2,
                 a.colors.grey_violet
             )
@@ -140,7 +138,7 @@ function new_gui(params)
             local back_text = new_text("<")
             back_text.draw(
                 a.warzone_border,
-                u.viewport_size - a.warzone_border + 2,
+                u.vs - a.warzone_border + 2,
                 is_o_pressed
                     and a.colors.grey_light
                     or a.colors.brown_purple
@@ -152,7 +150,7 @@ function new_gui(params)
             )
             back_button.draw(
                 1,
-                u.viewport_size - a.warzone_border + 1,
+                u.vs - a.warzone_border + 1,
                 is_o_pressed
                     and a.colors.grey_light
                     or a.colors.brown_purple,
@@ -161,8 +159,8 @@ function new_gui(params)
 
             local place_text = new_text("place")
             place_text.draw(
-                u.viewport_size - a.warzone_border - place_text.width(),
-                u.viewport_size - a.warzone_border + 2,
+                u.vs - a.warzone_border - place_text.width(),
+                u.vs - a.warzone_border + 2,
                 is_x_enabled
                     and (is_x_pressed and a.colors.grey_light or a.colors.grey_violet)
                     or a.colors.brown_mid
@@ -173,8 +171,8 @@ function new_gui(params)
                     or a.button_sprites.x.raised
             )
             place_button.draw(
-                u.viewport_size - a.warzone_border + 2,
-                u.viewport_size - a.warzone_border + 1,
+                u.vs - a.warzone_border + 2,
+                u.vs - a.warzone_border + 1,
                 is_x_enabled
                     and (is_x_pressed and a.colors.grey_light or a.colors.grey_violet)
                     or a.colors.brown_mid,
@@ -182,17 +180,17 @@ function new_gui(params)
             )
 
             dollar_text.draw(
-                u.viewport_size - a.warzone_border - place_text.width() - 3 - dollar_text.width(),
-                u.viewport_size - a.warzone_border + 2,
+                u.vs - a.warzone_border - place_text.width() - 3 - dollar_text.width(),
+                u.vs - a.warzone_border + 2,
                 is_x_enabled
                     and a.colors.grey_violet
                     or a.colors.brown_mid
             )
 
-            local cost_text = new_text("-" .. tower_choice.chosen_tower().cost)
+            local cost_text = new_text("-" .. game_state.tower_choice.chosen_tower().cost)
             cost_text.draw(
-                u.viewport_size - a.warzone_border - place_text.width() - 3 - dollar_text.width() - 2 - cost_text.width(),
-                u.viewport_size - a.warzone_border + 2,
+                u.vs - a.warzone_border - place_text.width() - 3 - dollar_text.width() - 2 - cost_text.width(),
+                u.vs - a.warzone_border + 2,
                 has_enough_money
                     and (is_x_enabled and a.colors.grey_light or a.colors.brown_mid)
                     or a.colors.red_dark

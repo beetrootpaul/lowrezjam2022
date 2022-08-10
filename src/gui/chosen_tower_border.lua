@@ -25,11 +25,7 @@ function new_chosen_tower_border()
     function s.draw(x , y)
         for point in all(offsets) do
             -- TODO: PICO-8 API: describe PSET
-            pset(
-                x + point.x,
-                y + point.y,
-                a.colors.grey_light
-            )
+            pset(x + point.x, y + point.y, a.colors.grey_light)
         end
     end
 

@@ -27,8 +27,8 @@ function new_screen_title()
     end
 
     function s.draw()
-        print("todo: game title", 0, u.viewport_size / 2 - 8, a.colors.white)
-        print("by beetroot paul", 0, u.viewport_size / 2 + 8, a.colors.white)
+        print("todo: game title", 0, u.vs / 2 - 8, a.colors.white)
+        print("by beetroot paul", 0, u.vs / 2 + 8, a.colors.white)
     end
 
     --

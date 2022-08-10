@@ -44,15 +44,7 @@ function new_path(params)
         return pp
     end)()
 
-    local s = {}
-
-    --
-
-    function s.points()
-        return points
-    end
-
-    --
-
-    return s
+    return {
+        points = points,
+    }
 end

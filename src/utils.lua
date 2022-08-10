@@ -1,16 +1,7 @@
 u = {
-    buttons = {
-        -- left, right, up, down
-        l = 0,
-        r = 1,
-        u = 2,
-        d = 3,
-        -- button "O" (Z/C), button "X" (X/V)
-        o = 4,
-        x = 5,
-        -- button menu (Enter)
-        menu = 6,
-    },
+    button_o = 4,
+    button_x = 5,
+    button_menu = 6,
 
     fps = 60,
 
@@ -19,19 +10,19 @@ u = {
     -- tile size
     ts = 4,
 
-    viewport_size = 64,
-    viewport_size_tiles = 16,
+    -- viewport size
+    vs = 64,
 }
 
 u.arrow_buttons_to_directions = {
-    [u.buttons.l] = { x = -1, y = 0 },
-    [u.buttons.r] = { x = 1, y = 0 },
-    [u.buttons.u] = { x = 0, y = -1 },
-    [u.buttons.d] = { x = 0, y = 1 },
+    [⬅️] = { x = -1, y = 0 },
+    [➡️] = { x = 1, y = 0 },
+    [⬆️] = { x = 0, y = -1 },
+    [⬇️] = { x = 0, y = 1 },
 }
 
 function u.is_any_button_pressed()
-    return btnp() ~= 0 and btnp() ~= 2 ^ u.buttons.menu
+    return btnp() ~= 0 and btnp() ~= 2 ^ u.button_menu
 end
 
 function u.noop()

@@ -3,45 +3,27 @@ function new_road()
     -- TODO: better format for serialized tiles
     -- TODO: initial validation of serialized tiles
     local serialized_tiles = {
-        "-2|3",
-        "-1|3",
-        "0|3",
-        "1|3",
+        "-2|3", "-1|3", "0|3", "1|3",
         "1|4",
         "1|5",
         "1|6",
-        "1|7",
-        "2|7",
-        "3|7",
+        "1|7", "2|7", "3|7",
         "3|8",
         "3|9",
-        "3|10",
-        "4|10",
-        "5|10",
-        "6|10",
-        "7|10",
+        "3|10", "4|10", "5|10", "6|10", "7|10",
         "7|9",
         "7|8",
         "7|7",
-        "7|6",
-        "6|6",
+        "7|6", "6|6",
         "6|5",
         "6|4",
         "6|3",
         "6|2",
-        "6|1",
-        "7|1",
-        "8|1",
-        "9|1",
-        "10|1",
-        "11|1",
+        "6|1", "7|1", "8|1", "9|1", "10|1", "11|1",
         "11|2",
         "11|3",
         "11|4",
-        "11|5",
-        "12|5",
-        "13|5",
-    }
+        "11|5", "12|5", "13|5", }
 
     -- TODO: refactor
     local waypoints = (function()
@@ -100,21 +82,14 @@ function new_road()
                     tile = a.tiles.road_edge_bottom
                 end
                 if tile then
-                    sspr(
-                        tile.x,
-                        tile.y,
-                        u.ts,
-                        u.ts,
-                        (a.warzone_border_tiles + tile_x) * u.ts,
-                        (a.warzone_border_tiles + tile_y) * u.ts
-                    )
+                    sspr(tile.x, tile.y, u.ts, u.ts, (a.warzone_border_tiles + tile_x) * u.ts, (a.warzone_border_tiles + tile_y) * u.ts)
                 end
             end
         end
 
         if d.enabled then
             local color_toggle = true
-            for point in all(path.points()) do
+            for point in all(path.points) do
                 -- TODO: PICO-8 API: describe PSET
                 pset(point.x, point.y, color_toggle and a.colors.white or a.colors.blue_light)
                 color_toggle = not color_toggle

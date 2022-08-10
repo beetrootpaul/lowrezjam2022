@@ -8,7 +8,7 @@ function new_enemy(params)
 
     local health = new_health {
         -- TODO: implement multiple enemy types
-        max_health = a.enemies.small.health,
+        max_value = a.enemies.small.health,
     }
 
     local function center_xy()
@@ -28,7 +28,7 @@ function new_enemy(params)
     --
 
     function s.has_finished()
-        return health.value() == 0 or path_following_position.has_reached_end()
+        return health.value == 0 or path_following_position.has_reached_end()
     end
 
     function s.hitbox_circle()
@@ -72,17 +72,10 @@ function new_enemy(params)
         local sprite = u.r(a.enemies.small.sprite_right)
         local position = path_following_position.current_xy()
         -- TODO: rotate enemy depending on movement direction
-        sspr(
-            sprite.x,
-            sprite.y,
-            sprite.w,
-            sprite.h,
-            position.x,
-            position.y
-        )
+        sspr(sprite.x, sprite.y, sprite.w, sprite.h, position.x, position.y)
 
-        if d.enabled and health.value() > 0 then
-            local health_bar_length = ceil(health.value() / 4)
+        if d.enabled and health.value > 0 then
+            local health_bar_length = ceil(health.value / 4)
             line(
                 position.x,
                 position.y - 2,
@@ -97,27 +90,13 @@ function new_enemy(params)
                 color = a.colors.yellow,
             }
         end
-    end
 
-    --
-
-    function s.draw_vfx()
-        if not is_taking_damage then
-            return
+        if is_taking_damage then
+            -- TODO: implement multiple enemy types
+            local damage_sprite = u.r(a.enemies.small.sprite_damage_right)
+            -- TODO: rotate enemy depending on movement direction
+            sspr(damage_sprite.x, damage_sprite.y, damage_sprite.w, damage_sprite.h, position.x, position.y)
         end
-
-        -- TODO: implement multiple enemy types
-        local sprite = u.r(a.enemies.small.sprite_damage_right)
-        local position = path_following_position.current_xy()
-        -- TODO: rotate enemy depending on movement direction
-        sspr(
-            sprite.x,
-            sprite.y,
-            sprite.w,
-            sprite.h,
-            position.x,
-            position.y
-        )
     end
 
     --

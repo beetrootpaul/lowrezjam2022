@@ -28,7 +28,7 @@ function new_screen_over()
     end
 
     function s.draw()
-        print("todo: game over", 0, u.viewport_size / 2 - 8, a.colors.red_light)
+        print("todo: game over", 0, u.vs / 2 - 8, a.colors.red_light)
     end
 
     --

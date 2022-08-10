@@ -28,7 +28,7 @@ function new_screen_win()
     end
 
     function s.draw()
-        print("todo: win!", 0, u.viewport_size / 2 - 8, a.colors.yellow)
+        print("todo: win!", 0, u.vs / 2 - 8, a.colors.yellow)
     end
 
     --

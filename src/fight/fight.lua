@@ -30,27 +30,21 @@ function new_fight()
 
     function s.draw()
         for laser in all(lasers) do
-            line(
-                laser.x1,
-                laser.y1,
-                laser.x2,
-                laser.y2,
-                a.colors.white
-            )
+            line(laser.x1, laser.y1, laser.x2, laser.y2, a.colors.white)
         end
         for beam in all(beams) do
             line(
                 (a.warzone_border_tiles + beam.tile_x) * u.ts + 1,
                 a.warzone_border,
                 (a.warzone_border_tiles + beam.tile_x) * u.ts + 1,
-                u.viewport_size - a.warzone_border,
+                u.vs - a.warzone_border,
                 a.colors.white
             )
             line(
                 (a.warzone_border_tiles + beam.tile_x) * u.ts + 2,
                 a.warzone_border,
                 (a.warzone_border_tiles + beam.tile_x) * u.ts + 2,
-                u.viewport_size - a.warzone_border,
+                u.vs - a.warzone_border,
                 a.colors.white
             )
         end

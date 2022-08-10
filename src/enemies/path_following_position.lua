@@ -1,7 +1,7 @@
 -- TODO: change its name
 -- TODO: refactor
 function new_path_following_position(params)
-    local path_points = u.r(params.path).points()
+    local path_points = u.r(params.path).points
 
     -- TODO: make sure enemy is invisible first and enters the screen on the first possible update
     -- TODO: adjust speed to a final value

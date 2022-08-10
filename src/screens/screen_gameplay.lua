@@ -1,14 +1,14 @@
 function new_screen_gameplay()
     local game_state = new_game_state()
     local warzone = new_warzone {
-        lives = game_state.lives(),
+        lives = game_state.lives,
     }
     local enemies = new_enemies {
         path = warzone.path(),
         on_enemy_reached_path_end = function()
             -- TODO: SFX
             -- TODO: VFX
-            game_state.lives().take_one()
+            game_state.lives.take_one()
         end,
     }
     local fight = new_fight()
@@ -23,13 +23,13 @@ function new_screen_gameplay()
     local button_o = new_button {
         on_release = function(self)
             -- TODO: button SFX
-            if game_state.building_state().is_idle() then
+            if game_state.building_state == "idle" then
                 -- TODO: custom menu item to go back to warzone selection
                 extcmd("pause")
-            elseif game_state.building_state().is_tower_choice() then
-                game_state.building_state().enter_idle()
-            elseif game_state.building_state().is_tower_placement() then
-                game_state.building_state().enter_tower_choice()
+            elseif game_state.building_state == "tower-choice" then
+                game_state.building_state = "idle"
+            elseif game_state.building_state == "tower-placement" then
+                game_state.building_state = "tower-choice"
                 placement = nil
             end
         end
@@ -38,29 +38,28 @@ function new_screen_gameplay()
     local button_x = new_button {
         on_release = function(self)
             -- TODO: button SFX
-            local bs = game_state.building_state()
-            if bs.is_idle() then
-                bs.enter_tower_choice()
-            elseif bs.is_tower_choice() then
-                bs.enter_tower_placement()
+            if game_state.building_state == "idle" then
+                game_state.building_state = "tower-choice"
+            elseif game_state.building_state == "tower-choice" then
+                game_state.building_state = "tower-placement"
                 placement = new_placement {
-                    tower_choice = game_state.tower_choice(),
+                    tower_choice = game_state.tower_choice,
                     warzone = warzone,
                     other_towers = towers,
-                    money = game_state.money(),
+                    money = game_state.money,
                 }
                 self.set_enabled(placement.can_build())
-            elseif bs.is_tower_placement() then
+            elseif game_state.building_state == "tower-placement" then
                 if placement.can_build() then
                     -- TODO: placement & construction & money spent SFX
                     -- TODO: construction VFX
-                    local tower = game_state.tower_choice().chosen_tower()
-                    game_state.money().subtract(tower.cost)
+                    local tower = game_state.tower_choice.chosen_tower()
+                    game_state.money.subtract(tower.cost)
                     towers.build_tower {
                         tile = placement.chosen_tile(),
                         tower_descriptor = tower,
                     }
-                    bs.enter_idle()
+                    game_state.building_state = "idle"
                     placement = nil
                 else
                     -- TODO: cannot build SFX
@@ -70,9 +69,7 @@ function new_screen_gameplay()
     }
     local gui = new_gui {
         waves = waves,
-        money = game_state.money(),
-        tower_choice = game_state.tower_choice(),
-        building_state = game_state.building_state(),
+        game_state = game_state,
         button_x = button_x,
         button_o = button_o,
     }
@@ -94,9 +91,9 @@ function new_screen_gameplay()
 
         enemies.pre_update()
 
-        if btn(u.buttons.x) then
+        if btn(u.button_x) then
             button_x.set_pressed(true)
-        elseif btn(u.buttons.o) then
+        elseif btn(u.button_o) then
             button_o.set_pressed(true)
 
         else
@@ -107,13 +104,13 @@ function new_screen_gameplay()
                     if placement then
                         placement.move_chosen_tile(direction)
                         button_x.set_enabled(placement.can_build())
-                    elseif game_state.building_state().is_tower_choice() then
+                    elseif game_state.building_state == "tower-choice" then
                         if direction.x > 0 then
                             -- TODO: choice SFX
-                            game_state.tower_choice().choose_next_tower()
+                            game_state.tower_choice.choose_next_tower()
                         elseif direction.x < 0 then
                             -- TODO: choice SFX
-                            game_state.tower_choice().choose_prev_tower()
+                            game_state.tower_choice.choose_prev_tower()
                         end
                     else
                         button_x.set_enabled(true)
