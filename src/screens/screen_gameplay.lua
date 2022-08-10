@@ -48,8 +48,9 @@ function new_screen_gameplay()
             elseif game_state.building_state().is_tower_choice() then
                 game_state.building_state().enter_tower_placement()
                 placement = new_placement {
+                    tower_choice = building_state.tower_choice(),
                     warzone = warzone,
-                    towers = towers,
+                    other_towers = towers,
                     money = game_state.money(),
                 }
                 self.set_enabled(placement.can_build())
@@ -109,6 +110,12 @@ function new_screen_gameplay()
                     if placement then
                         placement.move_chosen_tile(direction)
                         button_x.set_enabled(placement.can_build())
+                    elseif game_state.building_state().is_tower_choice() then
+                        if direction.x > 0 then
+                            game_state.tower_choice().choose_next_tower()
+                        elseif direction.x < 0 then
+                            game_state.tower_choice().choose_prev_tower()
+                        end
                     else
                         button_x.set_enabled(true)
                     end

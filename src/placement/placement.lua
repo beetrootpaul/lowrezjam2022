@@ -4,8 +4,9 @@
 
 -- TODO: what if there is no more place to build a tower?
 function new_placement(params)
+    local tower_choice = u.required(params.tower_choice)
     local warzone = u.required(params.warzone)
-    local towers = u.required(params.towers)
+    local other_towers = u.required(params.other_towers)
     local money = u.required(params.money)
 
     -- TODO: start in the middle
@@ -24,8 +25,10 @@ function new_placement(params)
 
     -- TODO: duplicated, share it
     local can_build = false
-    -- TODO: support multiple tower costs
-    if money.available() >= a.towers.laser.cost and towers.can_build { tile = chosen_tile } and warzone.can_build { tile = chosen_tile } then
+    if money.available() >= tower_choice.chosen_tower().cost
+        and other_towers.can_build { tile = chosen_tile }
+        and warzone.can_build { tile = chosen_tile }
+    then
         can_build = true
     else
         can_build = false
@@ -60,8 +63,10 @@ function new_placement(params)
         )
 
         -- TODO: duplicated, share it
-        -- TODO: support multiple tower costs
-        if money.available() >= a.towers.laser.cost and towers.can_build  { tile = chosen_tile } and warzone.can_build { tile = chosen_tile } then
+        if money.available() >= tower_choice.chosen_tower().cost
+            and other_towers.can_build { tile = chosen_tile }
+            and warzone.can_build { tile = chosen_tile }
+        then
             can_build = true
         else
             can_build = false
@@ -86,8 +91,10 @@ function new_placement(params)
 
     function self.update()
         -- TODO: duplicated, share it
-        -- TODO: support multiple tower costs
-        if money.available() >= a.towers.laser.cost and towers.can_build  { tile = chosen_tile } and warzone.can_build { tile = chosen_tile } then
+        if money.available() >= tower_choice.chosen_tower().cost
+            and other_towers.can_build { tile = chosen_tile }
+            and warzone.can_build { tile = chosen_tile }
+        then
             can_build = true
         else
             can_build = false
@@ -101,8 +108,7 @@ function new_placement(params)
     end
 
     function self.draw()
-        -- TODO: support various tower types
-        local sprite = u.required(a.tiles.tower_laser)
+        local sprite = u.required(a.tiles["tower_" .. tower_choice.chosen_tower().type])
 
         -- TODO: indicate conflicting tiles and other reasons that cannot build
 

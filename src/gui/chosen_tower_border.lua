@@ -32,7 +32,7 @@ function new_chosen_tower_border()
             pset(
                 x + point.offset_x,
                 y + point.offset_y,
-                can_build and a.colors.green or a.colors.red_light
+                a.colors.grey_light
             )
         end
     end

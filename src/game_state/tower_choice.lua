@@ -11,6 +11,7 @@ function new_tower_choice()
             cost = a.towers[tower_type].cost,
         })
     end
+    local chosen = 1
 
     local self = {}
 
@@ -21,9 +22,16 @@ function new_tower_choice()
         return towers
     end
 
-    function self.chosen_tower_type()
-        --TODO: IMPLEMENT
-        return "laser"
+    function self.chosen_tower()
+        return towers[chosen]
+    end
+
+    function self.choose_prev_tower()
+        chosen = max(chosen - 1, 1)
+    end
+
+    function self.choose_next_tower()
+        chosen = min(chosen + 1, #towers)
     end
 
     --

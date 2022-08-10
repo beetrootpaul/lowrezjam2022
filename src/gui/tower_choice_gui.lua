@@ -25,8 +25,8 @@ function new_tower_choice_gui(params)
                 x,
                 y
             )
-            if towers[i].type == tower_choice.chosen_tower_type() then
-                chosen_tower_border().draw(x, y)
+            if towers[i].type == tower_choice.chosen_tower().type then
+                chosen_tower_border.draw(x, y)
             end
         end
     end
