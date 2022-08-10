@@ -103,6 +103,8 @@ function new_screen_gameplay()
                     if placement then
                         placement.move_chosen_tile(direction)
                         button_x.set_enabled(placement.can_build())
+                    else
+                        button_x.set_enabled(true)
                     end
                 end
             end
