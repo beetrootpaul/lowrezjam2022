@@ -4,10 +4,9 @@
 
 -- TODO: what if there is no more place to build a tower?
 function new_placement(params)
-    -- TODO: make use of it
     local warzone = u.required(params.warzone)
-    -- TODO: make use of it
     local towers = u.required(params.towers)
+    local money = u.required(params.money)
 
     -- TODO: start in the middle
     -- TODO: start on a tile used previously or start on a first available tile
@@ -25,7 +24,8 @@ function new_placement(params)
 
     -- TODO: duplicated, share it
     local can_build = false
-    if towers.can_build { tile = chosen_tile } and warzone.can_build { tile = chosen_tile } then
+    -- TODO: support multiple tower costs
+    if money.available() >= a.towers.laser.cost and towers.can_build { tile = chosen_tile } and warzone.can_build { tile = chosen_tile } then
         can_build = true
     else
         can_build = false
@@ -64,7 +64,8 @@ function new_placement(params)
         )
 
         -- TODO: duplicated, share it
-        if towers.can_build { tile = chosen_tile } and warzone.can_build { tile = chosen_tile } then
+        -- TODO: support multiple tower costs
+        if money.available() >= a.towers.laser.cost and towers.can_build  { tile = chosen_tile } and warzone.can_build { tile = chosen_tile } then
             can_build = true
         else
             can_build = false
@@ -79,6 +80,24 @@ function new_placement(params)
             ),
             r = 2.5 * u.tile_size - .5,
         }
+
+        -- TODO: duplicated, share it
+        chosen_tile_border = new_chosen_tile_border {
+            tile = chosen_tile,
+            can_build = can_build,
+        }
+    end
+
+    --
+
+    function self.update()
+        -- TODO: duplicated, share it
+        -- TODO: support multiple tower costs
+        if money.available() >= a.towers.laser.cost and towers.can_build  { tile = chosen_tile } and warzone.can_build { tile = chosen_tile } then
+            can_build = true
+        else
+            can_build = false
+        end
 
         -- TODO: duplicated, share it
         chosen_tile_border = new_chosen_tile_border {
@@ -105,6 +124,7 @@ function new_placement(params)
             (a.warzone_border_tiles + chosen_tile.y) * u.tile_size
         )
 
+        -- TODO: draw dimmed range if cannot build
         tower_range.draw {
             color = a.colors.white,
         }

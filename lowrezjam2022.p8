@@ -19,6 +19,7 @@ __lua__
 #include src/game_state/building_state.lua
 #include src/game_state/game_state.lua
 #include src/game_state/lives.lua
+#include src/game_state/money.lua
 
 #include src/gui/button.lua
 #include src/gui/button_glyph.lua

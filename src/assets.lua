@@ -87,6 +87,7 @@ a = {
         --
         ["-"] = { x = 100, y = 32, w = 2 },
         ["."] = { x = 103, y = 32, w = 1 },
+        ["$"] = { x = 105, y = 32, w = 3 },
         [" "] = { x = 126, y = 32, w = 2 },
         --
         ["1"] = { x = 0, y = 40, w = 2 },
@@ -103,6 +104,8 @@ a = {
         ["<"] = { x = 121, y = 32, w = 4 },
     },
     lives_max = 5,
+    money_increase_seconds = 0.5,
+    money_initial = 40,
     sounds = {
     },
     tiles = {
@@ -119,6 +122,7 @@ a = {
     towers = {
         --TODO: other tower types
         laser = {
+            cost = 20,
             dps = 10,
             laser_source_offset_x = 2,
             laser_source_offset_y = 0,

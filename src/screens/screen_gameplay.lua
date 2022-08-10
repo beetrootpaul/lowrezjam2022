@@ -45,12 +45,15 @@ function new_screen_gameplay()
                 placement = new_placement {
                     warzone = warzone,
                     towers = towers,
+                    money = game_state.money(),
                 }
                 self.set_enabled(placement.can_build())
             elseif game_state.building_state().is_tower_placement() then
                 if placement.can_build() then
-                    -- TODO: placement & construction SFX
+                    -- TODO: placement & construction & money spent SFX
                     -- TODO: construction VFX
+                    -- TODO: support multiple tower costs
+                    game_state.money().subtract(a.towers.laser.cost)
                     towers.build_tower {
                         tile = placement.chosen_tile(),
                     }
@@ -64,6 +67,7 @@ function new_screen_gameplay()
     }
     local gui = new_gui {
         waves = waves,
+        money = game_state.money(),
         building_state = game_state.building_state(),
         button_x = button_x,
         button_o = button_o,
@@ -106,10 +110,14 @@ function new_screen_gameplay()
 
         button_o.update()
         button_x.update()
+        game_state.update()
         fight.update()
         waves.update()
         enemies.update()
         towers.update()
+        if placement then
+            placement.update()
+        end
 
         return next_screen
     end
