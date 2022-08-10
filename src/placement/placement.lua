@@ -45,13 +45,9 @@ function new_placement(params)
         return chosen_tile
     end
 
-    --
-
     function self.can_build()
         return can_build
     end
-
-    --
 
     function self.move_chosen_tile(direction)
         chosen_tile = chosen_tile.plus(direction.x, direction.y)
@@ -88,8 +84,6 @@ function new_placement(params)
         }
     end
 
-    --
-
     function self.update()
         -- TODO: duplicated, share it
         -- TODO: support multiple tower costs
@@ -105,8 +99,6 @@ function new_placement(params)
             can_build = can_build,
         }
     end
-
-    --
 
     function self.draw()
         -- TODO: support various tower types

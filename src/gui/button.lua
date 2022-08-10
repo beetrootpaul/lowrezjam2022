@@ -21,25 +21,17 @@ function new_button(params)
         is_pressed = value
     end
 
-    --
-
     function self.is_pressed()
         return is_pressed
     end
-
-    --
 
     function self.set_enabled(value)
         is_enabled = value
     end
 
-    --
-
     function self.is_enabled()
         return is_enabled
     end
-
-    --
 
     function self.set_pressed(value)
         if is_pressed and not value then
@@ -48,13 +40,9 @@ function new_button(params)
         is_pressed = value
     end
 
-    --
-
     function self.is_pressed()
         return is_pressed
     end
-
-    --
 
     function self.update()
         if was_just_released and on_release then

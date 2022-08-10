@@ -30,8 +30,6 @@ function new_screen_title()
         return next_screen
     end
 
-    --
-
     function self.draw()
         print("todo: game title", 0, u.viewport_size / 2 - 8, a.colors.white)
         print("by beetroot paul", 0, u.viewport_size / 2 + 8, a.colors.white)

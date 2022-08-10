@@ -31,8 +31,6 @@ function new_screen_win()
         return next_screen
     end
 
-    --
-
     function self.draw()
         print("todo: win!", 0, u.viewport_size / 2 - 8, a.colors.yellow)
     end

@@ -37,8 +37,6 @@ function new_wave(params)
         return timer.progress()
     end
 
-    --
-
     function self.update()
         timer.update()
     end

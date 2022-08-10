@@ -18,8 +18,6 @@ function new_money()
         return available
     end
 
-    --
-
     function self.subtract(amount)
         assert(
             amount <= available,
@@ -27,8 +25,6 @@ function new_money()
         )
         available = available - amount
     end
-
-    --
 
     function self.update()
         if money_increase_timer.has_finished() then

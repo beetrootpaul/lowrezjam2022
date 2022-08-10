@@ -19,27 +19,19 @@ function new_enemies(params)
         })
     end
 
-    --
-
     function self.for_each_from_furthest(callback)
         foreach(enemies, callback)
     end
 
-    --
-
     function self.are_none_left()
         return #enemies <= 0
     end
-
-    --
 
     function self.pre_update()
         for enemy in all(enemies) do
             enemy.pre_update()
         end
     end
-
-    --
 
     function self.update()
         for enemy in all(enemies) do
@@ -53,15 +45,11 @@ function new_enemies(params)
         end
     end
 
-    --
-
     function self.draw()
         for enemy in all(enemies) do
             enemy.draw()
         end
     end
-
-    --
 
     function self.draw_vfx()
         for enemy in all(enemies) do

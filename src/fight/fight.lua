@@ -3,9 +3,9 @@
 -- -- -- -- -- --
 
 function new_fight()
-    local self = {}
-
     local lasers = {}
+
+    local self = {}
 
     --
 
@@ -20,13 +20,9 @@ function new_fight()
         })
     end
 
-    --
-
     function self.update()
         lasers = {}
     end
-
-    --
 
     function self.draw()
         for laser in all(lasers) do

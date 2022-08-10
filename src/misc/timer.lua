@@ -18,19 +18,13 @@ function new_timer(params)
         return t < 0
     end
 
-    --
-
     function self.skip_to_end()
         t = -1
     end
 
-    --
-
     function self.progress()
         return 1 - (max(0, t) / start)
     end
-
-    --
 
     function self.update()
         if key_moments[t] then
@@ -39,6 +33,8 @@ function new_timer(params)
 
         t = max(-1, t - 1)
     end
+
+    --
 
     return self
 end

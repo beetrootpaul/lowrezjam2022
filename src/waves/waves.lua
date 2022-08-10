@@ -23,25 +23,17 @@ function new_waves(params)
         return wait
     end
 
-    --
-
     function self.current_wave()
         return wave
     end
-
-    --
 
     function self.wave_number()
         return wave_number
     end
 
-    --
-
     function self.have_spawn_all_enemies()
         return is_last_wave() and wave and wave.progress() >= 1
     end
-
-    --
 
     function self.update()
         if wait and wait.progress() >= 1 then

@@ -16,7 +16,7 @@ function new_enemy(params)
     }
 
     local function center_xy()
-        return path_following_position.current_xy().plus(1,1)
+        return path_following_position.current_xy().plus(1, 1)
     end
 
     local hitbox_range = new_range_circle {
@@ -35,19 +35,13 @@ function new_enemy(params)
         return health.value() == 0 or path_following_position.has_reached_end()
     end
 
-    --
-
     function self.hitbox_circle()
         return hitbox_range.circle()
     end
 
-    --
-
     function self.center_xy()
         return center_xy()
     end
-
-    --
 
     function self.take_damage(damage)
         -- TODO: decrease health and make enemy destroyed in the end
@@ -55,13 +49,9 @@ function new_enemy(params)
         health.subtract(u.required(damage))
     end
 
-    --
-
     function self.pre_update()
         is_taking_damage = false
     end
-
-    --
 
     function self.update()
         path_following_position.update()
@@ -76,8 +66,6 @@ function new_enemy(params)
             r = u.required(a.enemies.small.hitbox_r),
         }
     end
-
-    --
 
     function self.draw()
         if path_following_position.has_reached_end() then

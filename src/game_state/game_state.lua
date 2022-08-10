@@ -17,31 +17,21 @@ function new_game_state()
         return lives
     end
 
-    --
-
     function self.money()
         return money
     end
-
-    --
 
     function self.tower_choice()
         return tower_choice
     end
 
-    --
-
     function self.building_state()
         return building_state
     end
 
-    --
-
     function self.has_lost_all_lives()
         return lives.left() <= 0
     end
-
-    --
 
     function self.update()
         money.update()

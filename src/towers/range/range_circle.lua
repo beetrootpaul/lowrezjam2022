@@ -14,8 +14,6 @@ function new_range_circle(params)
         return { xy = xy, r = r }
     end
 
-    --
-
     function self.draw(opts)
         opts = opts or {}
         clip(

@@ -22,8 +22,6 @@ function new_text(text_value)
         return w
     end
 
-    --
-
     function self.draw(x, y, color)
         pal(a.font_template_color, color, 0)
         local current_x = x

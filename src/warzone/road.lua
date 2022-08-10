@@ -78,8 +78,6 @@ function new_road()
         return path
     end
 
-    --
-
     -- TODO: in theory it should check for extended road start and beginning as well
     function self.is_at(tile_to_check)
         -- TODO: refactor it, please…
@@ -89,8 +87,6 @@ function new_road()
         end
         return tt[tile_to_check.x .. "|" .. tile_to_check.y]
     end
-
-    --
 
     -- TODO: road: line of plain ground around edges and corners
     -- TODO: refactor

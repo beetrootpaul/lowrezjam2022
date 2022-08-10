@@ -6,11 +6,6 @@ d = (function()
     local is_toggle_button_pressed_already = false
     local is_step_button_pressed_already = false
 
-    local self = {
-        enabled = false,
-        is_next_frame = false,
-    }
-
     -- Based on #printh_helpers cart (https://www.lexaloffle.com/bbs/?tid=42367)
     function log_string_from_args(...)
         local args = pack(...)
@@ -40,6 +35,11 @@ d = (function()
         return s .. "}"
     end
 
+    local self = {
+        enabled = false,
+        is_next_frame = false,
+    }
+
     --
 
     function self.configure()
@@ -47,8 +47,6 @@ d = (function()
         -- Based on https://pico-8.fandom.com/wiki/Stat#.7B30.E2.80.A639.7D_Mouse_and_Keyboard
         poke(0x5f2d, 0x1)
     end
-
-    --
 
     -- TODO: extract `stat(28, …)` to utils
     function self.update()
@@ -77,8 +75,6 @@ d = (function()
             is_toggle_button_pressed_already = false
         end
     end
-
-    --
 
     function self.log(...)
         if self.enabled then

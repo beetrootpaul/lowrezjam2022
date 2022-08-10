@@ -21,8 +21,6 @@ function new_tower_choice()
         return towers
     end
 
-    --
-
     function self.chosen_tower_type()
         --TODO: IMPLEMENT
         return "laser"

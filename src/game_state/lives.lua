@@ -13,8 +13,6 @@ function new_lives()
         return left
     end
 
-    --
-
     function self.take_one()
         left = max(0, left - 1)
     end

@@ -23,8 +23,6 @@ audio = (function()
         end
     end
 
-    --
-
     function self.play()
         if next_sfx_asset then
             pico8_sfx(next_sfx_asset.track)

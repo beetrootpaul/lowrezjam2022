@@ -21,13 +21,9 @@ function new_path_following_position(params)
         return path_points[point_index]
     end
 
-    --
-
     function self.has_reached_end()
         return point_index >= #path_points
     end
-
-    --
 
     function self.update()
         -- TODO: use smarter solution for incrementing table index every N frames

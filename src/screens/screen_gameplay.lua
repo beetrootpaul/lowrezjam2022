@@ -130,8 +130,6 @@ function new_screen_gameplay()
         return next_screen
     end
 
-    --
-
     function self.draw()
         warzone.draw()
         towers.draw()

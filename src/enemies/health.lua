@@ -15,8 +15,6 @@ function new_health(params)
         health = max(0, health - damage)
     end
 
-    --
-
     function self.value()
         return health
     end
