@@ -11,6 +11,7 @@ __lua__
 
 #include src/enemies/enemies.lua
 #include src/enemies/enemy.lua
+#include src/enemies/enemy_range.lua
 #include src/enemies/health.lua
 #include src/enemies/path_following_position.lua
 
@@ -29,7 +30,6 @@ __lua__
 #include src/gui/tower_choice_gui.lua
 #include src/gui/wave_status.lua
 
-#include src/misc/collisions.lua
 #include src/misc/tile.lua
 #include src/misc/timer.lua
 #include src/misc/xy.lua
@@ -42,8 +42,9 @@ __lua__
 #include src/screens/screen_title.lua
 #include src/screens/screen_win.lua
 
-#include src/towers/range/range_circle.lua
 #include src/towers/tower.lua
+#include src/towers/tower_range_laser.lua
+#include src/towers/tower_range_v_beam.lua
 #include src/towers/towers.lua
 
 #include src/warzone/cores.lua

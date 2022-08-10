@@ -126,9 +126,6 @@ function new_screen_gameplay()
         waves.update()
         enemies.update()
         towers.update()
-        if placement then
-            placement.update()
-        end
 
         return next_screen
     end

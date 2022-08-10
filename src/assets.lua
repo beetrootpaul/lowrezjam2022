@@ -123,8 +123,6 @@ a = {
         laser = {
             cost = 20,
             dps = 10,
-            laser_source_offset_x = 2,
-            laser_source_offset_y = 0,
         },
         v_beam = {
             cost = 50,

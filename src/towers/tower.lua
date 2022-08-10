@@ -4,13 +4,16 @@ function new_tower(params)
     local enemies = u.r(params.enemies)
     local fight = u.r(params.fight)
 
-    local range = new_range_circle {
-        xy = new_xy(
-            (a.warzone_border_tiles + tile.x + .5) * u.ts - .5,
-            (a.warzone_border_tiles + tile.y + .5) * u.ts - .5
-        ),
-        r = 2.5 * u.ts - .5,
-    }
+    local range
+    if tower_descriptor.type == "laser" then
+        range = new_tower_range_laser {
+            tile = tile,
+        }
+    elseif tower_descriptor.type == "v_beam" then
+        range = new_tower_range_v_beam {
+            tile = tile,
+        }
+    end
 
     local s = {}
 
@@ -21,25 +24,20 @@ function new_tower(params)
     end
 
     -- TODO: make laser shoot in short burst, so thanks to boost towers it can be faster
+    -- TODO: make v_beam shoot in burst, so thanks to boost towers it can be faster
     function s.update()
         -- TODO: support more tower types
         if tower_descriptor.type == "laser" then
             local is_attacking = false
             enemies.for_each_from_furthest(function(enemy)
-                if not is_attacking and collisions.are_circles_colliding(
-                    range.circle(),
-                    enemy.hitbox_circle()
-                ) then
+                if not is_attacking and range.touches_enemy(enemy) then
                     is_attacking = true
                     -- TODO: SFX
                     -- TODO: VFX tower
                     -- TODO: VFX enemy
                     enemy.take_damage(tower_descriptor.dps / u.fps)
                     fight.show_laser {
-                        source_xy = new_xy(
-                            (a.warzone_border_tiles + tile.x) * u.ts + a.towers.laser.laser_source_offset_x,
-                            (a.warzone_border_tiles + tile.y) * u.ts + a.towers.laser.laser_source_offset_y
-                        ),
+                        source_xy = range.laser_source_xy(),
                         target_xy = enemy.center_xy(),
                     }
                 end
@@ -47,10 +45,7 @@ function new_tower(params)
         elseif tower_descriptor.type == "v_beam" then
             local is_attacking = false
             enemies.for_each_from_furthest(function(enemy)
-                local x1 = (a.warzone_border_tiles + tile.x) * u.ts + 1
-                local x2 = (a.warzone_border_tiles + tile.x) * u.ts + 2
-                local hitbox_circle = enemy.hitbox_circle()
-                if hitbox_circle.xy.x + hitbox_circle.r >= x1 and hitbox_circle.xy.x - hitbox_circle.r <= x2 then
+                if range.touches_enemy(enemy) then
                     is_attacking = true
                     -- TODO: SFX
                     -- TODO: VFX tower
@@ -71,9 +66,7 @@ function new_tower(params)
         sspr(sprite.x, sprite.y, u.ts, u.ts, (a.warzone_border_tiles + tile.x) * u.ts, (a.warzone_border_tiles + tile.y) * u.ts)
 
         if d.enabled then
-            range.draw {
-                color = a.colors.blue_dark,
-            }
+            range.draw(a.colors.blue_dark)
         end
     end
 

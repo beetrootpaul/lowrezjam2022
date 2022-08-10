@@ -15,7 +15,7 @@ function new_enemy(params)
         return path_following_position.current_xy().plus(1, 1)
     end
 
-    local hitbox_range = new_range_circle {
+    local range = new_enemy_range {
         xy = center_xy(),
         -- TODO: implement multiple enemy types
         r = u.r(a.enemies.small.hitbox_r),
@@ -31,8 +31,8 @@ function new_enemy(params)
         return health.value == 0 or path_following_position.has_reached_end()
     end
 
-    function s.hitbox_circle()
-        return hitbox_range.circle()
+    function s.range()
+        return range
     end
 
     function s.center_xy()
@@ -56,7 +56,7 @@ function new_enemy(params)
             on_reached_path_end = u.noop
         end
 
-        hitbox_range = new_range_circle {
+        range = new_enemy_range {
             xy = center_xy(),
             -- TODO: implement multiple enemy types
             r = u.r(a.enemies.small.hitbox_r),
@@ -85,10 +85,8 @@ function new_enemy(params)
             )
         end
 
-        if d.enabled and hitbox_range then
-            hitbox_range.draw {
-                color = a.colors.yellow,
-            }
+        if d.enabled and range then
+            range.draw(a.colors.yellow)
         end
 
         if is_taking_damage then

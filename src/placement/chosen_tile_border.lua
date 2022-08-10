@@ -1,6 +1,5 @@
 function new_chosen_tile_border(params)
     local tile = u.r(params.tile)
-    local can_build = u.r(params.can_build)
 
     local offsets = {
         { x = -1, y = 0 },
@@ -24,7 +23,7 @@ function new_chosen_tile_border(params)
 
     --
 
-    function s.draw()
+    function s.draw(can_build)
         local x = (a.warzone_border_tiles + tile.x) * u.ts
         local y = (a.warzone_border_tiles + tile.y) * u.ts
         for point in all(offsets) do
