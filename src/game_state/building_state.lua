@@ -16,6 +16,12 @@ function new_building_state()
 
     --
 
+    function self.is_tower_choice()
+        return state == "tower-choice"
+    end
+
+    --
+
     function self.is_tower_placement()
         return state == "tower-placement"
     end
@@ -24,6 +30,12 @@ function new_building_state()
 
     function self.enter_idle()
         state = nil
+    end
+
+    --
+
+    function self.enter_tower_choice()
+        state = "tower-choice"
     end
 
     --

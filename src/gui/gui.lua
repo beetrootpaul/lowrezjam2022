@@ -7,12 +7,16 @@
 function new_gui(params)
     local waves = u.required(params.waves)
     local money = u.required(params.money)
+    local tower_choice = u.required(params.tower_choice)
     local building_state = u.required(params.building_state)
     local button_x = u.required(params.button_x)
     local button_o = u.required(params.button_o)
 
     local wave_status = new_wave_status {
         waves = waves,
+    }
+    local tower_choice_gui = new_tower_choice_gui {
+        tower_choice = tower_choice,
     }
 
     local self = {}
@@ -73,6 +77,57 @@ function new_gui(params)
                     or a.colors.brown_purple,
                 a.colors.brown_mid
             )
+        elseif building_state.is_tower_choice() then
+            local money_text = new_text(tostr(money.available()))
+            money_text.draw(
+                u.viewport_size - a.warzone_border - money_text.width(),
+                2,
+                a.colors.grey_light
+            )
+            local dollar_text = new_text("$")
+            dollar_text.draw(
+                u.viewport_size - a.warzone_border + 2,
+                2,
+                a.colors.grey_violet
+            )
+
+            local back_text = new_text("<")
+            back_text.draw(
+                a.warzone_border,
+                u.viewport_size - a.warzone_border + 2,
+                is_o_pressed
+                    and a.colors.grey_light
+                    or a.colors.brown_purple
+            )
+            local back_button = new_button_glyph(
+                is_o_pressed
+                    and a.button_sprites.o.pressed
+                    or a.button_sprites.o.raised
+            )
+            back_button.draw(
+                1,
+                u.viewport_size - a.warzone_border + 1,
+                is_o_pressed
+                    and a.colors.grey_light
+                    or a.colors.brown_purple,
+                a.colors.brown_mid
+            )
+
+            tower_choice_gui.draw()
+
+            local choose_button = new_button_glyph(
+                is_x_pressed
+                    and a.button_sprites.x.pressed
+                    or a.button_sprites.x.raised
+            )
+            choose_button.draw(
+                u.viewport_size - a.warzone_border + 2,
+                u.viewport_size - a.warzone_border + 1,
+                is_x_enabled
+                    and (is_x_pressed and a.colors.grey_light or a.colors.grey_violet)
+                    or a.colors.brown_mid,
+                a.colors.brown_mid
+            )
         elseif building_state.is_tower_placement() then
             local money_text = new_text(tostr(money.available()))
             money_text.draw(
@@ -95,12 +150,12 @@ function new_gui(params)
                     and a.colors.grey_light
                     or a.colors.brown_purple
             )
-            local menu_button = new_button_glyph(
+            local back_button = new_button_glyph(
                 is_o_pressed
                     and a.button_sprites.o.pressed
                     or a.button_sprites.o.raised
             )
-            menu_button.draw(
+            back_button.draw(
                 1,
                 u.viewport_size - a.warzone_border + 1,
                 is_o_pressed

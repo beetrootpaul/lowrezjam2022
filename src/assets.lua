@@ -117,6 +117,7 @@ a = {
         road_edge_left = { x = 4, y = 28 },
         --TODO: consolidate tower descriptors in this file
         tower_laser = { x = 48, y = 0 },
+        tower_v_beam = { x = 48, y = 16 },
     },
     --TODO: consolidate tower descriptors in this file
     towers = {
@@ -126,6 +127,9 @@ a = {
             dps = 10,
             laser_source_offset_x = 2,
             laser_source_offset_y = 0,
+        },
+        v_beam = {
+            cost = 50,
         },
     },
     warzone_size_tiles = 12,

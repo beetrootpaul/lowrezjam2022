@@ -6,6 +6,7 @@
 function new_game_state()
     local lives = new_lives()
     local money = new_money()
+    local tower_choice = new_tower_choice()
     local building_state = new_building_state()
 
     local self = {}
@@ -20,6 +21,12 @@ function new_game_state()
 
     function self.money()
         return money
+    end
+
+    --
+
+    function self.tower_choice()
+        return tower_choice
     end
 
     --

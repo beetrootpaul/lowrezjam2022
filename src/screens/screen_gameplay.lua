@@ -30,8 +30,10 @@ function new_screen_gameplay()
             if game_state.building_state().is_idle() then
                 -- TODO: custom menu item to go back to warzone selection
                 extcmd("pause")
-            elseif game_state.building_state().is_tower_placement() then
+            elseif game_state.building_state().is_tower_choice() then
                 game_state.building_state().enter_idle()
+            elseif game_state.building_state().is_tower_placement() then
+                game_state.building_state().enter_tower_choice()
                 placement = nil
             end
         end
@@ -41,6 +43,9 @@ function new_screen_gameplay()
         on_release = function(self)
             -- TODO: button SFX
             if game_state.building_state().is_idle() then
+                game_state.building_state().enter_tower_choice()
+                -- TODO: IMPLEMENT
+            elseif game_state.building_state().is_tower_choice() then
                 game_state.building_state().enter_tower_placement()
                 placement = new_placement {
                     warzone = warzone,
@@ -68,6 +73,7 @@ function new_screen_gameplay()
     local gui = new_gui {
         waves = waves,
         money = game_state.money(),
+        tower_choice = game_state.tower_choice(),
         building_state = game_state.building_state(),
         button_x = button_x,
         button_o = button_o,
