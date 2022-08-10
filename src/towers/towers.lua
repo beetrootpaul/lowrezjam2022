@@ -25,6 +25,7 @@ function new_towers(params)
 
     function self.build_tower(p)
         add(towers, new_tower {
+            tower = u.required(p.tower),
             tile = u.required(p.tile),
             enemies = enemies,
             fight = fight,

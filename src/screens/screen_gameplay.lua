@@ -44,11 +44,10 @@ function new_screen_gameplay()
             -- TODO: button SFX
             if game_state.building_state().is_idle() then
                 game_state.building_state().enter_tower_choice()
-                -- TODO: IMPLEMENT
             elseif game_state.building_state().is_tower_choice() then
                 game_state.building_state().enter_tower_placement()
                 placement = new_placement {
-                    tower_choice = building_state.tower_choice(),
+                    tower_choice = game_state.tower_choice(),
                     warzone = warzone,
                     other_towers = towers,
                     money = game_state.money(),
@@ -58,10 +57,11 @@ function new_screen_gameplay()
                 if placement.can_build() then
                     -- TODO: placement & construction & money spent SFX
                     -- TODO: construction VFX
-                    -- TODO: support multiple tower costs
-                    game_state.money().subtract(a.towers.laser.cost)
+                    local tower = game_state.tower_choice().chosen_tower()
+                    game_state.money().subtract(tower.cost)
                     towers.build_tower {
                         tile = placement.chosen_tile(),
+                        tower = tower,
                     }
                     game_state.building_state().enter_idle()
                     placement = nil
@@ -112,8 +112,10 @@ function new_screen_gameplay()
                         button_x.set_enabled(placement.can_build())
                     elseif game_state.building_state().is_tower_choice() then
                         if direction.x > 0 then
+                            -- TODO: choice SFX
                             game_state.tower_choice().choose_next_tower()
                         elseif direction.x < 0 then
+                            -- TODO: choice SFX
                             game_state.tower_choice().choose_prev_tower()
                         end
                     else

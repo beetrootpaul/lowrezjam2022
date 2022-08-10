@@ -194,8 +194,7 @@ function new_gui(params)
                     or a.colors.brown_mid
             )
 
-            -- TODO: support multiple tower costs
-            local cost_text = new_text("-" .. a.towers.laser.cost)
+            local cost_text = new_text("-" .. tower_choice.chosen_tower().cost)
             cost_text.draw(
                 u.viewport_size - a.warzone_border - place_text.width() - 3 - dollar_text.width() - 2 - cost_text.width(),
                 u.viewport_size - a.warzone_border + 2,

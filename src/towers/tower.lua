@@ -3,6 +3,7 @@
 -- -- -- -- -- -- --
 
 function new_tower(params)
+    local tower = u.required(params.tower)
     local tile = u.required(params.tile)
     local enemies = u.required(params.enemies)
     local fight = u.required(params.fight)
@@ -50,8 +51,7 @@ function new_tower(params)
     end
 
     function self.draw()
-        -- TODO: support various tower types
-        local sprite = u.required(a.tiles.tower_laser)
+        local sprite = u.required(a.tiles["tower_" .. tower.type])
         sspr(
             sprite.x,
             sprite.y,
