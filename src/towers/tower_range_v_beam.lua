@@ -14,10 +14,11 @@ function new_tower_range_v_beam(params)
     end
 
     -- TODO: charging animation
+    -- TODO: draw range (during placement) differently
     function s.draw(color)
         clip(0, a.warzone_border, u.vs, u.vs - a.warzone_border)
-        line(x1, a.warzone_border, x1, u.vs - a.warzone_border, color)
-        line(x2, a.warzone_border, x2, u.vs - a.warzone_border, color)
+        line(x1, a.warzone_border, x1, u.vs - a.warzone_border - 1, color)
+        line(x2, a.warzone_border, x2, u.vs - a.warzone_border - 1, color)
         clip()
     end
 

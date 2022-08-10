@@ -29,17 +29,23 @@ function new_placement(params)
 
     local tower_range = new_tower_range()
 
-    local function can_build()
-        -- TODO: special rules for laser vs v_beam + indication of their collisions
-        -- TODO: special rules for laser vs aim-k.o. + indication of their collisions
-        -- TODO: special rules for v_beam vs aim-k.o. + indication of their collisions
+    local function check_if_can_build()
+        local result = {
+            can_build = true,
+            colliding_towers = {},
+        }
         if money.available < chosen_tower.cost then
-            return false
+            result.can_build = false
         end
-        if not other_towers.can_build { tile = chosen_tile } then
-            return false
+        local colliding_towers = other_towers.find_colliding_towers(chosen_tower.type, chosen_tile)
+        if #colliding_towers > 0 then
+            result.can_build = false
+            result.colliding_towers = colliding_towers
         end
-        return warzone.can_build { tile = chosen_tile }
+        if not warzone.can_build { tile = chosen_tile } then
+            result.can_build = false
+        end
+        return result
     end
 
     local s = {}
@@ -51,7 +57,7 @@ function new_placement(params)
     end
 
     function s.can_build()
-        return can_build()
+        return check_if_can_build().can_build
     end
 
     function s.move_chosen_tile(direction)
@@ -82,7 +88,17 @@ function new_placement(params)
         -- TODO: draw dimmed range if cannot build
         tower_range.draw(a.colors.white)
 
-        chosen_tile_border.draw(can_build())
+        local can_build_check_result = check_if_can_build()
+
+        -- TODO: fancier details of colliding tiles
+        for tower in all(can_build_check_result.colliding_towers) do
+            -- TODO: PICO-8 API: describe PFILL
+            fillp(0xa5a5 + .5)
+            rectfill(tower.x, tower.y, tower.x + u.ts - 1, tower.y + u.ts - 1, a.colors.red_light)
+            fillp()
+        end
+
+        chosen_tile_border.draw(can_build_check_result.can_build)
     end
 
     --
