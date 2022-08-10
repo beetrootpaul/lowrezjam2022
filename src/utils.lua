@@ -41,14 +41,6 @@ function u.noop()
     -- do nothing
 end
 
-function u.print_with_outline(text, x, y, text_color, outline_color)
-    -- docs on control codes: https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Control_Codes
-    for control_code in all(split "\-f,\-h,\|f,\|h,\+ff,\+hh,\+fh,\+hf") do
-        print(control_code .. text, x, y, outline_color)
-    end
-    print(text, x, y, text_color)
-end
-
 function u.required(value)
     if type(value) == "boolean" then
         assert(value ~= nil, "required value is missing")
@@ -65,11 +57,4 @@ end
 
 function u.set_display_palette(palette)
     pal(palette, 1)
-end
-
-function u.sprite_xy(sprite_number)
-    return {
-        x = (sprite_number % 16) * 8,
-        y = flr(sprite_number / 16) * 8,
-    }
 end
