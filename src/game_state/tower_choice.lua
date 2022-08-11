@@ -17,8 +17,6 @@ function new_tower_choice()
 
     local s = {}
 
-    --
-
     function s.towers_in_cost_order()
         --TODO: sort by cost instead of hardcoding the order
         return towers
@@ -35,8 +33,6 @@ function new_tower_choice()
     function s.choose_next_tower()
         chosen = min(chosen + 1, #towers)
     end
-
-    --
 
     return s
 end

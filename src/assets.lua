@@ -182,9 +182,16 @@ a = {
     warzone_border = 8,
     warzone_border_tiles = 2,
     waves = {
-        --{ wait = 1, spawns = "s,m,b,s,m,b,s,m,b,s,m,b,s,m,b,s,m,b,s,m,b" },
         { wait = 4, spawns = "s,-,-,s,-,-,s" },
         { wait = 4, spawns = "s,s,-,s,s,-,s,s" },
+        { wait = 4, spawns = "m,-,-,s,s,s,-,-,m" },
+        { wait = 4, spawns = "s,s,s,-,-,m,m,-,-,-,s,-,-,b" },
+        { wait = 4, spawns = "s,m,b,-,-,-,s,s,-,-,m,m" },
+        { wait = 4, spawns = "b,b,b" },
+        { wait = 4, spawns = "s,-,s,s,-,-,s" },
+        { wait = 4, spawns = "m,-,s,-,m,-,s,-,m" },
+        { wait = 4, spawns = "s,-,-,-,-,b,-,b,-,b" },
+        { wait = 4, spawns = "s,s,s,s,s" },
     },
 }
 

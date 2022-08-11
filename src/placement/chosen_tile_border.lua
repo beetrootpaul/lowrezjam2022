@@ -19,20 +19,14 @@ function new_chosen_tile_border(params)
         { x = -1, y = u.ts - 1 },
     }
 
-    local s = {}
-
-    --
-
-    function s.draw(can_build)
-        local x = (a.warzone_border_tiles + tile.x) * u.ts
-        local y = (a.warzone_border_tiles + tile.y) * u.ts
-        for point in all(offsets) do
-            -- TODO: PICO-8 API: describe PSET
-            pset(x + point.x, y + point.y, can_build and a.colors.green or a.colors.red_light)
-        end
-    end
-
-    --
-
-    return s
+    return {
+        draw = function(can_build)
+            local x = (a.warzone_border_tiles + tile.x) * u.ts
+            local y = (a.warzone_border_tiles + tile.y) * u.ts
+            for point in all(offsets) do
+                -- TODO: PICO-8 API: describe PSET
+                pset(x + point.x, y + point.y, can_build and a.colors.green or a.colors.red_light)
+            end
+        end,
+    }
 end

@@ -7,8 +7,6 @@ function new_towers(params)
 
     local s = {}
 
-    --
-
     -- TODO: special rules for laser vs aim-k.o. + indication of their collisions
     -- TODO: special rules for v_beam vs aim-k.o. + indication of their collisions
     function s.find_colliding_towers(chosen_tower_type, chosen_tile)
@@ -27,8 +25,6 @@ function new_towers(params)
         end
         return colliding
     end
-
-    --
 
     function s.build_tower(p)
         add(towers, new_tower {
@@ -62,8 +58,6 @@ function new_towers(params)
             tower.draw()
         end
     end
-
-    --
 
     return s
 end

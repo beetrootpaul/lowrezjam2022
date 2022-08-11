@@ -55,8 +55,6 @@ function new_placement(params)
 
     local s = {}
 
-    --
-
     function s.chosen_tile()
         return chosen_tile
     end
@@ -105,8 +103,6 @@ function new_placement(params)
 
         chosen_tile_border.draw(can_build_check_result.can_build)
     end
-
-    --
 
     return s
 end

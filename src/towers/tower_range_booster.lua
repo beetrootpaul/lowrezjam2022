@@ -20,8 +20,6 @@ function new_tower_range_booster(params)
 
     local s = {}
 
-    --
-
     function s.reaches(another_tile)
         for offset in all(offsets) do
             if another_tile.is_same_as(tile.plus(offset.x, offset.y)) then
@@ -49,8 +47,6 @@ function new_tower_range_booster(params)
             end
         end
     end
-
-    --
 
     return s
 end

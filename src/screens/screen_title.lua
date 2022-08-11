@@ -7,8 +7,6 @@ function new_screen_title()
 
     local s = {}
 
-    --
-
     function s.update()
         local next_screen = s
 
@@ -30,8 +28,6 @@ function new_screen_title()
         print("todo: game title", 0, u.vs / 2 - 8, a.colors.white)
         print("by beetroot paul", 0, u.vs / 2 + 8, a.colors.white)
     end
-
-    --
 
     return s
 end

@@ -18,18 +18,12 @@ function new_chosen_tower_border()
         { x = -1, y = u.ts - 1 },
     }
 
-    local s = {}
-
-    --
-
-    function s.draw(x , y)
-        for point in all(offsets) do
-            -- TODO: PICO-8 API: describe PSET
-            pset(x + point.x, y + point.y, a.colors.grey_light)
-        end
-    end
-
-    --
-
-    return s
+    return {
+        draw = function(x, y)
+            for point in all(offsets) do
+                -- TODO: PICO-8 API: describe PSET
+                pset(x + point.x, y + point.y, a.colors.grey_light)
+            end
+        end,
+    }
 end

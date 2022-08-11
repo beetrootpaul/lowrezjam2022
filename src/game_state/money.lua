@@ -8,8 +8,6 @@ function new_money()
         available = a.money_initial,
     }
 
-    --
-
     function s.subtract(amount)
         assert(
             amount <= s.available,
@@ -29,8 +27,6 @@ function new_money()
 
         money_increase_timer.update()
     end
-
-    --
 
     return s
 end

@@ -18,8 +18,6 @@ function new_gui(params)
 
     local s = {}
 
-    --
-
     -- TODO: refactor
     function s.draw()
         local is_o_pressed = button_o.is_pressed()
@@ -128,7 +126,7 @@ function new_gui(params)
             )
         elseif game_state.building_state == "tower-placement" then
             tower_info.draw()
-            
+
             local money_text = new_text(tostr(game_state.money.available))
             money_text.draw(
                 u.vs - a.warzone_border - money_text.width(),
@@ -204,8 +202,6 @@ function new_gui(params)
             )
         end
     end
-
-    --
 
     return s
 end

@@ -11,8 +11,6 @@ function new_text(text_value)
 
     local s = {}
 
-    --
-
     function s.width()
         local w = 0
         for sprite in all(sprites) do
@@ -31,8 +29,6 @@ function new_text(text_value)
         end
         pal(a.font_template_color, a.font_template_color, 0)
     end
-
-    --
 
     return s
 end

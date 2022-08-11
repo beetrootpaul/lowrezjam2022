@@ -77,8 +77,6 @@ function new_screen_gameplay()
 
     local s = {}
 
-    --
-
     function s.update()
         local next_screen = s
 
@@ -141,8 +139,6 @@ function new_screen_gameplay()
         end
         gui.draw()
     end
-
-    --
 
     return s
 end

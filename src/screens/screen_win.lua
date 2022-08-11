@@ -7,8 +7,6 @@ function new_screen_win()
 
     local s = {}
 
-    --
-
     function s.update()
         local next_screen = s
 
@@ -30,8 +28,6 @@ function new_screen_win()
     function s.draw()
         print("todo: win!", 0, u.vs / 2 - 8, a.colors.yellow)
     end
-
-    --
 
     return s
 end

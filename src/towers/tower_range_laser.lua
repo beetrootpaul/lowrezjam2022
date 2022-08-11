@@ -9,8 +9,6 @@ function new_tower_range_laser(params)
 
     local s = {}
 
-    --
-
     function s.laser_source_xy()
         return xy.plus(.5, -1.5)
     end
@@ -27,8 +25,6 @@ function new_tower_range_laser(params)
         oval(xy.x - r, xy.y - r, xy.x + r, xy.y + r, color1)
         clip()
     end
-
-    --
 
     return s
 end

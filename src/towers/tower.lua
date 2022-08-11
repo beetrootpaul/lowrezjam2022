@@ -51,8 +51,6 @@ function new_tower(params)
         y = (a.warzone_border_tiles + tile.y) * u.ts,
     }
 
-    --
-
     function s.is_at(tile_to_check)
         return tile_to_check.is_same_as(tile)
     end
@@ -126,8 +124,6 @@ function new_tower(params)
             range.draw(a.colors.blue_dark, a.colors.brown_dark)
         end
     end
-
-    --
 
     return s
 end

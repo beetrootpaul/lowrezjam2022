@@ -7,8 +7,6 @@ function new_screen_over()
 
     local s = {}
 
-    --
-
     function s.update()
         local next_screen = s
 
@@ -30,8 +28,6 @@ function new_screen_over()
     function s.draw()
         print("todo: game over", 0, u.vs / 2 - 8, a.colors.red_light)
     end
-
-    --
 
     return s
 end

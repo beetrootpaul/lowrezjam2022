@@ -6,8 +6,6 @@ function new_tower_range_v_beam(params)
 
     local s = {}
 
-    --
-
     function s.touches_enemy(enemy)
         local enemy_circle = enemy.range().circle()
         return enemy_circle.xy.x + enemy_circle.r >= x1 and enemy_circle.xy.x - enemy_circle.r <= x2
@@ -21,8 +19,6 @@ function new_tower_range_v_beam(params)
         line(x2, a.warzone_border, x2, u.vs - a.warzone_border - 1, color1)
         clip()
     end
-
-    --
 
     return s
 end

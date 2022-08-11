@@ -50,8 +50,6 @@ function new_road()
 
     local s = {}
 
-    --
-
     function s.path()
         return path
     end
@@ -96,8 +94,6 @@ function new_road()
             end
         end
     end
-
-    --
 
     return s
 end

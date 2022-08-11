@@ -9,8 +9,6 @@ function new_warzone(params)
 
     local s = {}
 
-    --
-
     function s.path()
         return road.path()
     end
@@ -24,8 +22,6 @@ function new_warzone(params)
         road.draw()
         cores.draw()
     end
-
-    --
 
     return s
 end
