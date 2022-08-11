@@ -28,6 +28,7 @@ __lua__
 #include src/gui/gui.lua
 #include src/gui/text.lua
 #include src/gui/tower_choice_gui.lua
+#include src/gui/tower_info.lua
 #include src/gui/wave_status.lua
 
 #include src/misc/tile.lua

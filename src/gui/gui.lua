@@ -6,6 +6,9 @@ function new_gui(params)
     local button_x = u.r(params.button_x)
     local button_o = u.r(params.button_o)
 
+    local tower_info = new_tower_info {
+        tower_choice = game_state.tower_choice,
+    }
     local wave_status = new_wave_status {
         waves = waves,
     }
@@ -71,6 +74,8 @@ function new_gui(params)
                 a.colors.brown_mid
             )
         elseif game_state.building_state == "tower-choice" then
+            tower_info.draw()
+
             local money_text = new_text(tostr(game_state.money.available))
             money_text.draw(
                 u.vs - a.warzone_border - money_text.width(),
@@ -122,6 +127,8 @@ function new_gui(params)
                 a.colors.brown_mid
             )
         elseif game_state.building_state == "tower-placement" then
+            tower_info.draw()
+            
             local money_text = new_text(tostr(game_state.money.available))
             money_text.draw(
                 u.vs - a.warzone_border - money_text.width(),

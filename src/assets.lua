@@ -122,6 +122,7 @@ a = {
     towers = {
         --TODO: other tower types
         laser = {
+            label = "laser",
             cost = 20,
             dps = 30,
             charging_time = .9,
@@ -130,9 +131,11 @@ a = {
             shooting_time_boost = .1,
         },
         booster = {
+            label = "booster",
             cost = 30,
         },
         v_beam = {
+            label = "v-beam",
             cost = 50,
             dps = 60,
             charging_time = 2,

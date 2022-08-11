@@ -4,6 +4,7 @@ function new_tower_choice()
     for tower_type in all({ "laser", "booster", "v_beam" }) do
         add(towers, {
             type = tower_type,
+            label = a.towers[tower_type].label,
             cost = a.towers[tower_type].cost,
             dps = a.towers[tower_type].dps,
             charging_time = a.towers[tower_type].charging_time,
