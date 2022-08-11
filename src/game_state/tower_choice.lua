@@ -6,6 +6,8 @@ function new_tower_choice()
             type = tower_type,
             cost = a.towers[tower_type].cost,
             dps = a.towers[tower_type].dps,
+            charging_time = a.towers[tower_type].charging_time,
+            shooting_time = a.towers[tower_type].shooting_time,
         })
     end
     local chosen = 1

@@ -15,6 +15,21 @@ function new_tower(params)
         }
     end
 
+    local function new_shooting_timer()
+        return new_timer {
+            start = u.fps * tower_descriptor.shooting_time,
+        }
+    end
+
+    local function new_charging_timer()
+        return new_timer {
+            start = u.fps * tower_descriptor.charging_time,
+        }
+    end
+
+    local charging_timer = new_charging_timer()
+    local shooting_timer
+
     local s = {
         type = tower_descriptor.type,
         x = (a.warzone_border_tiles + tile.x) * u.ts,
@@ -27,41 +42,59 @@ function new_tower(params)
         return tile_to_check.is_same_as(tile)
     end
 
-    -- TODO: make laser shoot in short burst, so thanks to boost towers it can be faster
-    -- TODO: make v_beam shoot in burst, so thanks to boost towers it can be faster
     function s.update()
-        -- TODO: support more tower types
-        if s.type == "laser" then
+        if charging_timer and charging_timer.has_finished() then
+            charging_timer = nil
+        elseif shooting_timer and shooting_timer.has_finished() then
+            shooting_timer = nil
+            charging_timer = new_charging_timer()
+        end
+
+        if not charging_timer then
             local is_attacking = false
-            enemies.for_each_from_furthest(function(enemy)
-                if not is_attacking and range.touches_enemy(enemy) then
-                    is_attacking = true
-                    -- TODO: SFX
-                    -- TODO: VFX tower
-                    -- TODO: VFX enemy
-                    enemy.take_damage(tower_descriptor.dps / u.fps)
-                    fight.show_laser {
-                        source_xy = range.laser_source_xy(),
-                        target_xy = enemy.center_xy(),
+
+            -- TODO: support more tower types
+            if s.type == "laser" then
+                enemies.for_each_from_furthest(function(enemy)
+                    if not is_attacking and range.touches_enemy(enemy) then
+                        is_attacking = true
+                        -- TODO: SFX
+                        -- TODO: VFX tower
+                        -- TODO: VFX enemy
+                        enemy.take_damage(tower_descriptor.dps / u.fps)
+                        fight.show_laser {
+                            source_xy = range.laser_source_xy(),
+                            target_xy = enemy.center_xy(),
+                        }
+                    end
+                end)
+            elseif s.type == "v_beam" then
+                enemies.for_each_from_furthest(function(enemy)
+                    if range.touches_enemy(enemy) then
+                        is_attacking = true
+                        -- TODO: SFX
+                        -- TODO: VFX tower
+                        -- TODO: VFX enemy
+                        enemy.take_damage(tower_descriptor.dps / u.fps)
+                    end
+                end)
+                if is_attacking then
+                    fight.show_beam {
+                        tile_x = tile.x,
                     }
                 end
-            end)
-        elseif s.type == "v_beam" then
-            local is_attacking = false
-            enemies.for_each_from_furthest(function(enemy)
-                if range.touches_enemy(enemy) then
-                    is_attacking = true
-                    -- TODO: SFX
-                    -- TODO: VFX tower
-                    -- TODO: VFX enemy
-                    enemy.take_damage(tower_descriptor.dps / u.fps)
-                end
-            end)
-            if is_attacking then
-                fight.show_beam {
-                    tile_x = tile.x,
-                }
             end
+
+            if is_attacking and not shooting_timer then
+                shooting_timer = new_shooting_timer()
+            end
+        end
+
+        if charging_timer then
+            charging_timer.update()
+        end
+        if shooting_timer then
+            shooting_timer.update()
         end
     end
 

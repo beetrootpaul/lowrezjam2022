@@ -123,10 +123,14 @@ a = {
         laser = {
             cost = 20,
             dps = 10,
+            charging_time = .5,
+            shooting_time = .5,
         },
         v_beam = {
             cost = 50,
             dps = 30,
+            charging_time = 2,
+            shooting_time = .5,
         },
     },
     warzone_size_tiles = 12,

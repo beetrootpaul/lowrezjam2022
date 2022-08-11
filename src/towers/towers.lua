@@ -18,9 +18,7 @@ function new_towers(params)
             end
             if chosen_tower_type == "v_beam" or tower.type == "v_beam" then
                 for tile_y = 0, a.warzone_size_tiles - 1 do
-                    --if tower.is_at(new_tile(chosen_tile.tile_x, tile_y)) and not tower.is_at(chosen_tile) then
-                    if tower.is_at(new_tile(chosen_tile.x, tile_y)) then
-                        --if tower.is_at(chosen_tile) then
+                    if tower.is_at(new_tile(chosen_tile.x, tile_y)) and not tower.is_at(chosen_tile) then
                         add(colliding, tower)
                     end
                 end
