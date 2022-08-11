@@ -17,6 +17,21 @@ function new_path_following_position(params)
         return path_points[point_index]
     end
 
+    function s.current_direction()
+        local curr = path_points[point_index]
+        local prev = point_index > 1 and path_points[point_index - 1] or curr
+        if curr.y > prev.y then
+            return "down"
+        end
+        if curr.y < prev.y then
+            return "up"
+        end
+        if curr.x < prev.x then
+            return "left"
+        end
+        return "right"
+    end
+
     function s.has_reached_end()
         return point_index >= #path_points
     end

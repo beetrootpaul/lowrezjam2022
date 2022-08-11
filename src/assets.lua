@@ -47,10 +47,17 @@ a = {
     },
     enemies = {
         small = {
-            sprite_right = { x = 16, y = 0, w = 3, h = 3 },
-            sprite_damage_right = { x = 16, y = 4, w = 3, h = 3 },
             hitbox_r = 1,
             health = 40,
+            -- format: {x, y, w, h, offset_x, offset_y }
+            sprite_right = { 16, 0, 3, 3, 0, 0 },
+            sprite_left = { 16, 0, 3, 3, 0, 0 },
+            sprite_up = { 20, 0, 2, 4, 1, 0 },
+            sprite_down = { 20, 0, 2, 4, 1, 0 },
+            sprite_damage_right = { 16, 4, 3, 3, 0, 0 },
+            sprite_damage_left = { 16, 4, 3, 3, 0, 0 },
+            sprite_damage_up = { 20, 4, 2, 4, 1, 0 },
+            sprite_damage_down = { 20, 4, 2, 4, 1, 0 },
         },
         --TODO: other enemy types
     },
@@ -152,7 +159,7 @@ a = {
         -- "-" = nothing
         -- "s" = small
         --
-        --{ wait = 1, spawns = { "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s" } },
+        { wait = 1, spawns = { "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s" } },
         { wait = 4, spawns = { "s", "-", "-", "s", "-", "-", "s" } },
         { wait = 4, spawns = { "s", "s", "-", "s", "s", "-", "s", "s" } },
     },
