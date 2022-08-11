@@ -1,17 +1,13 @@
 -- TODO: screen polish
 function new_screen_title()
     local timer = new_timer {
-        start = 4 * u.fps,
+        start = 3 * u.fps,
     }
 
     local s = {}
 
     function s.update()
         local next_screen = s
-
-        if u.is_any_button_pressed() then
-            timer.skip_to_end()
-        end
 
         if timer.has_finished() then
             -- TODO: screen transition

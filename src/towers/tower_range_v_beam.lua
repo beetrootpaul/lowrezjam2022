@@ -11,12 +11,11 @@ function new_tower_range_v_beam(params)
         return enemy_circle.xy.x + enemy_circle.r >= x1 and enemy_circle.xy.x - enemy_circle.r <= x2
     end
 
-    -- TODO: charging animation
-    -- TODO: draw range (during placement) differently
     function s.draw(color1, color2)
         clip(0, a.warzone_border, u.vs, u.vs - a.warzone_border)
-        line(x1, a.warzone_border, x1, u.vs - a.warzone_border - 1, color1)
-        line(x2, a.warzone_border, x2, u.vs - a.warzone_border - 1, color1)
+        fillp(0xa5a5 + .5)
+        rectfill(x1, a.warzone_border, x2, u.vs - a.warzone_border - 1, color1)
+        fillp()
         clip()
     end
 

@@ -4,8 +4,7 @@ function new_placement(params)
     local other_towers = u.r(params.other_towers)
     local money = u.r(params.money)
 
-    -- TODO: start on a tile used previously or start on a first available tile
-    local chosen_tile = new_tile(0, 0)
+    local chosen_tile = new_tile(4, 5)
 
     local chosen_tile_border = new_chosen_tile_border {
         tile = chosen_tile,
@@ -89,7 +88,6 @@ function new_placement(params)
 
         local can_build_check_result = check_if_can_build()
 
-        -- TODO: fancier details of colliding tiles
         for tower in all(can_build_check_result.colliding_towers) do
             fillp(0xa5a5 + .5)
             rectfill(tower.x, tower.y, tower.x + u.ts - 1, tower.y + u.ts - 1, a.colors.red_light)

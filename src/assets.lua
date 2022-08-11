@@ -49,7 +49,7 @@ a = {
     enemies = {
         small = {
             hitbox_r = 1,
-            health = 40,
+            health = 20,
             -- format: {x, y, w, h, offset_x, offset_y, hitbox_offset_x, hitbox_offset_y }
             sprite_right = { 16, 0, 3, 3, 0, 0, 1, 1 },
             sprite_left = { 16, 0, 3, 3, 0, 0, 1, 1 },
@@ -63,7 +63,7 @@ a = {
         },
         medium = {
             hitbox_r = 1.5,
-            health = 70,
+            health = 65,
             -- format: {x, y, w, h, offset_x, offset_y, hitbox_offset_x, hitbox_offset_y }
             sprite_right = { 24, 0, 4, 5, 0, -1, 1.5, .5 },
             sprite_left = { 24, 0, 4, 5, 0, -1, 1.5, .5 },
@@ -153,7 +153,7 @@ a = {
             label = "laser",
             cost = 20,
             sprite = { x = 48, y = 0 },
-            dps = 30,
+            dps = 20,
             charging_time = .9,
             shooting_time = .1,
             charging_time_boost = -.1,
@@ -166,13 +166,13 @@ a = {
         },
         v_beam = {
             label = "v-beam",
-            cost = 50,
+            cost = 70,
             sprite = { x = 48, y = 16 },
-            dps = 60,
+            dps = 35,
             charging_time = 2,
             shooting_time = .5,
-            charging_time_boost = -.3,
-            shooting_time_boost = .2,
+            charging_time_boost = -.2,
+            shooting_time_boost = .1,
         },
     },
     warzone_size_tiles = 12,
@@ -183,12 +183,12 @@ a = {
         { wait = 4, spawns = "s,s,-,s,s,-,s,s" },
         { wait = 4, spawns = "m,-,-,s,s,s,-,-,m" },
         { wait = 4, spawns = "s,s,s,-,-,m,m,-,-,-,s,-,-,b" },
-        { wait = 4, spawns = "s,m,b,-,-,-,s,s,-,-,m,m" },
-        { wait = 4, spawns = "b,b,b" },
-        { wait = 4, spawns = "s,-,s,s,-,-,s" },
-        { wait = 4, spawns = "m,-,s,-,m,-,s,-,m" },
-        { wait = 4, spawns = "s,-,-,-,-,b,-,b,-,b" },
-        { wait = 4, spawns = "s,s,s,s,s" },
+        { wait = 4, spawns = "s,m,b,-,-,-,s,b,-,-,m,m" },
+        { wait = 4, spawns = "m,m,-,-,b,b,b" },
+        { wait = 4, spawns = "b,b,-,m,m,-,b,b" },
+        { wait = 4, spawns = "b,-,s,-,m,-,s,-,b" },
+        { wait = 4, spawns = "m,-,-,-,b,b,b,b,b,b" },
+        { wait = 4, spawns = "s,m,m,b,b,b,-,-,-,-,b,b,b,m,m,s" },
     },
 }
 

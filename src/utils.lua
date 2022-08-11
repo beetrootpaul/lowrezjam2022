@@ -21,10 +21,6 @@ u.arrow_buttons_to_directions = {
     [⬇️] = { x = 0, y = 1 },
 }
 
-function u.is_any_button_pressed()
-    return btnp() ~= 0 and btnp() ~= 2 ^ u.button_menu
-end
-
 function u.noop()
     -- do nothing
 end

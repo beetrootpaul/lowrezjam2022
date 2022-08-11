@@ -11,10 +11,6 @@ function new_timer(params)
         return t < 0
     end
 
-    function s.skip_to_end()
-        t = -1
-    end
-
     function s.progress()
         return 1 - (max(0, t) / start)
     end
