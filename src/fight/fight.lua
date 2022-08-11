@@ -4,16 +4,12 @@ function new_fight()
 
     local s = {}
 
-    --
-
     function s.show_laser(p)
-        local source_xy = u.r(p.source_xy)
-        local target_xy = u.r(p.target_xy)
         add(lasers, {
-            x1 = source_xy.x,
-            y1 = source_xy.y,
-            x2 = target_xy.x,
-            y2 = target_xy.y,
+            x1 = p.source_xy.x,
+            y1 = p.source_xy.y,
+            x2 = p.target_xy.x,
+            y2 = p.target_xy.y,
         })
     end
 
@@ -39,8 +35,6 @@ function new_fight()
             line(x2, a.warzone_border, x2, u.vs - a.warzone_border, a.colors.white)
         end
     end
-
-    --
 
     return s
 end

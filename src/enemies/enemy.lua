@@ -26,8 +26,6 @@ function new_enemy(params)
 
     local s = {}
 
-    --
-
     function s.has_finished()
         return health.value == 0 or path_following_position.has_reached_end()
     end
@@ -41,7 +39,6 @@ function new_enemy(params)
     end
 
     function s.take_damage(damage)
-        -- TODO: decrease health and make enemy destroyed in the end
         is_taking_damage = true
         health.subtract(u.r(damage))
     end
@@ -94,8 +91,6 @@ function new_enemy(params)
             sspr(ds_x, ds_y, ds_w, ds_h, position.x + ds_ox, position.y + ds_oy)
         end
     end
-
-    --
 
     return s
 end

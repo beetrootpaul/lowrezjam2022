@@ -3,15 +3,11 @@
 function new_path_following_position(params)
     local path_points = u.r(params.path).points
 
-    -- TODO: make sure enemy is invisible first and enters the screen on the first possible update
-    -- TODO: adjust speed to a final value
-    local frames_per_point = u.fps / 10
+    local frames_per_point = ceil(u.fps * a.enemy_speed)
     local counter = 1
     local point_index = 1
 
     local s = {}
-
-    --
 
     function s.current_xy()
         return path_points[point_index]
@@ -47,8 +43,6 @@ function new_path_following_position(params)
             counter = (counter + 1) % frames_per_point
         end
     end
-
-    --
 
     return s
 end

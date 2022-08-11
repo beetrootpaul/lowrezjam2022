@@ -1,12 +1,13 @@
 a = {
     button_sprites = {
+        -- format: { x, y, w, h }
         x = {
-            raised = { x = 115, y = 32, w = 5, h = 6 },
-            pressed = { x = 115, y = 40, w = 5, h = 6 },
+            raised = { 115, 32, 5, 6 },
+            pressed = { 115, 40, 5, 6 },
         },
         o = {
-            raised = { x = 109, y = 32, w = 5, h = 6 },
-            pressed = { x = 109, y = 40, w = 5, h = 6 },
+            raised = { 109, 32, 5, 6 },
+            pressed = { 109, 40, 5, 6 },
         },
     },
     colors = {
@@ -52,13 +53,13 @@ a = {
             -- format: {x, y, w, h, offset_x, offset_y, hitbox_offset_x, hitbox_offset_y }
             sprite_right = { 16, 0, 3, 3, 0, 0, 1, 1 },
             sprite_left = { 16, 0, 3, 3, 0, 0, 1, 1 },
-            sprite_up = { 20, 0, 2, 4, 1, 0, 1, 1 },
-            sprite_down = { 20, 0, 2, 4, 1, 0, 1, 1 },
+            sprite_up = { 20, 0, 2, 4, 1, -1, 1, 0 },
+            sprite_down = { 20, 0, 2, 4, 1, -1, 1, 0 },
             -- format: {x, y, w, h, offset_x, offset_y }
             sprite_damage_right = { 16, 4, 3, 3, 0, 0 },
             sprite_damage_left = { 16, 4, 3, 3, 0, 0 },
-            sprite_damage_up = { 20, 4, 2, 4, 1, 0 },
-            sprite_damage_down = { 20, 4, 2, 4, 1, 0 },
+            sprite_damage_up = { 20, 4, 2, 4, 1, -1 },
+            sprite_damage_down = { 20, 4, 2, 4, 1, -1 },
         },
         medium = {
             hitbox_r = 1.5,
@@ -74,8 +75,22 @@ a = {
             sprite_damage_up = { 28, 0, 4, 5, 0, -1 },
             sprite_damage_down = { 28, 0, 4, 5, 0, -1 },
         },
-        --TODO: other enemy types
+        big = {
+            hitbox_r = 2,
+            health = 130,
+            -- format: {x, y, w, h, offset_x, offset_y, hitbox_offset_x, hitbox_offset_y }
+            sprite_right = { 16, 9, 5, 5, -1, -1, 1.5, .5 },
+            sprite_left = { 22, 9, 5, 5, -1, -1, 1.5, .5 },
+            sprite_up = { 28, 8, 4, 6, 0, -1, 1.5, 1.5 },
+            sprite_down = { 33, 9, 4, 6, 0, -1, 1.5, .5 },
+            -- format: {x, y, w, h, offset_x, offset_y }
+            sprite_damage_right = { 16, 15, 5, 5, -1, -1 },
+            sprite_damage_left = { 22, 15, 5, 5, -1, -1 },
+            sprite_damage_up = { 28, 14, 4, 6, 0, -1 },
+            sprite_damage_down = { 33, 15, 4, 6, 0, -1 },
+        },
     },
+    enemy_speed = .1,
     font_sprites = {
         -- format: { x, y, width = 3 }
         ["a"] = { 0, 32 },
@@ -104,12 +119,10 @@ a = {
         ["x"] = { 88, 32 },
         ["y"] = { 92, 32 },
         ["z"] = { 96, 32 },
-        --
         ["-"] = { 100, 32, 2 },
         ["."] = { 103, 32, 1 },
         ["$"] = { 105, 32 },
         [" "] = { 126, 32, 2 },
-        --
         ["1"] = { 0, 40, 2 },
         ["2"] = { 3, 40 },
         ["3"] = { 7, 40 },
@@ -120,7 +133,6 @@ a = {
         ["8"] = { 27, 40 },
         ["9"] = { 31, 40 },
         ["0"] = { 35, 40 },
-        -- we represent back arrow as "<" here in order to avoid dealing with UTF characters longer than one position in a string
         ["<"] = { 121, 32, 4 },
     },
     lives_max = 5,
@@ -170,14 +182,9 @@ a = {
     warzone_border = 8,
     warzone_border_tiles = 2,
     waves = {
-        -- TODO: more enemy types
-        -- "-" = nothing
-        -- "s" = small
-        -- "m" = medium
-        --
-        { wait = 1, spawns = { "s", "m", "s", "s", "m", "s", "s", "m", "s", "s", "m", "s", "s", "m", "s", "s", "m", "s", "s", "m", "s" } },
-        { wait = 4, spawns = { "s", "-", "-", "s", "-", "-", "s" } },
-        { wait = 4, spawns = { "s", "s", "-", "s", "s", "-", "s", "s" } },
+        --{ wait = 1, spawns = "s,m,b,s,m,b,s,m,b,s,m,b,s,m,b,s,m,b,s,m,b" },
+        { wait = 4, spawns = "s,-,-,s,-,-,s" },
+        { wait = 4, spawns = "s,s,-,s,s,-,s,s" },
     },
 }
 

@@ -2,22 +2,26 @@ function new_wave(params)
     local descriptor = u.r(params.descriptor)
     local enemies = u.r(params.enemies)
 
+    local spawns = split(descriptor.spawns)
+
     local key_moments = {}
-    for i = 1, #descriptor.spawns do
-        local spawn = descriptor.spawns[i]
+    for i = 1, #spawns do
+        local spawn = spawns[i]
         if spawn == "-" then
             -- do nothing
         elseif spawn == "s" then
-            key_moments[u.fps * (#descriptor.spawns - i)] = "small"
+            key_moments[u.fps * (#spawns - i)] = "small"
         elseif spawn == "m" then
-            key_moments[u.fps * (#descriptor.spawns - i)] = "medium"
+            key_moments[u.fps * (#spawns - i)] = "medium"
+        elseif spawn == "b" then
+            key_moments[u.fps * (#spawns - i)] = "big"
         else
             assert(false, "unexpected spawn descriptor found: " .. spawn)
         end
     end
 
     local timer = new_timer {
-        start = u.fps * (#descriptor.spawns - 1),
+        start = u.fps * (#spawns - 1),
         -- TODO: various waves
         key_moments = key_moments,
         on_key_moment = function(type)
