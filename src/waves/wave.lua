@@ -8,7 +8,9 @@ function new_wave(params)
         if spawn == "-" then
             -- do nothing
         elseif spawn == "s" then
-            key_moments[u.fps * (#descriptor.spawns - i)] = "enemy"
+            key_moments[u.fps * (#descriptor.spawns - i)] = "small"
+        elseif spawn == "m" then
+            key_moments[u.fps * (#descriptor.spawns - i)] = "medium"
         else
             assert(false, "unexpected spawn descriptor found: " .. spawn)
         end
@@ -19,9 +21,7 @@ function new_wave(params)
         -- TODO: various waves
         key_moments = key_moments,
         on_key_moment = function(type)
-            if type == "enemy" then
-                enemies.spawn()
-            end
+            enemies.spawn(type)
         end,
     }
 

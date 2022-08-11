@@ -1,4 +1,5 @@
 function new_enemy(params)
+    local enemy_type = u.r(params.enemy_type)
     local path = u.r(params.path)
     local on_reached_path_end = u.r(params.on_reached_path_end)
 
@@ -7,18 +8,18 @@ function new_enemy(params)
     }
 
     local health = new_health {
-        -- TODO: implement multiple enemy types
-        max_value = a.enemies.small.health,
+        max_value = a.enemies[enemy_type].health,
     }
 
     local function center_xy()
-        return path_following_position.current_xy().plus(1, 1)
+        local sprite = u.r(a.enemies[enemy_type]["sprite_" .. path_following_position.current_direction()])
+        local s_hox, s_hoy = sprite[7], sprite[8]
+        return path_following_position.current_xy().plus(s_hox, s_hoy)
     end
 
     local range = new_enemy_range {
         xy = center_xy(),
-        -- TODO: implement multiple enemy types
-        r = u.r(a.enemies.small.hitbox_r),
+        r = u.r(a.enemies[enemy_type].hitbox_r),
     }
 
     local is_taking_damage = false
@@ -58,8 +59,7 @@ function new_enemy(params)
 
         range = new_enemy_range {
             xy = center_xy(),
-            -- TODO: implement multiple enemy types
-            r = u.r(a.enemies.small.hitbox_r),
+            r = u.r(a.enemies[enemy_type].hitbox_r),
         }
     end
 
@@ -68,8 +68,7 @@ function new_enemy(params)
             return
         end
 
-        -- TODO: implement multiple enemy types
-        local sprite = u.r(a.enemies.small["sprite_" .. path_following_position.current_direction()])
+        local sprite = u.r(a.enemies[enemy_type]["sprite_" .. path_following_position.current_direction()])
         local s_x, s_y, s_w, s_h, s_ox, s_oy = sprite[1], sprite[2], sprite[3], sprite[4], sprite[5], sprite[6]
         local position = path_following_position.current_xy()
         sspr(s_x, s_y, s_w, s_h, position.x + s_ox, position.y + s_oy)
@@ -90,8 +89,7 @@ function new_enemy(params)
         end
 
         if is_taking_damage then
-            -- TODO: implement multiple enemy types
-            local damage_sprite = u.r(a.enemies.small["sprite_damage_" .. path_following_position.current_direction()])
+            local damage_sprite = u.r(a.enemies[enemy_type]["sprite_damage_" .. path_following_position.current_direction()])
             local ds_x, ds_y, ds_w, ds_h, ds_ox, ds_oy = damage_sprite[1], damage_sprite[2], damage_sprite[3], damage_sprite[4], damage_sprite[5], damage_sprite[6]
             sspr(ds_x, ds_y, ds_w, ds_h, position.x + ds_ox, position.y + ds_oy)
         end

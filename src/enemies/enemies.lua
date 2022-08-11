@@ -8,8 +8,9 @@ function new_enemies(params)
 
     --
 
-    function s.spawn()
+    function s.spawn(enemy_type)
         add(enemies, new_enemy {
+            enemy_type = enemy_type,
             path = path,
             on_reached_path_end = on_enemy_reached_path_end,
         })
