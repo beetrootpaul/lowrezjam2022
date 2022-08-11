@@ -33,6 +33,7 @@ function new_towers(params)
             fight = fight,
             warzone = warzone,
         })
+        warzone.ground.make_plain_at_and_around(p.tile)
     end
 
     function s.count_reaching_boosters(tile)

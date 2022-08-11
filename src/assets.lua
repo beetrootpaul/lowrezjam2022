@@ -142,6 +142,7 @@ a = {
     },
     tiles = {
         ground_textured = { x = 0, y = 8 },
+        ground_plain = { x = 4, y = 8 },
         road = { x = 0, y = 24 },
         road_edge_bottom = { x = 0, y = 28 },
         road_edge_top = { x = 0, y = 20 },
