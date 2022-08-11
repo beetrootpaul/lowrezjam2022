@@ -15,6 +15,7 @@ function new_screen_gameplay()
     local towers = new_towers {
         enemies = enemies,
         fight = fight,
+        warzone = warzone,
     }
     local waves = new_waves {
         enemies = enemies,

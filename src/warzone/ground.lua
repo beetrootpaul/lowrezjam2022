@@ -1,5 +1,8 @@
 function new_ground()
     return {
+        is_at = function(tile)
+            return tile.x >= 0 and tile.x <= a.warzone_size_tiles - 1 and tile.y >= 0 and tile.y <= a.warzone_size_tiles - 1
+        end,
         draw = function()
             local tile = u.r(a.tiles.ground_textured)
 

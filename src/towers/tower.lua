@@ -1,8 +1,10 @@
 function new_tower(params)
     local tower_descriptor = u.r(params.tower_descriptor)
     local tile = u.r(params.tile)
+    local other_towers = u.r(params.other_towers)
     local enemies = u.r(params.enemies)
     local fight = u.r(params.fight)
+    local warzone = u.r(params.warzone)
 
     local range
     if tower_descriptor.type == "laser" then
@@ -13,18 +15,31 @@ function new_tower(params)
         range = new_tower_range_v_beam {
             tile = tile,
         }
+    elseif tower_descriptor.type == "booster" then
+        range = new_tower_range_booster {
+            tile = tile,
+            warzone = warzone,
+        }
     end
 
     local function new_shooting_timer()
-        return new_timer {
-            start = u.fps * tower_descriptor.shooting_time,
-        }
+        if tower_descriptor.type == "laser" or tower_descriptor.type == "v_beam" then
+            local boosts = other_towers.count_reaching_boosters(tile)
+            return new_timer {
+                start = u.fps * (tower_descriptor.shooting_time + tower_descriptor.shooting_time_boost * boosts),
+            }
+        end
+        return nil
     end
 
     local function new_charging_timer()
-        return new_timer {
-            start = u.fps * tower_descriptor.charging_time,
-        }
+        if tower_descriptor.type == "laser" or tower_descriptor.type == "v_beam" then
+            local boosts = other_towers.count_reaching_boosters(tile)
+            return new_timer {
+                start = u.fps * (tower_descriptor.charging_time + tower_descriptor.charging_time_boost * boosts),
+            }
+        end
+        return nil
     end
 
     local charging_timer = new_charging_timer()
@@ -40,6 +55,10 @@ function new_tower(params)
 
     function s.is_at(tile_to_check)
         return tile_to_check.is_same_as(tile)
+    end
+
+    function s.range()
+        return range
     end
 
     function s.update()
@@ -104,7 +123,7 @@ function new_tower(params)
         sspr(sprite.x, sprite.y, u.ts, u.ts, s.x, s.y)
 
         if d.enabled then
-            range.draw(a.colors.blue_dark)
+            range.draw(a.colors.blue_dark, a.colors.brown_dark)
         end
     end
 

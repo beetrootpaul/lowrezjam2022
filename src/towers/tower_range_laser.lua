@@ -22,9 +22,9 @@ function new_tower_range_laser(params)
         return dx * dx + dy * dy < (r + enemy_circle.r) * (r + enemy_circle.r)
     end
 
-    function s.draw(color)
+    function s.draw(color1, color2)
         clip(0, a.warzone_border, u.vs, u.vs - a.warzone_border)
-        oval(xy.x - r, xy.y - r, xy.x + r, xy.y + r, color)
+        oval(xy.x - r, xy.y - r, xy.x + r, xy.y + r, color1)
         clip()
     end
 

@@ -1,6 +1,7 @@
 function new_towers(params)
     local enemies = u.r(params.enemies)
     local fight = u.r(params.fight)
+    local warzone = u.r(params.warzone)
 
     local towers = {}
 
@@ -33,12 +34,22 @@ function new_towers(params)
         add(towers, new_tower {
             tower_descriptor = u.r(p.tower_descriptor),
             tile = u.r(p.tile),
+            other_towers = s,
             enemies = enemies,
             fight = fight,
+            warzone = warzone,
         })
     end
 
-    --
+    function s.count_reaching_boosters(tile)
+        local counter = 0
+        for tower in all(towers) do
+            if tower.type == "booster" and tower.range().reaches(tile) then
+                counter = counter + 1
+            end
+        end
+        return counter
+    end
 
     function s.update()
         for tower in all(towers) do
