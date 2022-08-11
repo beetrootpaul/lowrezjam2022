@@ -1,38 +1,28 @@
--- -- -- -- -- --
--- misc/timer  --
--- -- -- -- -- --
-
 function new_timer(params)
-    local start = u.required(params.start)
+    local start = u.r(params.start)
     local key_moments = params.key_moments or {}
     local on_key_moment = params.on_key_moment or (function()
     end)
 
     local t = start
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.has_finished()
+    function s.has_finished()
         return t < 0
     end
 
-    --
-
-    function self.skip_to_end()
+    function s.skip_to_end()
         t = -1
     end
 
-    --
-
-    function self.progress()
+    function s.progress()
         return 1 - (max(0, t) / start)
     end
 
-    --
-
-    function self.update()
+    function s.update()
         if key_moments[t] then
             on_key_moment(key_moments[t])
         end
@@ -40,5 +30,7 @@ function new_timer(params)
         t = max(-1, t - 1)
     end
 
-    return self
+    --
+
+    return s
 end

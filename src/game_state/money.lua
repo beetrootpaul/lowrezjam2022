@@ -1,38 +1,26 @@
--- -- -- -- -- -- -- --
--- game_state/money  --
--- -- -- -- -- -- -- --
-
 function new_money()
-    local available = a.money_initial
-
     -- TODO: duplicated code, share it
     local money_increase_timer = new_timer {
         start = u.fps * a.money_increase_seconds
     }
 
-    local self = {}
+    local s = {
+        available = a.money_initial,
+    }
 
     --
 
-    function self.available()
-        return available
-    end
-
-    --
-
-    function self.subtract(amount)
+    function s.subtract(amount)
         assert(
-            amount <= available,
-            "tried to subtract more money (" .. amount .. ") than available (" .. available .. ")"
+            amount <= s.available,
+            "tried to subtract more money (" .. amount .. ") than available (" .. s.available .. ")"
         )
-        available = available - amount
+        s.available = s.available - amount
     end
 
-    --
-
-    function self.update()
+    function s.update()
         if money_increase_timer.has_finished() then
-            available = available + 1
+            s.available = s.available + 1
             -- TODO: duplicated code, share it
             money_increase_timer = new_timer {
                 start = u.fps * a.money_increase_seconds
@@ -44,5 +32,5 @@ function new_money()
 
     --
 
-    return self
+    return s
 end

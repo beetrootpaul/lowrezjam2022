@@ -1,7 +1,3 @@
--- -- -- --
--- main  --
--- -- -- --
-
 local current_screen, next_screen
 
 -- wiki: https://pico-8.fandom.com/wiki/Init
@@ -41,8 +37,10 @@ end
 
 -- TODO: music
 -- TODO: different music on every screen
--- TODO: extra music layer during tower choise and placement
+-- TODO: extra music layer during tower choice and placement
 
 -- TODO: 4 hardcoded maps
+
+-- TODO: README: write it clear the code is not clean, because it was optimized towards chars limit
 
 -- TODO: final README: correct title, description, controls, screenshots, itch.io link

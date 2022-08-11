@@ -1,57 +1,41 @@
--- -- -- -- -- -- --
--- towers/towers  --
--- -- -- -- -- -- --
-
 function new_towers(params)
-    local enemies = u.required(params.enemies)
-    local fight = u.required(params.fight)
-
-    -- TODO: better format for serialized tiles
-    -- TODO: initial validation of serialized tiles
-    -- TODO: towers placed on a warzone by a user
-    local serialized_tiles = {
-        --"0|9",
-        --"2|8",
-        --"3|5",
-        --"5|6",
-        --"6|8",
-        --"7|2",
-        --"8|2",
-        --"8|0",
-        --"9|0",
-    }
+    local enemies = u.r(params.enemies)
+    local fight = u.r(params.fight)
 
     local towers = {}
 
-    for st in all(serialized_tiles) do
-        add(towers, new_tower {
-            tile = new_tile(
-                tonum(split(st, '|')[1]),
-                tonum(split(st, '|')[2])
-            ),
-            enemies = enemies,
-            fight = fight,
-        })
-    end
-
-    local self = {}
+    local s = {}
 
     --
 
-    function self.can_build(p)
+    -- TODO: special rules for laser vs aim-k.o. + indication of their collisions
+    -- TODO: special rules for v_beam vs aim-k.o. + indication of their collisions
+    function s.find_colliding_towers(chosen_tower_type, chosen_tile)
+        local colliding = {}
         for tower in all(towers) do
-            if tower.is_at(u.required(p.tile)) then
-                return false
+            if tower.is_at(chosen_tile) then
+                add(colliding, tower)
+            end
+            -- TODO: ???
+            if chosen_tower_type == "v_beam" or tower.type == "v_beam" then
+                for tile_y = 1, a.warzone_size_tiles do
+                    --if tower.is_at(new_tile(chosen_tile.tile_x, tile_y)) and not tower.is_at(chosen_tile) then
+                    if tower.is_at(new_tile(chosen_tile.x, tile_y)) then
+                    --if tower.is_at(chosen_tile) then
+                        add(colliding, tower)
+                    end
+                end
             end
         end
-        return true
+        return colliding
     end
 
     --
 
-    function self.build_tower(p)
+    function s.build_tower(p)
         add(towers, new_tower {
-            tile = u.required(p.tile),
+            tower_descriptor = u.r(p.tower_descriptor),
+            tile = u.r(p.tile),
             enemies = enemies,
             fight = fight,
         })
@@ -59,15 +43,13 @@ function new_towers(params)
 
     --
 
-    function self.update()
+    function s.update()
         for tower in all(towers) do
             tower.update()
         end
     end
 
-    --
-
-    function self.draw()
+    function s.draw()
         for tower in all(towers) do
             tower.draw()
         end
@@ -75,5 +57,5 @@ function new_towers(params)
 
     --
 
-    return self
+    return s
 end

@@ -1,55 +1,36 @@
--- -- -- --
--- utils --
--- -- -- --
-
 u = {
-    buttons = {
-        -- left, right, up, down
-        l = 0,
-        r = 1,
-        u = 2,
-        d = 3,
-        -- button "O" (Z/C), button "X" (X/V)
-        o = 4,
-        x = 5,
-        -- button menu (Enter)
-        menu = 6,
-    },
+    button_o = 4,
+    button_x = 5,
+    button_menu = 6,
 
     fps = 60,
 
     text_height = 4,
 
-    tile_size = 4,
+    -- tile size
+    ts = 4,
 
-    viewport_size = 64,
-    viewport_size_tiles = 16,
+    -- viewport size
+    vs = 64,
 }
 
 u.arrow_buttons_to_directions = {
-    [u.buttons.l] = { x = -1, y = 0 },
-    [u.buttons.r] = { x = 1, y = 0 },
-    [u.buttons.u] = { x = 0, y = -1 },
-    [u.buttons.d] = { x = 0, y = 1 },
+    [⬅️] = { x = -1, y = 0 },
+    [➡️] = { x = 1, y = 0 },
+    [⬆️] = { x = 0, y = -1 },
+    [⬇️] = { x = 0, y = 1 },
 }
 
 function u.is_any_button_pressed()
-    return btnp() ~= 0 and btnp() ~= 2 ^ u.buttons.menu
+    return btnp() ~= 0 and btnp() ~= 2 ^ u.button_menu
 end
 
 function u.noop()
     -- do nothing
 end
 
-function u.print_with_outline(text, x, y, text_color, outline_color)
-    -- docs on control codes: https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Control_Codes
-    for control_code in all(split "\-f,\-h,\|f,\|h,\+ff,\+hh,\+fh,\+hf") do
-        print(control_code .. text, x, y, outline_color)
-    end
-    print(text, x, y, text_color)
-end
-
-function u.required(value)
+-- assert if required value is there and returns it
+function u.r(value)
     if type(value) == "boolean" then
         assert(value ~= nil, "required value is missing")
     else
@@ -65,11 +46,4 @@ end
 
 function u.set_display_palette(palette)
     pal(palette, 1)
-end
-
-function u.sprite_xy(sprite_number)
-    return {
-        x = (sprite_number % 16) * 8,
-        y = flr(sprite_number / 16) * 8,
-    }
 end

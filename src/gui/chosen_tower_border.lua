@@ -1,5 +1,4 @@
-function new_chosen_tile_border(params)
-    local tile = u.r(params.tile)
+function new_chosen_tower_border()
 
     local offsets = {
         { x = -1, y = 0 },
@@ -23,12 +22,10 @@ function new_chosen_tile_border(params)
 
     --
 
-    function s.draw(can_build)
-        local x = (a.warzone_border_tiles + tile.x) * u.ts
-        local y = (a.warzone_border_tiles + tile.y) * u.ts
+    function s.draw(x , y)
         for point in all(offsets) do
             -- TODO: PICO-8 API: describe PSET
-            pset(x + point.x, y + point.y, can_build and a.colors.green or a.colors.red_light)
+            pset(x + point.x, y + point.y, a.colors.grey_light)
         end
     end
 

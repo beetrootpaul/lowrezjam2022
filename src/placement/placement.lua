@@ -1,59 +1,66 @@
--- -- -- -- -- -- -- -- --
--- placement/placement  --
--- -- -- -- -- -- -- -- --
-
 -- TODO: what if there is no more place to build a tower?
 function new_placement(params)
-    local warzone = u.required(params.warzone)
-    local towers = u.required(params.towers)
-    local money = u.required(params.money)
+    local chosen_tower = u.r(params.tower_choice).chosen_tower()
+    local warzone = u.r(params.warzone)
+    local other_towers = u.r(params.other_towers)
+    local money = u.r(params.money)
 
     -- TODO: start in the middle
     -- TODO: start on a tile used previously or start on a first available tile
     local chosen_tile = new_tile(0, 0)
 
-    -- TODO: duplicated, share it
-    -- TODO: extract and share a knowledge about how to position tower's range and which one to use
-    local tower_range = new_range_circle {
-        xy = new_xy(
-            (a.warzone_border_tiles + chosen_tile.x + .5) * u.tile_size - .5,
-            (a.warzone_border_tiles + chosen_tile.y + .5) * u.tile_size - .5
-        ),
-        r = 2.5 * u.tile_size - .5,
-    }
-
-    -- TODO: duplicated, share it
-    local can_build = false
-    -- TODO: support multiple tower costs
-    if money.available() >= a.towers.laser.cost and towers.can_build { tile = chosen_tile } and warzone.can_build { tile = chosen_tile } then
-        can_build = true
-    else
-        can_build = false
-    end
-
-    -- TODO: duplicated, share it
     local chosen_tile_border = new_chosen_tile_border {
         tile = chosen_tile,
-        can_build = can_build,
     }
 
-    local self = {}
+    local function new_tower_range()
+        if chosen_tower.type == "laser" then
+            return new_tower_range_laser {
+                tile = chosen_tile,
+            }
+        elseif chosen_tower.type == "v_beam" then
+            return new_tower_range_v_beam {
+                tile = chosen_tile,
+            }
+        else
+            assert(false, "unexpected tower type: " .. chosen_tower.type)
+        end
+    end
+
+    local tower_range = new_tower_range()
+
+    local function check_if_can_build()
+        local result = {
+            can_build = true,
+            colliding_towers = {},
+        }
+        if money.available < chosen_tower.cost then
+            result.can_build = false
+        end
+        local colliding_towers = other_towers.find_colliding_towers(chosen_tower.type, chosen_tile)
+        if #colliding_towers > 0 then
+            result.can_build = false
+            result.colliding_towers = colliding_towers
+        end
+        if not warzone.can_build { tile = chosen_tile } then
+            result.can_build = false
+        end
+        return result
+    end
+
+    local s = {}
 
     --
 
-    function self.chosen_tile()
+    function s.chosen_tile()
         return chosen_tile
     end
 
-    --
-
-    function self.can_build()
-        return can_build
+    function s.can_build()
+        return check_if_can_build().can_build
     end
 
-    --
-
-    function self.move_chosen_tile(direction)
+    function s.move_chosen_tile(direction)
         chosen_tile = chosen_tile.plus(direction.x, direction.y)
 
         -- TODO: choose tile SFX
@@ -63,76 +70,38 @@ function new_placement(params)
             mid(0, chosen_tile.y, a.warzone_size_tiles - 1)
         )
 
-        -- TODO: duplicated, share it
-        -- TODO: support multiple tower costs
-        if money.available() >= a.towers.laser.cost and towers.can_build  { tile = chosen_tile } and warzone.can_build { tile = chosen_tile } then
-            can_build = true
-        else
-            can_build = false
-        end
+        tower_range = new_tower_range()
 
-        -- TODO: duplicated, share it
-        -- TODO: extract and share a knowledge about how to position tower's range and which one to use
-        tower_range = new_range_circle {
-            xy = new_xy(
-                (a.warzone_border_tiles + chosen_tile.x + .5) * u.tile_size - .5,
-                (a.warzone_border_tiles + chosen_tile.y + .5) * u.tile_size - .5
-            ),
-            r = 2.5 * u.tile_size - .5,
-        }
-
-        -- TODO: duplicated, share it
         chosen_tile_border = new_chosen_tile_border {
             tile = chosen_tile,
-            can_build = can_build,
         }
     end
 
-    --
-
-    function self.update()
-        -- TODO: duplicated, share it
-        -- TODO: support multiple tower costs
-        if money.available() >= a.towers.laser.cost and towers.can_build  { tile = chosen_tile } and warzone.can_build { tile = chosen_tile } then
-            can_build = true
-        else
-            can_build = false
-        end
-
-        -- TODO: duplicated, share it
-        chosen_tile_border = new_chosen_tile_border {
-            tile = chosen_tile,
-            can_build = can_build,
-        }
-    end
-
-    --
-
-    function self.draw()
-        -- TODO: support various tower types
-        local sprite = u.required(a.tiles.tower_laser)
+    function s.draw()
+        local sprite = u.r(a.tiles["tower_" .. chosen_tower.type])
 
         -- TODO: indicate conflicting tiles and other reasons that cannot build
 
         -- TODO: draw dimmed sprite if cannot build
-        sspr(
-            sprite.x,
-            sprite.y,
-            u.tile_size,
-            u.tile_size,
-            (a.warzone_border_tiles + chosen_tile.x) * u.tile_size,
-            (a.warzone_border_tiles + chosen_tile.y) * u.tile_size
-        )
+        sspr(sprite.x, sprite.y, u.ts, u.ts, (a.warzone_border_tiles + chosen_tile.x) * u.ts, (a.warzone_border_tiles + chosen_tile.y) * u.ts)
 
         -- TODO: draw dimmed range if cannot build
-        tower_range.draw {
-            color = a.colors.white,
-        }
+        tower_range.draw(a.colors.white)
 
-        chosen_tile_border.draw()
+        local can_build_check_result = check_if_can_build()
+
+        -- TODO: fancier details of colliding tiles
+        for tower in all(can_build_check_result.colliding_towers) do
+            -- TODO: PICO-8 API: describe PFILL
+            fillp(0xa5a5 + .5)
+            rectfill(tower.x, tower.y, tower.x + u.ts - 1, tower.y + u.ts - 1, a.colors.red_light)
+            fillp()
+        end
+
+        chosen_tile_border.draw(can_build_check_result.can_build)
     end
 
     --
 
-    return self
+    return s
 end

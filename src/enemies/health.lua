@@ -1,27 +1,17 @@
--- -- -- -- -- -- --
--- enemies/health --
--- -- -- -- -- -- --
-
 function new_health(params)
-    local max_health = u.required(params.max_health)
+    local max_value = u.r(params.max_value)
 
-    local health = max_health
-
-    local self = {}
+    local s = {
+        value = max_value,
+    }
 
     --
 
-    function self.subtract(damage)
-        health = max(0, health - damage)
+    function s.subtract(damage)
+        s.value = max(0, s.value - damage)
     end
 
     --
 
-    function self.value()
-        return health
-    end
-
-    --
-
-    return self
+    return s
 end

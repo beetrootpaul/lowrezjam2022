@@ -1,15 +1,6 @@
--- -- -- --
--- debug --
--- -- -- --
-
 d = (function()
     local is_toggle_button_pressed_already = false
     local is_step_button_pressed_already = false
-
-    local self = {
-        enabled = false,
-        is_next_frame = false,
-    }
 
     -- Based on #printh_helpers cart (https://www.lexaloffle.com/bbs/?tid=42367)
     function log_string_from_args(...)
@@ -40,27 +31,30 @@ d = (function()
         return s .. "}"
     end
 
+    local s = {
+        enabled = false,
+        is_next_frame = false,
+    }
+
     --
 
-    function self.configure()
+    function s.configure()
         -- Enable access to full keyboard.
         -- Based on https://pico-8.fandom.com/wiki/Stat#.7B30.E2.80.A639.7D_Mouse_and_Keyboard
         poke(0x5f2d, 0x1)
     end
 
-    --
-
     -- TODO: extract `stat(28, …)` to utils
-    function self.update()
+    function s.update()
         -- Scan codes taken from https://fossies.org/linux/SDL2/include/SDL_scancode.h
         local scancode_right_bracket = 48
         local scancode_backslash = 49
 
-        if self.enabled then
-            self.is_next_frame = false
+        if s.enabled then
+            s.is_next_frame = false
             if stat(28, scancode_right_bracket) then
                 if not is_step_button_pressed_already then
-                    self.is_next_frame = true
+                    s.is_next_frame = true
                 end
                 is_step_button_pressed_already = true
             else
@@ -70,7 +64,7 @@ d = (function()
 
         if stat(28, scancode_backslash) then
             if not is_toggle_button_pressed_already then
-                self.enabled = not self.enabled
+                s.enabled = not s.enabled
             end
             is_toggle_button_pressed_already = true
         else
@@ -78,15 +72,13 @@ d = (function()
         end
     end
 
-    --
-
-    function self.log(...)
-        if self.enabled then
+    function s.log(...)
+        if s.enabled then
             printh(log_string_from_args(...))
         end
     end
 
     --
 
-    return self
+    return s
 end)()

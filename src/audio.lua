@@ -1,7 +1,3 @@
--- -- -- --
--- audio --
--- -- -- --
-
 audio = (function()
     local pico8_sfx = sfx
 
@@ -11,11 +7,11 @@ audio = (function()
 
     local next_sfx_asset
 
-    local self = {}
+    local s = {}
 
     --
 
-    function self.sfx(sfx_asset)
+    function s.sfx(sfx_asset)
         if not next_sfx_asset then
             next_sfx_asset = sfx_asset
         else
@@ -23,9 +19,7 @@ audio = (function()
         end
     end
 
-    --
-
-    function self.play()
+    function s.play()
         if next_sfx_asset then
             pico8_sfx(next_sfx_asset.track)
             next_sfx_asset = nil
@@ -34,5 +28,5 @@ audio = (function()
 
     --
 
-    return self
+    return s
 end)()
