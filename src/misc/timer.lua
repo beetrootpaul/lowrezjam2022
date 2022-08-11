@@ -1,8 +1,7 @@
 function new_timer(params)
     local start = u.r(params.start)
     local key_moments = params.key_moments or {}
-    local on_key_moment = params.on_key_moment or (function()
-    end)
+    local on_key_moment = params.on_key_moment or u.noop
 
     local t = start
 

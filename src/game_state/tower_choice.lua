@@ -1,11 +1,15 @@
 function new_tower_choice()
     local towers = {}
     -- TODO: support all 4 tower types
-    for tower_type in all({ "laser", "v_beam" }) do
+    for tower_type in all({ "laser", "booster", "v_beam" }) do
         add(towers, {
             type = tower_type,
             cost = a.towers[tower_type].cost,
             dps = a.towers[tower_type].dps,
+            charging_time = a.towers[tower_type].charging_time,
+            shooting_time = a.towers[tower_type].shooting_time,
+            charging_time_boost = a.towers[tower_type].charging_time_boost,
+            shooting_time_boost = a.towers[tower_type].shooting_time_boost,
         })
     end
     local chosen = 1

@@ -22,6 +22,11 @@ function new_placement(params)
             return new_tower_range_v_beam {
                 tile = chosen_tile,
             }
+        elseif chosen_tower.type == "booster" then
+            return new_tower_range_booster {
+                tile = chosen_tile,
+                warzone = warzone,
+            }
         else
             assert(false, "unexpected tower type: " .. chosen_tower.type)
         end
@@ -42,7 +47,7 @@ function new_placement(params)
             result.can_build = false
             result.colliding_towers = colliding_towers
         end
-        if not warzone.can_build { tile = chosen_tile } then
+        if not warzone.can_have_tower_at(chosen_tile) then
             result.can_build = false
         end
         return result
@@ -86,7 +91,7 @@ function new_placement(params)
         sspr(sprite.x, sprite.y, u.ts, u.ts, (a.warzone_border_tiles + chosen_tile.x) * u.ts, (a.warzone_border_tiles + chosen_tile.y) * u.ts)
 
         -- TODO: draw dimmed range if cannot build
-        tower_range.draw(a.colors.white)
+        tower_range.draw(a.colors.white, a.colors.grey_dark)
 
         local can_build_check_result = check_if_can_build()
 

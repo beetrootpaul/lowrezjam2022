@@ -115,6 +115,7 @@ a = {
         road_edge_left = { x = 4, y = 28 },
         --TODO: consolidate tower descriptors in this file
         tower_laser = { x = 48, y = 0 },
+        tower_booster = { x = 48, y = 8 },
         tower_v_beam = { x = 48, y = 16 },
     },
     --TODO: consolidate tower descriptors in this file
@@ -122,20 +123,33 @@ a = {
         --TODO: other tower types
         laser = {
             cost = 20,
-            dps = 10,
+            dps = 30,
+            charging_time = .9,
+            shooting_time = .1,
+            charging_time_boost = -.1,
+            shooting_time_boost = .1,
+        },
+        booster = {
+            cost = 30,
         },
         v_beam = {
             cost = 50,
-            dps = 30,
+            dps = 60,
+            charging_time = 2,
+            shooting_time = .5,
+            charging_time_boost = -.3,
+            shooting_time_boost = .2,
         },
     },
     warzone_size_tiles = 12,
     warzone_border = 8,
     warzone_border_tiles = 2,
     waves = {
+        -- TODO: more enemy types
         -- "-" = nothing
         -- "s" = small
-        -- TODO: more enemy types
+        --
+        --{ wait = 1, spawns = { "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s" } },
         { wait = 4, spawns = { "s", "-", "-", "s", "-", "-", "s" } },
         { wait = 4, spawns = { "s", "s", "-", "s", "s", "-", "s", "s" } },
     },
