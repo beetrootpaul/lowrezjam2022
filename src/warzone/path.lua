@@ -1,8 +1,6 @@
 function new_path(params)
     local waypoints = u.r(params.waypoints)
 
-    -- TODO: path: validate waypoints: cannot change X and Y at the same time
-    -- TODO: path: validate waypoints: at least 1 of them
     -- TODO: path: refactor
     local points = (function()
         local prev = waypoints[1]

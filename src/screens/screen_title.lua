@@ -1,8 +1,7 @@
 -- TODO: screen polish
 function new_screen_title()
     local timer = new_timer {
-        -- TODO: final duration
-        start = 0.4 * u.fps,
+        start = 4 * u.fps,
     }
 
     local s = {}

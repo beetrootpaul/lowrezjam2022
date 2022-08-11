@@ -1,4 +1,3 @@
--- TODO: reconsider names
 function new_game_state()
     local s = {
         building_state = "idle",

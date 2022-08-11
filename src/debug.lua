@@ -42,7 +42,6 @@ d = (function()
         poke(0x5f2d, 0x1)
     end
 
-    -- TODO: extract `stat(28, …)` to utils
     function s.update()
         -- Scan codes taken from https://fossies.org/linux/SDL2/include/SDL_scancode.h
         local scancode_right_bracket = 48

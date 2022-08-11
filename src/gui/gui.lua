@@ -1,5 +1,3 @@
--- TODO: tower choice state (in general)
--- TODO: tower choice state -> back button
 function new_gui(params)
     local waves = u.r(params.waves)
     local game_state = u.r(params.game_state)
@@ -18,7 +16,6 @@ function new_gui(params)
 
     local s = {}
 
-    -- TODO: refactor
     function s.draw()
         local is_o_pressed = button_o.is_pressed()
         local is_x_pressed = button_x.is_pressed()

@@ -13,7 +13,7 @@ __lua__
 #include src/enemies/enemy.lua
 #include src/enemies/enemy_range.lua
 #include src/enemies/health.lua
-#include src/enemies/path_following_position.lua
+#include src/enemies/path_progression.lua
 
 #include src/fight/fight.lua
 

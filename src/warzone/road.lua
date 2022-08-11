@@ -22,7 +22,6 @@ function new_road()
         "10|5", "11|5", "12|5", "13|5",
     }
 
-    -- TODO: refactor
     local waypoints = (function()
         local ww = {}
         for i = 1, #serialized_tiles do
@@ -51,9 +50,7 @@ function new_road()
         return path
     end
 
-    -- TODO: in theory it should check for extended road start and beginning as well
     function s.is_at(tile_to_check)
-        -- TODO: refactor it, please…
         local tt = {}
         for st in all(serialized_tiles) do
             tt[st] = true
@@ -62,7 +59,6 @@ function new_road()
     end
 
     -- TODO: road: line of plain ground around edges and corners
-    -- TODO: refactor
     function s.draw()
         local tt = {}
         for st in all(serialized_tiles) do
@@ -85,7 +81,6 @@ function new_road()
         if d.enabled then
             local color_toggle = true
             for point in all(path.points) do
-                -- TODO: PICO-8 API: describe PSET
                 pset(point.x, point.y, color_toggle and a.colors.white or a.colors.blue_light)
                 color_toggle = not color_toggle
             end

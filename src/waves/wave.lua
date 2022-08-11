@@ -22,7 +22,6 @@ function new_wave(params)
 
     local timer = new_timer {
         start = u.fps * (#spawns - 1),
-        -- TODO: various waves
         key_moments = key_moments,
         on_key_moment = function(type)
             enemies.spawn(type)

@@ -1,6 +1,4 @@
--- TODO: change its name
--- TODO: refactor
-function new_path_following_position(params)
+function new_path_progression(params)
     local path_points = u.r(params.path).points
 
     local frames_per_point = ceil(u.fps * a.enemy_speed)
@@ -33,15 +31,10 @@ function new_path_following_position(params)
     end
 
     function s.update()
-        -- TODO: use smarter solution for incrementing table index every N frames
         if counter == 0 then
-            if point_index < #path_points then
-                point_index = point_index + 1
-            end
-            counter = counter + 1
-        else
-            counter = (counter + 1) % frames_per_point
+            point_index = min(point_index + 1, #path_points)
         end
+        counter = (counter + 1) % frames_per_point
     end
 
     return s

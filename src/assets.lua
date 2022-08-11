@@ -147,17 +147,12 @@ a = {
         road_edge_top = { x = 0, y = 20 },
         road_edge_right = { x = 4, y = 24 },
         road_edge_left = { x = 4, y = 28 },
-        --TODO: consolidate tower descriptors in this file
-        tower_laser = { x = 48, y = 0 },
-        tower_booster = { x = 48, y = 8 },
-        tower_v_beam = { x = 48, y = 16 },
     },
-    --TODO: consolidate tower descriptors in this file
     towers = {
-        --TODO: other tower types
         laser = {
             label = "laser",
             cost = 20,
+            sprite = { x = 48, y = 0 },
             dps = 30,
             charging_time = .9,
             shooting_time = .1,
@@ -167,10 +162,12 @@ a = {
         booster = {
             label = "booster",
             cost = 30,
+            sprite = { x = 48, y = 8 },
         },
         v_beam = {
             label = "v-beam",
             cost = 50,
+            sprite = { x = 48, y = 16 },
             dps = 60,
             charging_time = 2,
             shooting_time = .5,

@@ -70,7 +70,6 @@ function new_tower(params)
         if not charging_timer then
             local is_attacking = false
 
-            -- TODO: support more tower types
             if s.type == "laser" then
                 enemies.for_each_from_furthest(function(enemy)
                     if not is_attacking and range.touches_enemy(enemy) then
@@ -117,7 +116,7 @@ function new_tower(params)
 
     -- TODO: v-beam's "rails"
     function s.draw()
-        local sprite = u.r(a.tiles["tower_" .. s.type])
+        local sprite = tower_descriptor.sprite
         sspr(sprite.x, sprite.y, u.ts, u.ts, s.x, s.y)
 
         if d.enabled then

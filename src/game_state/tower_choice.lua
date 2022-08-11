@@ -1,11 +1,11 @@
 function new_tower_choice()
     local towers = {}
-    -- TODO: support all 4 tower types
     for tower_type in all({ "laser", "booster", "v_beam" }) do
         add(towers, {
             type = tower_type,
             label = a.towers[tower_type].label,
             cost = a.towers[tower_type].cost,
+            sprite = a.towers[tower_type].sprite,
             dps = a.towers[tower_type].dps,
             charging_time = a.towers[tower_type].charging_time,
             shooting_time = a.towers[tower_type].shooting_time,
@@ -18,7 +18,6 @@ function new_tower_choice()
     local s = {}
 
     function s.towers_in_cost_order()
-        --TODO: sort by cost instead of hardcoding the order
         return towers
     end
 

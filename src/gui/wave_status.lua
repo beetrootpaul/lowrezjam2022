@@ -2,7 +2,6 @@ function new_wave_status(params)
     local waves = u.r(params.waves)
 
     -- TODO: wait label slide in and slide out animation
-    -- TODO: refactor
     return {
         draw = function()
             if waves.current_wait() then

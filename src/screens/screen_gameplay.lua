@@ -25,7 +25,6 @@ function new_screen_gameplay()
         on_release = function(self)
             -- TODO: button SFX
             if game_state.building_state == "idle" then
-                -- TODO: custom menu item to go back to warzone selection
                 extcmd("pause")
             elseif game_state.building_state == "tower-choice" then
                 game_state.building_state = "idle"

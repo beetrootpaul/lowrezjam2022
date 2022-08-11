@@ -1,8 +1,7 @@
 -- TODO: screen polish
 function new_screen_over()
     local timer = new_timer {
-        -- TODO: final duration
-        start = 0.8 * u.fps,
+        start = 4 * u.fps,
     }
 
     local s = {}

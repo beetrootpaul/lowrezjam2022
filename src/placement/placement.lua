@@ -1,11 +1,9 @@
--- TODO: what if there is no more place to build a tower?
 function new_placement(params)
     local chosen_tower = u.r(params.tower_choice).chosen_tower()
     local warzone = u.r(params.warzone)
     local other_towers = u.r(params.other_towers)
     local money = u.r(params.money)
 
-    -- TODO: start in the middle
     -- TODO: start on a tile used previously or start on a first available tile
     local chosen_tile = new_tile(0, 0)
 
@@ -81,9 +79,7 @@ function new_placement(params)
     end
 
     function s.draw()
-        local sprite = u.r(a.tiles["tower_" .. chosen_tower.type])
-
-        -- TODO: indicate conflicting tiles and other reasons that cannot build
+        local sprite = chosen_tower.sprite
 
         -- TODO: draw dimmed sprite if cannot build
         sspr(sprite.x, sprite.y, u.ts, u.ts, (a.warzone_border_tiles + chosen_tile.x) * u.ts, (a.warzone_border_tiles + chosen_tile.y) * u.ts)
@@ -95,7 +91,6 @@ function new_placement(params)
 
         -- TODO: fancier details of colliding tiles
         for tower in all(can_build_check_result.colliding_towers) do
-            -- TODO: PICO-8 API: describe PFILL
             fillp(0xa5a5 + .5)
             rectfill(tower.x, tower.y, tower.x + u.ts - 1, tower.y + u.ts - 1, a.colors.red_light)
             fillp()
