@@ -21,7 +21,6 @@ function new_screen_gameplay(params)
     local placement
     local button_o = new_button {
         on_release = function(self)
-            -- TODO: button SFX
             if game_state.building_state == "idle" then
                 extcmd("pause")
             elseif game_state.building_state == "tower-choice" then
@@ -34,7 +33,7 @@ function new_screen_gameplay(params)
     }
     local button_x = new_button {
         on_release = function(self)
-            -- TODO: button SFX
+            audio.sfx(a.sfx.button_press)
             if game_state.building_state == "idle" then
                 game_state.building_state = "tower-choice"
             elseif game_state.building_state == "tower-choice" then
@@ -100,10 +99,10 @@ function new_screen_gameplay(params)
                         button_x.set_enabled(placement.can_build())
                     elseif game_state.building_state == "tower-choice" then
                         if direction.x > 0 then
-                            -- TODO: choice SFX
+                            audio.sfx(a.sfx.button_press)
                             game_state.tower_choice.choose_next_tower()
                         elseif direction.x < 0 then
-                            -- TODO: choice SFX
+                            audio.sfx(a.sfx.button_press)
                             game_state.tower_choice.choose_prev_tower()
                         end
                     else

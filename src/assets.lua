@@ -145,8 +145,9 @@ a = {
     money_increase_seconds = 0.5,
     money_initial = 40,
     sfx = {
-        cannot_place = { priority = 4, track = 18 },
-        tower_placed = { priority = 3, track = 19 },
+        cannot_place = { priority = 5, track = 18 },
+        tower_placed = { priority = 4, track = 19 },
+        button_press = { priority = 3, track = 20 },
         v_beam = { priority = 2, track = 17 },
         laser = { priority = 1, track = 16 },
     },
@@ -194,15 +195,15 @@ a = {
     waves = {
         -- TODO: fix edge case of 1-long wave: progress drawn wrong, wave never ends
         { wait = 4, spawns = "s,-,-,s,-,-,s" },
-        { wait = 4, spawns = "s,s,-,s,s,-,s,s" },
+        { wait = 2, spawns = "s,s,-,s,s,-,s,s" },
         { wait = 4, spawns = "m,-,-,s,s,s,-,-,m" },
         { wait = 4, spawns = "s,s,s,-,-,m,m,-,-,-,s,-,-,b" },
-        { wait = 4, spawns = "s,m,b,-,-,-,s,b,-,-,m,m" },
-        { wait = 4, spawns = "m,m,-,-,b,b,b" },
-        { wait = 4, spawns = "b,b,-,m,m,-,b,b" },
+        { wait = 6, spawns = "s,m,b,-,-,-,s,b,-,-,m,m" },
+        { wait = 2, spawns = "m,m,-,-,b,b,b" },
+        { wait = 4, spawns = "s,s,-,m,m,-,b,b" },
         { wait = 4, spawns = "b,-,s,-,m,-,s,-,b" },
-        { wait = 4, spawns = "m,-,-,-,b,b,b,b,b,b" },
-        { wait = 4, spawns = "s,m,m,b,b,b,-,-,-,-,b,b,b,m,m,s" },
+        { wait = 2, spawns = "m,-,-,-,m,m,m,m,m,m" },
+        { wait = 8, spawns = "s,m,m,b,b,b,-,-,-,-,b,b,b,m,m,s" },
     },
 }
 
