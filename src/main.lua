@@ -8,6 +8,8 @@ function _init()
 
     next_screen = new_screen_title()
     current_screen = next_screen
+
+    music(0)
 end
 
 -- wiki: https://pico-8.fandom.com/wiki/Update
@@ -35,7 +37,5 @@ function _draw()
     u.set_display_palette(a.palette)
 end
 
--- TODO: music
 -- TODO: consider sliding menu items in
 -- TODO: README: write it clear the code is not clean, because it was optimized towards chars limit (write down those numbers)
--- TODO: final README: correct title, description, controls, screenshots, itch.io link
