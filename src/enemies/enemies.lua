@@ -6,10 +6,9 @@ function new_enemies(params)
 
     local s = {}
 
-    --
-
-    function s.spawn()
+    function s.spawn(enemy_type)
         add(enemies, new_enemy {
+            enemy_type = enemy_type,
             path = path,
             on_reached_path_end = on_enemy_reached_path_end,
         })
@@ -46,8 +45,6 @@ function new_enemies(params)
             enemy.draw()
         end
     end
-
-    --
 
     return s
 end

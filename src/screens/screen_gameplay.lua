@@ -1,8 +1,7 @@
-function new_screen_gameplay()
-    local game_state = new_game_state()
-    local warzone = new_warzone {
-        lives = game_state.lives,
-    }
+function new_screen_gameplay(params)
+    local game_state = params.game_state
+    local warzone = params.warzone
+
     local enemies = new_enemies {
         path = warzone.path(),
         on_enemy_reached_path_end = function()
@@ -25,7 +24,6 @@ function new_screen_gameplay()
         on_release = function(self)
             -- TODO: button SFX
             if game_state.building_state == "idle" then
-                -- TODO: custom menu item to go back to warzone selection
                 extcmd("pause")
             elseif game_state.building_state == "tower-choice" then
                 game_state.building_state = "idle"
@@ -35,7 +33,6 @@ function new_screen_gameplay()
             end
         end
     }
-    -- TODO: incentivize player to press X for the first time to build their first tower
     local button_x = new_button {
         on_release = function(self)
             -- TODO: button SFX
@@ -77,16 +74,14 @@ function new_screen_gameplay()
 
     local s = {}
 
-    --
-
     function s.update()
         local next_screen = s
 
         if game_state.has_lost_all_lives() then
-            -- TODO: screen transition
-            next_screen = new_screen_over()
+            next_screen = new_screen_over {
+                waves_survived = waves.wave_number() - 1
+            }
         elseif waves.have_spawn_all_enemies() and enemies.are_none_left() then
-            -- TODO: screen transition
             next_screen = new_screen_win()
         end
 
@@ -141,8 +136,6 @@ function new_screen_gameplay()
         end
         gui.draw()
     end
-
-    --
 
     return s
 end

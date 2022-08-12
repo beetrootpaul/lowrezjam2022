@@ -8,8 +8,6 @@ function new_button(params)
 
     local s = {}
 
-    --
-
     function s.set_pressed(value)
         if is_pressed and not value then
             was_just_released = true
@@ -46,8 +44,6 @@ function new_button(params)
         end
         was_just_released = false
     end
-
-    --
 
     return s
 end

@@ -9,8 +9,6 @@ audio = (function()
 
     local s = {}
 
-    --
-
     function s.sfx(sfx_asset)
         if not next_sfx_asset then
             next_sfx_asset = sfx_asset
@@ -25,8 +23,6 @@ audio = (function()
             next_sfx_asset = nil
         end
     end
-
-    --
 
     return s
 end)()

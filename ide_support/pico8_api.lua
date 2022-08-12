@@ -288,6 +288,17 @@ end
 function fget(n, f)
 end
 
+--- The PICO-8 fill pattern is a 4x4 2-colour tiled pattern observed by: CIRC() CIRCFILL() RECT() RECTFILL() OVAL() OVALFILL() PSET() LINE()
+---
+---
+--- - API docs: https://www.lexaloffle.com/dl/docs/pico-8_manual.html#FILLP
+---
+--- - Wiki: https://pico-8.fandom.com/wiki/Fillp
+---
+--- @param p number a bitfield in reading order starting from the highest bit
+function fillp(p)
+end
+
 --- For each item in table TBL, call function FUNC with the item as a single parameter.
 ---
 ---
@@ -539,6 +550,19 @@ end
 --- @param overwrite boolean optional
 --- @param save_to_desktop boolean optional
 function printh(str, filename, overwrite, save_to_desktop)
+end
+
+--- Sets the pixel at x, y to colour index COL (0..15).
+---
+---
+--- - API docs: https://www.lexaloffle.com/dl/docs/pico-8_manual.html#PSET
+---
+--- - Wiki: https://pico-8.fandom.com/wiki/Pset
+---
+--- @param x number
+--- @param y number
+--- @param col number color, optional
+function pset(x, y, col)
 end
 
 --- Draw a rectangle with corners at (X0, Y0), (X1, Y1).

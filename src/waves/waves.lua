@@ -13,8 +13,6 @@ function new_waves(params)
 
     local s = {}
 
-    --
-
     function s.current_wait()
         return wait
     end
@@ -56,8 +54,6 @@ function new_waves(params)
             wave.update()
         end
     end
-
-    --
 
     return s
 end

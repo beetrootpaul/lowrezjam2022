@@ -7,8 +7,6 @@ function new_wait(params)
 
     local s = {}
 
-    --
-
     function s.progress()
         return timer.progress()
     end
@@ -16,8 +14,6 @@ function new_wait(params)
     function s.update()
         timer.update()
     end
-
-    --
 
     return s
 end

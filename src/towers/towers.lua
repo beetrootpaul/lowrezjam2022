@@ -7,10 +7,6 @@ function new_towers(params)
 
     local s = {}
 
-    --
-
-    -- TODO: special rules for laser vs aim-k.o. + indication of their collisions
-    -- TODO: special rules for v_beam vs aim-k.o. + indication of their collisions
     function s.find_colliding_towers(chosen_tower_type, chosen_tile)
         local colliding = {}
         for tower in all(towers) do
@@ -28,8 +24,6 @@ function new_towers(params)
         return colliding
     end
 
-    --
-
     function s.build_tower(p)
         add(towers, new_tower {
             tower_descriptor = u.r(p.tower_descriptor),
@@ -39,6 +33,7 @@ function new_towers(params)
             fight = fight,
             warzone = warzone,
         })
+        warzone.ground.make_plain_at_and_around(p.tile)
     end
 
     function s.count_reaching_boosters(tile)
@@ -62,8 +57,6 @@ function new_towers(params)
             tower.draw()
         end
     end
-
-    --
 
     return s
 end

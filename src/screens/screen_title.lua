@@ -1,24 +1,15 @@
--- TODO: screen polish
 function new_screen_title()
     local timer = new_timer {
-        -- TODO: final duration
-        start = 0.4 * u.fps,
+        start = 3 * u.fps,
     }
 
     local s = {}
 
-    --
-
     function s.update()
         local next_screen = s
 
-        if u.is_any_button_pressed() then
-            timer.skip_to_end()
-        end
-
         if timer.has_finished() then
-            -- TODO: screen transition
-            next_screen = new_screen_gameplay()
+            next_screen = new_screen_pre_gameplay()
         end
 
         timer.update()
@@ -27,11 +18,14 @@ function new_screen_title()
     end
 
     function s.draw()
-        print("todo: game title", 0, u.vs / 2 - 8, a.colors.white)
-        print("by beetroot paul", 0, u.vs / 2 + 8, a.colors.white)
-    end
+        local clip_progress = max(0, 6 * timer.progress() - 5)
+        local clip_y = flr(clip_progress * u.vs / 2)
+        clip(0, clip_y, u.vs, u.vs - 2 * clip_y)
 
-    --
+        sspr(0, 64, u.vs, u.vs, 0, 0)
+
+        clip()
+    end
 
     return s
 end

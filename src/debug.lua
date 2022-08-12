@@ -2,41 +2,39 @@ d = (function()
     local is_toggle_button_pressed_already = false
     local is_step_button_pressed_already = false
 
-    -- Based on #printh_helpers cart (https://www.lexaloffle.com/bbs/?tid=42367)
-    function log_string_from_args(...)
-        local args = pack(...)
-        if #args == 0 then
-            return ""
-        elseif #args == 1 then
-            return type(args[1]) == "table"
-                and log_string_from_table(args[1])
-                or tostr(args[1])
-        else
-            local s = ""
-            for i = 1, args.n do
-                s = s .. (log_string_from_args(args[i])) .. " "
-            end
-            return s
-        end
-    end
-
-    -- Based on #printh_helpers cart (https://www.lexaloffle.com/bbs/?tid=42367)
-    function log_string_from_table(table)
-        local s = "{"
-        for key, value in pairs(table) do
-            s = s .. log_string_from_args(key)
-            s = s .. "=" .. log_string_from_args(value)
-            s = s .. ","
-        end
-        return s .. "}"
-    end
-
     local s = {
         enabled = false,
         is_next_frame = false,
     }
 
-    --
+    -- Based on #printh_helpers cart (https://www.lexaloffle.com/bbs/?tid=42367)
+    function s.log_string_from_args(...)
+        local args = pack(...)
+        if #args == 0 then
+            return ""
+        elseif #args == 1 then
+            return type(args[1]) == "table"
+                and s.log_string_from_table(args[1])
+                or tostr(args[1])
+        else
+            local t = ""
+            for i = 1, args.n do
+                t = t .. (s.log_string_from_args(args[i])) .. " "
+            end
+            return t
+        end
+    end
+
+    -- Based on #printh_helpers cart (https://www.lexaloffle.com/bbs/?tid=42367)
+    function s.log_string_from_table(table)
+        local t = "{"
+        for key, value in pairs(table) do
+            t = t .. s.log_string_from_args(key)
+            t = t .. "=" .. s.log_string_from_args(value)
+            t = t .. ","
+        end
+        return t .. "}"
+    end
 
     function s.configure()
         -- Enable access to full keyboard.
@@ -44,7 +42,6 @@ d = (function()
         poke(0x5f2d, 0x1)
     end
 
-    -- TODO: extract `stat(28, …)` to utils
     function s.update()
         -- Scan codes taken from https://fossies.org/linux/SDL2/include/SDL_scancode.h
         local scancode_right_bracket = 48
@@ -74,11 +71,9 @@ d = (function()
 
     function s.log(...)
         if s.enabled then
-            printh(log_string_from_args(...))
+            printh(s.log_string_from_args(...))
         end
     end
-
-    --
 
     return s
 end)()

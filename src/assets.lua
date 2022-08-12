@@ -1,12 +1,13 @@
 a = {
     button_sprites = {
+        -- format: { x, y, w, h }
         x = {
-            raised = { x = 115, y = 32, w = 5, h = 6 },
-            pressed = { x = 115, y = 40, w = 5, h = 6 },
+            raised = { 115, 32, 5, 6 },
+            pressed = { 115, 40, 5, 6 },
         },
         o = {
-            raised = { x = 109, y = 32, w = 5, h = 6 },
-            pressed = { x = 109, y = 40, w = 5, h = 6 },
+            raised = { 109, 32, 5, 6 },
+            pressed = { 109, 40, 5, 6 },
         },
     },
     colors = {
@@ -47,13 +48,49 @@ a = {
     },
     enemies = {
         small = {
-            sprite_right = { x = 16, y = 0, w = 3, h = 3 },
-            sprite_damage_right = { x = 16, y = 4, w = 3, h = 3 },
             hitbox_r = 1,
-            health = 40,
+            health = 20,
+            -- format: {x, y, w, h, offset_x, offset_y, hitbox_offset_x, hitbox_offset_y }
+            sprite_right = { 16, 0, 3, 3, 0, 0, 1, 1 },
+            sprite_left = { 16, 0, 3, 3, 0, 0, 1, 1 },
+            sprite_up = { 20, 0, 2, 4, 1, -1, 1, 0 },
+            sprite_down = { 20, 0, 2, 4, 1, -1, 1, 0 },
+            -- format: {x, y, w, h, offset_x, offset_y }
+            sprite_damage_right = { 16, 4, 3, 3, 0, 0 },
+            sprite_damage_left = { 16, 4, 3, 3, 0, 0 },
+            sprite_damage_up = { 20, 4, 2, 4, 1, -1 },
+            sprite_damage_down = { 20, 4, 2, 4, 1, -1 },
         },
-        --TODO: other enemy types
+        medium = {
+            hitbox_r = 1.5,
+            health = 65,
+            -- format: {x, y, w, h, offset_x, offset_y, hitbox_offset_x, hitbox_offset_y }
+            sprite_right = { 24, 0, 4, 5, 0, -1, 1.5, .5 },
+            sprite_left = { 24, 0, 4, 5, 0, -1, 1.5, .5 },
+            sprite_up = { 24, 0, 4, 5, 0, -1, 1.5, .5 },
+            sprite_down = { 24, 0, 4, 5, 0, -1, 1.5, .5 },
+            -- format: {x, y, w, h, offset_x, offset_y }
+            sprite_damage_right = { 28, 0, 4, 5, 0, -1 },
+            sprite_damage_left = { 28, 0, 4, 5, 0, -1 },
+            sprite_damage_up = { 28, 0, 4, 5, 0, -1 },
+            sprite_damage_down = { 28, 0, 4, 5, 0, -1 },
+        },
+        big = {
+            hitbox_r = 2,
+            health = 130,
+            -- format: {x, y, w, h, offset_x, offset_y, hitbox_offset_x, hitbox_offset_y }
+            sprite_right = { 16, 9, 5, 5, -1, -1, 1.5, .5 },
+            sprite_left = { 22, 9, 5, 5, -1, -1, 1.5, .5 },
+            sprite_up = { 28, 8, 4, 6, 0, -1, 1.5, 1.5 },
+            sprite_down = { 33, 9, 4, 6, 0, -1, 1.5, .5 },
+            -- format: {x, y, w, h, offset_x, offset_y }
+            sprite_damage_right = { 16, 15, 5, 5, -1, -1 },
+            sprite_damage_left = { 22, 15, 5, 5, -1, -1 },
+            sprite_damage_up = { 28, 14, 4, 6, 0, -1 },
+            sprite_damage_down = { 33, 15, 4, 6, 0, -1 },
+        },
     },
+    enemy_speed = 10,
     font_sprites = {
         -- format: { x, y, width = 3 }
         ["a"] = { 0, 32 },
@@ -82,12 +119,9 @@ a = {
         ["x"] = { 88, 32 },
         ["y"] = { 92, 32 },
         ["z"] = { 96, 32 },
-        --
         ["-"] = { 100, 32, 2 },
         ["."] = { 103, 32, 1 },
-        ["$"] = { 105, 32 },
         [" "] = { 126, 32, 2 },
-        --
         ["1"] = { 0, 40, 2 },
         ["2"] = { 3, 40 },
         ["3"] = { 7, 40 },
@@ -98,7 +132,13 @@ a = {
         ["8"] = { 27, 40 },
         ["9"] = { 31, 40 },
         ["0"] = { 35, 40 },
-        -- we represent back arrow as "<" here in order to avoid dealing with UTF characters longer than one position in a string
+        -- star:
+        ["*"] = { 39, 40, 5 },
+        -- skull:
+        ["@"] = { 45, 40, 5 },
+        -- abstract currency symbol:
+        ["$"] = { 105, 32 },
+        -- back arrow:
         ["<"] = { 121, 32, 4 },
     },
     lives_max = 5,
@@ -108,50 +148,57 @@ a = {
     },
     tiles = {
         ground_textured = { x = 0, y = 8 },
+        ground_plain = { x = 4, y = 8 },
         road = { x = 0, y = 24 },
         road_edge_bottom = { x = 0, y = 28 },
         road_edge_top = { x = 0, y = 20 },
         road_edge_right = { x = 4, y = 24 },
         road_edge_left = { x = 4, y = 28 },
-        --TODO: consolidate tower descriptors in this file
-        tower_laser = { x = 48, y = 0 },
-        tower_booster = { x = 48, y = 8 },
-        tower_v_beam = { x = 48, y = 16 },
     },
-    --TODO: consolidate tower descriptors in this file
     towers = {
-        --TODO: other tower types
         laser = {
+            label = "laser",
             cost = 20,
-            dps = 30,
+            sprite = { x = 48, y = 0 },
+            dps = 20,
             charging_time = .9,
             shooting_time = .1,
             charging_time_boost = -.1,
             shooting_time_boost = .1,
         },
         booster = {
+            label = "booster",
             cost = 30,
+            sprite = { x = 48, y = 8 },
         },
         v_beam = {
-            cost = 50,
-            dps = 60,
+            label = "v-beam",
+            cost = 70,
+            sprite = { x = 48, y = 16 },
+            dps = 35,
             charging_time = 2,
             shooting_time = .5,
-            charging_time_boost = -.3,
-            shooting_time_boost = .2,
+            charging_time_boost = -.2,
+            shooting_time_boost = .1,
         },
     },
     warzone_size_tiles = 12,
-    warzone_border = 8,
-    warzone_border_tiles = 2,
+    -- warzone border
+    wb = 8,
+    -- warzone border tiles
+    wbt = 2,
     waves = {
-        -- TODO: more enemy types
-        -- "-" = nothing
-        -- "s" = small
-        --
-        --{ wait = 1, spawns = { "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s", "s" } },
-        { wait = 4, spawns = { "s", "-", "-", "s", "-", "-", "s" } },
-        { wait = 4, spawns = { "s", "s", "-", "s", "s", "-", "s", "s" } },
+        -- TODO: fix edge case of 1-long wave: progress drawn wrong, wave never ends
+        { wait = 4, spawns = "s,-,-,s,-,-,s" },
+        { wait = 4, spawns = "s,s,-,s,s,-,s,s" },
+        { wait = 4, spawns = "m,-,-,s,s,s,-,-,m" },
+        { wait = 4, spawns = "s,s,s,-,-,m,m,-,-,-,s,-,-,b" },
+        { wait = 4, spawns = "s,m,b,-,-,-,s,b,-,-,m,m" },
+        { wait = 4, spawns = "m,m,-,-,b,b,b" },
+        { wait = 4, spawns = "b,b,-,m,m,-,b,b" },
+        { wait = 4, spawns = "b,-,s,-,m,-,s,-,b" },
+        { wait = 4, spawns = "m,-,-,-,b,b,b,b,b,b" },
+        { wait = 4, spawns = "s,m,m,b,b,b,-,-,-,-,b,b,b,m,m,s" },
     },
 }
 

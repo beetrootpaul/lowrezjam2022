@@ -5,13 +5,9 @@ function new_health(params)
         value = max_value,
     }
 
-    --
-
     function s.subtract(damage)
         s.value = max(0, s.value - damage)
     end
-
-    --
 
     return s
 end

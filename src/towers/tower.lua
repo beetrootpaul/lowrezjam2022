@@ -47,11 +47,9 @@ function new_tower(params)
 
     local s = {
         type = tower_descriptor.type,
-        x = (a.warzone_border_tiles + tile.x) * u.ts,
-        y = (a.warzone_border_tiles + tile.y) * u.ts,
+        x = (a.wbt + tile.x) * u.ts,
+        y = (a.wbt + tile.y) * u.ts,
     }
-
-    --
 
     function s.is_at(tile_to_check)
         return tile_to_check.is_same_as(tile)
@@ -61,6 +59,7 @@ function new_tower(params)
         return range
     end
 
+    -- TODO: prevent laser instantly switching from one target to another without ą need to recharge
     function s.update()
         if charging_timer and charging_timer.has_finished() then
             charging_timer = nil
@@ -72,7 +71,6 @@ function new_tower(params)
         if not charging_timer then
             local is_attacking = false
 
-            -- TODO: support more tower types
             if s.type == "laser" then
                 enemies.for_each_from_furthest(function(enemy)
                     if not is_attacking and range.touches_enemy(enemy) then
@@ -119,15 +117,13 @@ function new_tower(params)
 
     -- TODO: v-beam's "rails"
     function s.draw()
-        local sprite = u.r(a.tiles["tower_" .. s.type])
+        local sprite = tower_descriptor.sprite
         sspr(sprite.x, sprite.y, u.ts, u.ts, s.x, s.y)
 
         if d.enabled then
             range.draw(a.colors.blue_dark, a.colors.brown_dark)
         end
     end
-
-    --
 
     return s
 end

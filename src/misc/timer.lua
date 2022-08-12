@@ -7,14 +7,8 @@ function new_timer(params)
 
     local s = {}
 
-    --
-
     function s.has_finished()
         return t < 0
-    end
-
-    function s.skip_to_end()
-        t = -1
     end
 
     function s.progress()
@@ -28,8 +22,6 @@ function new_timer(params)
 
         t = max(-1, t - 1)
     end
-
-    --
 
     return s
 end
