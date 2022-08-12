@@ -145,6 +145,8 @@ a = {
     money_increase_seconds = 0.5,
     money_initial = 40,
     sounds = {
+        v_beam = { priority = 2, track = 17 },
+        laser = { priority = 1, track = 16 },
     },
     tiles = {
         ground_textured = { x = 0, y = 8 },
@@ -175,7 +177,7 @@ a = {
             label = "v-beam",
             cost = 70,
             sprite = { x = 48, y = 16 },
-            dps = 35,
+            dps = 40,
             charging_time = 2,
             shooting_time = .5,
             charging_time_boost = -.2,

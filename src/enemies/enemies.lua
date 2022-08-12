@@ -31,8 +31,6 @@ function new_enemies(params)
     function s.update()
         for enemy in all(enemies) do
             if enemy.has_finished() then
-                -- TODO: SFX
-                -- TODO: VFX
                 del(enemies, enemy)
             else
                 enemy.update()

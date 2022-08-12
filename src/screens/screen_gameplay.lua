@@ -6,7 +6,6 @@ function new_screen_gameplay(params)
         path = warzone.path(),
         on_enemy_reached_path_end = function()
             -- TODO: SFX
-            -- TODO: VFX
             game_state.lives.take_one()
         end,
     }
@@ -50,7 +49,6 @@ function new_screen_gameplay(params)
             elseif game_state.building_state == "tower-placement" then
                 if placement.can_build() then
                     -- TODO: placement & construction & money spent SFX
-                    -- TODO: construction VFX
                     local tower = game_state.tower_choice.chosen_tower()
                     game_state.money.subtract(tower.cost)
                     towers.build_tower {

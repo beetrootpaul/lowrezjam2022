@@ -75,9 +75,6 @@ function new_tower(params)
                 enemies.for_each_from_furthest(function(enemy)
                     if not is_attacking and range.touches_enemy(enemy) then
                         is_attacking = true
-                        -- TODO: SFX
-                        -- TODO: VFX tower
-                        -- TODO: VFX enemy
                         enemy.take_damage(tower_descriptor.dps / u.fps)
                         fight.show_laser {
                             source_xy = range.laser_source_xy(),
@@ -89,9 +86,6 @@ function new_tower(params)
                 enemies.for_each_from_furthest(function(enemy)
                     if range.touches_enemy(enemy) then
                         is_attacking = true
-                        -- TODO: SFX
-                        -- TODO: VFX tower
-                        -- TODO: VFX enemy
                         enemy.take_damage(tower_descriptor.dps / u.fps)
                     end
                 end)
@@ -104,6 +98,11 @@ function new_tower(params)
 
             if is_attacking and not shooting_timer then
                 shooting_timer = new_shooting_timer()
+                if s.type == "laser" then
+                    audio.sfx(a.sounds.laser)
+                elseif s.type == "v_beam" then
+                    audio.sfx(a.sounds.v_beam)
+                end
             end
         end
 
