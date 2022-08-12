@@ -145,6 +145,7 @@ a = {
     money_increase_seconds = 0.5,
     money_initial = 40,
     sfx = {
+        live_lost = { priority = 6, track = 21 },
         cannot_place = { priority = 5, track = 18 },
         tower_placed = { priority = 4, track = 19 },
         button_press = { priority = 3, track = 20 },

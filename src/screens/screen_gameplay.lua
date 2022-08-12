@@ -5,7 +5,7 @@ function new_screen_gameplay(params)
     local enemies = new_enemies {
         path = warzone.path(),
         on_enemy_reached_path_end = function()
-            -- TODO: SFX
+            audio.sfx(a.sfx.live_lost)
             game_state.lives.take_one()
         end,
     }

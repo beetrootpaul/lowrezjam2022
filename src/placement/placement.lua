@@ -62,9 +62,6 @@ function new_placement(params)
 
     function s.move_chosen_tile(direction)
         chosen_tile = chosen_tile.plus(direction.x, direction.y)
-
-        -- TODO: choose tile SFX
-        -- TODO: cannot choose out of range tile SFX
         chosen_tile = new_tile(
             mid(0, chosen_tile.x, a.warzone_size_tiles - 1),
             mid(0, chosen_tile.y, a.warzone_size_tiles - 1)
