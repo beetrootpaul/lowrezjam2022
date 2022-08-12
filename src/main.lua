@@ -36,6 +36,3 @@ function _draw()
 
     u.set_display_palette(a.palette)
 end
-
--- TODO: consider sliding menu items in
--- TODO: README: write it clear the code is not clean, because it was optimized towards chars limit (write down those numbers)
