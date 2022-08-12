@@ -11,9 +11,9 @@ function new_wave_status(params)
                 local progress_width_max = wave_label.width()
                 local progress_width = flr(progress * progress_width_max)
                 local progress_x = u.vs / 2 - ceil(progress_width_max / 2)
-                local progress_y = a.warzone_border - 2
+                local progress_y = a.wb - 2
 
-                wave_label.draw(progress_x, progress_y - u.text_height - 1, a.colors.brown_purple)
+                wave_label.draw(progress_x, progress_y - u.th - 1, a.colors.brown_purple)
 
                 if progress_width > 0 then
                     line(progress_x, progress_y, progress_x + progress_width - 1, progress_y, a.colors.brown_purple)
@@ -25,11 +25,11 @@ function new_wave_status(params)
                 local progress_width_max = wave_label.width()
                 local progress_width = flr(progress * progress_width_max)
                 local progress_x = u.vs / 2 - ceil(progress_width_max / 2)
-                local progress_y = a.warzone_border - 2
+                local progress_y = a.wb - 2
 
                 wave_label.draw(
                     progress_x,
-                    progress_y - u.text_height - 1,
+                    progress_y - u.th - 1,
                     a.colors.grey_light
                 )
 

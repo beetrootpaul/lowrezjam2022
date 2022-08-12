@@ -3,8 +3,8 @@ function new_tower_range_booster(params)
     local warzone = u.r(params.warzone)
 
     local xy = new_xy(
-        (a.warzone_border_tiles + tile.x) * u.ts,
-        (a.warzone_border_tiles + tile.y) * u.ts
+        (a.wbt + tile.x) * u.ts,
+        (a.wbt + tile.y) * u.ts
     )
 
     local offsets = {
@@ -30,15 +30,15 @@ function new_tower_range_booster(params)
     end
 
     function s.draw(color1, color2)
-        clip(0, a.warzone_border, u.vs, u.vs - a.warzone_border)
+        clip(0, a.wb, u.vs, u.vs - a.wb)
         rect(xy.x - u.ts, xy.y - u.ts, xy.x + 2 * u.ts - 1, xy.y + 2 * u.ts - 1, color2)
         clip()
 
         for offset in all(offsets) do
             local neighbour_tile = tile.plus(offset.x, offset.y)
             local xy2 = new_xy(
-                (a.warzone_border_tiles + neighbour_tile.x) * u.ts,
-                (a.warzone_border_tiles + neighbour_tile.y) * u.ts
+                (a.wbt + neighbour_tile.x) * u.ts,
+                (a.wbt + neighbour_tile.y) * u.ts
             )
             if warzone.can_have_tower_at(neighbour_tile) then
                 clip(xy2.x, xy2.y, u.ts, u.ts)

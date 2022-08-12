@@ -21,8 +21,8 @@ function new_chosen_tile_border(params)
 
     return {
         draw = function(can_build)
-            local x = (a.warzone_border_tiles + tile.x) * u.ts
-            local y = (a.warzone_border_tiles + tile.y) * u.ts
+            local x = (a.wbt + tile.x) * u.ts
+            local y = (a.wbt + tile.y) * u.ts
             for point in all(offsets) do
                 pset(x + point.x, y + point.y, can_build and a.colors.green or a.colors.red_light)
             end

@@ -34,7 +34,7 @@ function new_ground()
             for tile_x = 0, a.warzone_size_tiles - 1 do
                 for tile_y = 0, a.warzone_size_tiles - 1 do
                     local s = sprites[tile_x .. "|" .. tile_y]
-                    sspr(s.x, s.y, u.ts, u.ts, (a.warzone_border_tiles + tile_x) * u.ts, (a.warzone_border_tiles + tile_y) * u.ts)
+                    sspr(s.x, s.y, u.ts, u.ts, (a.wbt + tile_x) * u.ts, (a.wbt + tile_y) * u.ts)
                 end
             end
         end,

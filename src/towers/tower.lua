@@ -47,8 +47,8 @@ function new_tower(params)
 
     local s = {
         type = tower_descriptor.type,
-        x = (a.warzone_border_tiles + tile.x) * u.ts,
-        y = (a.warzone_border_tiles + tile.y) * u.ts,
+        x = (a.wbt + tile.x) * u.ts,
+        y = (a.wbt + tile.y) * u.ts,
     }
 
     function s.is_at(tile_to_check)

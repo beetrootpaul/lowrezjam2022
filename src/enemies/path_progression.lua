@@ -1,7 +1,7 @@
 function new_path_progression(params)
     local path_points = u.r(params.path).points
 
-    local frames_per_point = ceil(u.fps * a.enemy_speed)
+    local frames_per_point = ceil(u.fps / a.enemy_speed)
     local counter = 1
     local point_index = 1
 

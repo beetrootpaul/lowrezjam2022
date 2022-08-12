@@ -29,10 +29,10 @@ function new_fight()
             line(laser.x1, laser.y1, laser.x2, laser.y2, a.colors.white)
         end
         for beam in all(beams) do
-            local x1 = (a.warzone_border_tiles + beam.tile_x) * u.ts + 1
+            local x1 = (a.wbt + beam.tile_x) * u.ts + 1
             local x2 = x1 + 1
-            line(x1, a.warzone_border, x1, u.vs - a.warzone_border, a.colors.white)
-            line(x2, a.warzone_border, x2, u.vs - a.warzone_border, a.colors.white)
+            line(x1, a.wb, x1, u.vs - a.wb, a.colors.white)
+            line(x2, a.wb, x2, u.vs - a.wb, a.colors.white)
         end
     end
 

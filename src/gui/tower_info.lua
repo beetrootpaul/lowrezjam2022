@@ -7,7 +7,7 @@ function new_tower_info(params)
             sspr(s.x, s.y, u.ts, u.ts, 2, 2)
 
             local name_text = new_text(chosen_tower.label)
-            name_text.draw(a.warzone_border, 2, a.colors.grey_violet)
+            name_text.draw(a.wb, 2, a.colors.grey_violet)
         end,
     }
 end

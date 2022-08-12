@@ -21,13 +21,14 @@ function new_text(text_value)
     end
 
     function s.draw(x, y, color)
-        pal(a.font_template_color, color, 0)
         local current_x = x
-        for sprite in all(sprites) do
-            sspr(sprite.x, sprite.y, sprite.w, u.text_height, current_x, y)
+        for index, sprite in pairs(sprites) do
+            local c = type(color) == "function" and color(index, #text_value) or color
+            pal(a.font_template_color, c, 0)
+            sspr(sprite.x, sprite.y, sprite.w, u.th, current_x, y)
+            pal(a.font_template_color, a.font_template_color, 0)
             current_x = current_x + sprite.w + 1
         end
-        pal(a.font_template_color, a.font_template_color, 0)
     end
 
     return s

@@ -81,7 +81,7 @@ function new_placement(params)
         local sprite = chosen_tower.sprite
 
         -- TODO: draw dimmed sprite if cannot build
-        sspr(sprite.x, sprite.y, u.ts, u.ts, (a.warzone_border_tiles + chosen_tile.x) * u.ts, (a.warzone_border_tiles + chosen_tile.y) * u.ts)
+        sspr(sprite.x, sprite.y, u.ts, u.ts, (a.wbt + chosen_tile.x) * u.ts, (a.wbt + chosen_tile.y) * u.ts)
 
         -- TODO: draw dimmed range if cannot build
         tower_range.draw(a.colors.white, a.colors.grey_dark)

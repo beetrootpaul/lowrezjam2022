@@ -90,7 +90,7 @@ a = {
             sprite_damage_down = { 33, 15, 4, 6, 0, -1 },
         },
     },
-    enemy_speed = .1,
+    enemy_speed = 10,
     font_sprites = {
         -- format: { x, y, width = 3 }
         ["a"] = { 0, 32 },
@@ -121,7 +121,6 @@ a = {
         ["z"] = { 96, 32 },
         ["-"] = { 100, 32, 2 },
         ["."] = { 103, 32, 1 },
-        ["$"] = { 105, 32 },
         [" "] = { 126, 32, 2 },
         ["1"] = { 0, 40, 2 },
         ["2"] = { 3, 40 },
@@ -133,6 +132,13 @@ a = {
         ["8"] = { 27, 40 },
         ["9"] = { 31, 40 },
         ["0"] = { 35, 40 },
+        -- star:
+        ["*"] = { 39, 40, 5 },
+        -- skull:
+        ["@"] = { 45, 40, 5 },
+        -- abstract currency symbol:
+        ["$"] = { 105, 32 },
+        -- back arrow:
         ["<"] = { 121, 32, 4 },
     },
     lives_max = 5,
@@ -177,9 +183,12 @@ a = {
         },
     },
     warzone_size_tiles = 12,
-    warzone_border = 8,
-    warzone_border_tiles = 2,
+    -- warzone border
+    wb = 8,
+    -- warzone border tiles
+    wbt = 2,
     waves = {
+        -- TODO: fix edge case of 1-long wave: progress drawn wrong, wave never ends
         { wait = 4, spawns = "s,-,-,s,-,-,s" },
         { wait = 4, spawns = "s,s,-,s,s,-,s,s" },
         { wait = 4, spawns = "m,-,-,s,s,s,-,-,m" },

@@ -5,7 +5,8 @@ u = {
 
     fps = 60,
 
-    text_height = 4,
+    -- text height
+    th = 4,
 
     -- tile size
     ts = 4,

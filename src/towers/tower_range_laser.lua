@@ -2,8 +2,8 @@ function new_tower_range_laser(params)
     local tile = u.r(params.tile)
 
     local xy = new_xy(
-        (a.warzone_border_tiles + tile.x + .5) * u.ts - .5,
-        (a.warzone_border_tiles + tile.y + .5) * u.ts - .5
+        (a.wbt + tile.x + .5) * u.ts - .5,
+        (a.wbt + tile.y + .5) * u.ts - .5
     )
     local r = 2.5 * u.ts - .5
 
@@ -21,7 +21,7 @@ function new_tower_range_laser(params)
     end
 
     function s.draw(color1, color2)
-        clip(0, a.warzone_border, u.vs, u.vs - a.warzone_border)
+        clip(0, a.wb, u.vs, u.vs - a.wb)
         oval(xy.x - r, xy.y - r, xy.x + r, xy.y + r, color1)
         clip()
     end

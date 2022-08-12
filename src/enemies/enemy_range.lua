@@ -7,7 +7,7 @@ function new_enemy_range(params)
             return { xy = xy, r = r }
         end,
         draw = function(color)
-            clip(0, a.warzone_border, u.vs, u.vs - a.warzone_border)
+            clip(0, a.wb, u.vs, u.vs - a.wb)
             oval(xy.x - r, xy.y - r, xy.x + r, xy.y + r, color)
             clip()
         end,
