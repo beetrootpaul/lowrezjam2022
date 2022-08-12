@@ -144,7 +144,9 @@ a = {
     lives_max = 5,
     money_increase_seconds = 0.5,
     money_initial = 40,
-    sounds = {
+    sfx = {
+        cannot_place = { priority = 4, track = 18 },
+        tower_placed = { priority = 3, track = 19 },
         v_beam = { priority = 2, track = 17 },
         laser = { priority = 1, track = 16 },
     },

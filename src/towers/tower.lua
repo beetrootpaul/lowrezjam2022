@@ -99,9 +99,9 @@ function new_tower(params)
             if is_attacking and not shooting_timer then
                 shooting_timer = new_shooting_timer()
                 if s.type == "laser" then
-                    audio.sfx(a.sounds.laser)
+                    audio.sfx(a.sfx.laser)
                 elseif s.type == "v_beam" then
-                    audio.sfx(a.sounds.v_beam)
+                    audio.sfx(a.sfx.v_beam)
                 end
             end
         end

@@ -48,7 +48,7 @@ function new_screen_gameplay(params)
                 self.set_enabled(placement.can_build())
             elseif game_state.building_state == "tower-placement" then
                 if placement.can_build() then
-                    -- TODO: placement & construction & money spent SFX
+                    audio.sfx(a.sfx.tower_placed)
                     local tower = game_state.tower_choice.chosen_tower()
                     game_state.money.subtract(tower.cost)
                     towers.build_tower {
@@ -58,7 +58,7 @@ function new_screen_gameplay(params)
                     game_state.building_state = "idle"
                     placement = nil
                 else
-                    -- TODO: cannot build SFX
+                    audio.sfx(a.sfx.cannot_place)
                 end
             end
         end
