@@ -2,7 +2,7 @@
 
 > a low-rez tower defense mini-game
 
-[Beetroot Paul\'s](https://beetrootpaul.com) submission for the [LOWREZJAM 2022](https://itch.io/jam/lowrezjam-2022)
+[Beetroot Paul\'s](https://beetrootpaul.com) submission for the [LOWREZJAM 2022](https://itch.io/jam/lowrezjam-2022), which requires games to have resolution of 64x64px.
 
 This game is available to play in your browser on https://beetrootpaul.itch.io/towers-of-survival
 
