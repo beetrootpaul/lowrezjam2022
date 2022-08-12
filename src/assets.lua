@@ -144,7 +144,13 @@ a = {
     lives_max = 5,
     money_increase_seconds = 0.5,
     money_initial = 40,
-    sounds = {
+    sfx = {
+        live_lost = { priority = 6, track = 21 },
+        cannot_place = { priority = 5, track = 18 },
+        tower_placed = { priority = 4, track = 19 },
+        button_press = { priority = 3, track = 20 },
+        v_beam = { priority = 2, track = 17 },
+        laser = { priority = 1, track = 16 },
     },
     tiles = {
         ground_textured = { x = 0, y = 8 },
@@ -175,7 +181,7 @@ a = {
             label = "v-beam",
             cost = 70,
             sprite = { x = 48, y = 16 },
-            dps = 35,
+            dps = 40,
             charging_time = 2,
             shooting_time = .5,
             charging_time_boost = -.2,
@@ -190,15 +196,15 @@ a = {
     waves = {
         -- TODO: fix edge case of 1-long wave: progress drawn wrong, wave never ends
         { wait = 4, spawns = "s,-,-,s,-,-,s" },
-        { wait = 4, spawns = "s,s,-,s,s,-,s,s" },
+        { wait = 2, spawns = "s,s,-,s,s,-,s,s" },
         { wait = 4, spawns = "m,-,-,s,s,s,-,-,m" },
         { wait = 4, spawns = "s,s,s,-,-,m,m,-,-,-,s,-,-,b" },
-        { wait = 4, spawns = "s,m,b,-,-,-,s,b,-,-,m,m" },
-        { wait = 4, spawns = "m,m,-,-,b,b,b" },
-        { wait = 4, spawns = "b,b,-,m,m,-,b,b" },
+        { wait = 6, spawns = "s,m,b,-,-,-,s,b,-,-,m,m" },
+        { wait = 2, spawns = "m,m,-,-,b,b,b" },
+        { wait = 4, spawns = "s,s,-,m,m,-,b,b" },
         { wait = 4, spawns = "b,-,s,-,m,-,s,-,b" },
-        { wait = 4, spawns = "m,-,-,-,b,b,b,b,b,b" },
-        { wait = 4, spawns = "s,m,m,b,b,b,-,-,-,-,b,b,b,m,m,s" },
+        { wait = 2, spawns = "m,-,-,-,m,m,m,m,m,m" },
+        { wait = 8, spawns = "s,m,m,b,b,b,-,-,-,-,b,b,b,m,m,s" },
     },
 }
 

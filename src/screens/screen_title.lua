@@ -1,6 +1,6 @@
 function new_screen_title()
     local timer = new_timer {
-        start = 3 * u.fps,
+        start = 2.8 * u.fps,
     }
 
     local s = {}
