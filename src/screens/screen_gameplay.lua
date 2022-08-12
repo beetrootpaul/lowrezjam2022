@@ -112,6 +112,10 @@ function new_screen_gameplay(params)
             end
         end
 
+        if placement then
+            button_x.set_enabled(placement.can_build())
+        end
+
         button_o.update()
         button_x.update()
         game_state.update()
