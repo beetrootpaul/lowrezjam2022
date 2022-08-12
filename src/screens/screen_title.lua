@@ -1,4 +1,3 @@
--- TODO: screen polish
 function new_screen_title()
     local timer = new_timer {
         start = 3 * u.fps,

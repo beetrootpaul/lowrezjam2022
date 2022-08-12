@@ -1,7 +1,7 @@
 pico-8 cartridge // http://www.pico-8.com
 version 36
 __lua__
--- lowrezjam2022 entry
+-- towers of survival
 -- by beetroot paul
 
 #include src/debug.lua

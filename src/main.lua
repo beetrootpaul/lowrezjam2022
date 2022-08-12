@@ -37,5 +37,5 @@ end
 
 -- TODO: music
 -- TODO: consider sliding menu items in
--- TODO: README: write it clear the code is not clean, because it was optimized towards chars limit
+-- TODO: README: write it clear the code is not clean, because it was optimized towards chars limit (write down those numbers)
 -- TODO: final README: correct title, description, controls, screenshots, itch.io link
