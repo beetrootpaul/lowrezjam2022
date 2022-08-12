@@ -49,7 +49,7 @@ function new_gui(params)
 
             local build_text = new_text("build")
             build_text.draw(
-                u.vs - a.wb - build_text.width(),
+                u.vs - a.wb - build_text.w,
                 u.vs - a.wb + 2,
                 is_x_pressed
                     and a.colors.grey_light
@@ -73,7 +73,7 @@ function new_gui(params)
 
             local money_text = new_text(tostr(game_state.money.available))
             money_text.draw(
-                u.vs - a.wb - money_text.width(),
+                u.vs - a.wb - money_text.w,
                 2,
                 a.colors.grey_light
             )
@@ -126,7 +126,7 @@ function new_gui(params)
 
             local money_text = new_text(tostr(game_state.money.available))
             money_text.draw(
-                u.vs - a.wb - money_text.width(),
+                u.vs - a.wb - money_text.w,
                 2,
                 a.colors.grey_light
             )
@@ -161,7 +161,7 @@ function new_gui(params)
 
             local place_text = new_text("place")
             place_text.draw(
-                u.vs - a.wb - place_text.width(),
+                u.vs - a.wb - place_text.w,
                 u.vs - a.wb + 2,
                 is_x_enabled
                     and (is_x_pressed and a.colors.grey_light or a.colors.grey_violet)
@@ -182,7 +182,7 @@ function new_gui(params)
             )
 
             dollar_text.draw(
-                u.vs - a.wb - place_text.width() - 3 - dollar_text.width(),
+                u.vs - a.wb - place_text.w - 3 - dollar_text.w,
                 u.vs - a.wb + 2,
                 is_x_enabled
                     and a.colors.grey_violet
@@ -191,7 +191,7 @@ function new_gui(params)
 
             local cost_text = new_text("-" .. game_state.tower_choice.chosen_tower().cost)
             cost_text.draw(
-                u.vs - a.wb - place_text.width() - 3 - dollar_text.width() - 2 - cost_text.width(),
+                u.vs - a.wb - place_text.w - 3 - dollar_text.w - 2 - cost_text.w,
                 u.vs - a.wb + 2,
                 has_enough_money
                     and (is_x_enabled and a.colors.grey_light or a.colors.brown_mid)

@@ -25,8 +25,8 @@ function new_screen_win()
         local clip_y = flr(clip_progress * (u.vs - 2 * a.wb) / 2)
         clip(0, a.wb + clip_y, u.vs, u.vs - 2 * a.wb - 2 * clip_y)
 
-        text_1.draw(u.vs / 2 - text_1.width() / 2, u.vs / 2 - 2.5 * (u.th + 1), a.colors.salmon)
-        text_2.draw(u.vs / 2 - text_2.width() / 2, u.vs / 2 - .5 * (u.th + 1),
+        text_1.draw(u.vs / 2 - text_1.w / 2, u.vs / 2 - 2.5 * (u.th + 1), a.colors.salmon)
+        text_2.draw(u.vs / 2 - text_2.w / 2, u.vs / 2 - .5 * (u.th + 1),
             function(char_index, text_width)
                 if char_index == 1 or char_index == text_width then
                     return a.colors.salmon
@@ -34,7 +34,7 @@ function new_screen_win()
                 return a.colors.yellow
             end
         )
-        text_3.draw(u.vs / 2 - text_3.width() / 2, u.vs / 2 + 1.5 * (u.th + 1), a.colors.salmon)
+        text_3.draw(u.vs / 2 - text_3.w / 2, u.vs / 2 + 1.5 * (u.th + 1), a.colors.salmon)
 
         clip()
     end

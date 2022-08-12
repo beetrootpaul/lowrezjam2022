@@ -59,6 +59,7 @@ function new_tower(params)
         return range
     end
 
+    -- TODO: prevent laser instantly switching from one target to another without ą need to recharge
     function s.update()
         if charging_timer and charging_timer.has_finished() then
             charging_timer = nil

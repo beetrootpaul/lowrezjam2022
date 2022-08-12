@@ -2,23 +2,18 @@ function new_text(text_value)
     local sprites = {}
     for i = 1, #text_value do
         local char = sub(text_value, i, i)
-        add(sprites, {
-            x = a.font_sprites[char][1],
-            y = a.font_sprites[char][2],
-            w = a.font_sprites[char][3] or 3,
-        })
+        local sprite = a.font_sprites[char]
+        add(sprites, { x = sprite[1], y = sprite[2], w = sprite[3] or 3 })
     end
 
-    local s = {}
+    local s = {
+        w = 0,
+    }
 
-    function s.width()
-        local w = 0
-        for sprite in all(sprites) do
-            w = w + sprite.w + 1
-        end
-        w = max(0, w - 1)
-        return w
+    for sprite in all(sprites) do
+        s.w = s.w + sprite.w + 1
     end
+    s.w = max(0, s.w - 1)
 
     function s.draw(x, y, color)
         local current_x = x

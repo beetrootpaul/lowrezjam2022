@@ -1,14 +1,14 @@
 function new_wave_status(params)
     local waves = u.r(params.waves)
 
-    -- TODO: wait label slide in and slide out animation
+    -- TODO: label slide in and slide out animation
     return {
         draw = function()
             if waves.current_wait() then
                 local wave_label = new_text("wave " .. waves.wave_number())
 
                 local progress = waves.current_wait().progress()
-                local progress_width_max = wave_label.width()
+                local progress_width_max = wave_label.w
                 local progress_width = flr(progress * progress_width_max)
                 local progress_x = u.vs / 2 - ceil(progress_width_max / 2)
                 local progress_y = a.wb - 2
@@ -22,7 +22,7 @@ function new_wave_status(params)
                 local wave_label = new_text("wave " .. waves.wave_number())
 
                 local progress = waves.current_wave().progress()
-                local progress_width_max = wave_label.width()
+                local progress_width_max = wave_label.w
                 local progress_width = flr(progress * progress_width_max)
                 local progress_x = u.vs / 2 - ceil(progress_width_max / 2)
                 local progress_y = a.wb - 2

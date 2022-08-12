@@ -36,7 +36,6 @@ function _draw()
 end
 
 -- TODO: music
--- TODO: different music on every screen
 -- TODO: consider sliding menu items in
 -- TODO: README: write it clear the code is not clean, because it was optimized towards chars limit
 -- TODO: final README: correct title, description, controls, screenshots, itch.io link

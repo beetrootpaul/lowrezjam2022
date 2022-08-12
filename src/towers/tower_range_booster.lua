@@ -8,21 +8,21 @@ function new_tower_range_booster(params)
     )
 
     local offsets = {
-        { x = -1, y = -1 },
-        { x = 0, y = -1 },
-        { x = 1, y = -1 },
-        { x = 1, y = 0 },
-        { x = 1, y = 1 },
-        { x = 0, y = 1 },
-        { x = -1, y = 1 },
-        { x = -1, y = 0 },
+        { -1, -1 },
+        { 0, -1 },
+        { 1, -1 },
+        { 1, 0 },
+        { 1, 1 },
+        { 0, 1 },
+        { -1, 1 },
+        { -1, 0 },
     }
 
     local s = {}
 
     function s.reaches(another_tile)
         for offset in all(offsets) do
-            if another_tile.is_same_as(tile.plus(offset.x, offset.y)) then
+            if another_tile.is_same_as(tile.plus(offset[1], offset[2])) then
                 return true
             end
         end
@@ -35,7 +35,7 @@ function new_tower_range_booster(params)
         clip()
 
         for offset in all(offsets) do
-            local neighbour_tile = tile.plus(offset.x, offset.y)
+            local neighbour_tile = tile.plus(offset[1], offset[2])
             local xy2 = new_xy(
                 (a.wbt + neighbour_tile.x) * u.ts,
                 (a.wbt + neighbour_tile.y) * u.ts

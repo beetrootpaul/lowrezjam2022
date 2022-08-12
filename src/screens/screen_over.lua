@@ -28,7 +28,7 @@ function new_screen_over(params)
         local clip_y = flr(clip_progress * (u.vs - 2 * a.wb) / 2)
         clip(0, a.wb + clip_y, u.vs, u.vs - 2 * a.wb - 2 * clip_y)
 
-        text_defeat.draw(u.vs / 2 - text_defeat.width() / 2, u.vs / 2 - 2.5 * (u.th + 1),
+        text_defeat.draw(u.vs / 2 - text_defeat.w / 2, u.vs / 2 - 2.5 * (u.th + 1),
             function(char_index, text_width)
                 if char_index == 1 or char_index == text_width then
                     return a.colors.red_dark
@@ -36,9 +36,9 @@ function new_screen_over(params)
                 return a.colors.red_light
             end
         )
-        text_waves_1.draw(u.vs / 2 - text_waves_1.width() / 2, u.vs / 2 - .5 * (u.th + 1), a.colors.brown_purple)
-        text_waves_2.draw(u.vs / 2 - text_waves_2.width() / 2, u.vs / 2 + .5 * (u.th + 1), a.colors.red_dark)
-        text_waves_3.draw(u.vs / 2 - text_waves_3.width() / 2, u.vs / 2 + 1.5 * (u.th + 1), a.colors.brown_purple)
+        text_waves_1.draw(u.vs / 2 - text_waves_1.w / 2, u.vs / 2 - .5 * (u.th + 1), a.colors.brown_purple)
+        text_waves_2.draw(u.vs / 2 - text_waves_2.w / 2, u.vs / 2 + .5 * (u.th + 1), a.colors.red_dark)
+        text_waves_3.draw(u.vs / 2 - text_waves_3.w / 2, u.vs / 2 + 1.5 * (u.th + 1), a.colors.brown_purple)
 
         clip()
     end

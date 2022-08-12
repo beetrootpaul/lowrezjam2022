@@ -20,11 +20,10 @@ function new_screen_title()
 
     function s.draw()
         local clip_progress = max(0, 6 * timer.progress() - 5)
-        local clip_y = flr(clip_progress * (u.vs - 2 * a.wb) / 2)
-        clip(0, a.wb + clip_y, u.vs, u.vs - 2 * a.wb - 2 * clip_y)
+        local clip_y = flr(clip_progress * u.vs / 2)
+        clip(0, clip_y, u.vs, u.vs - 2 * clip_y)
 
-        print("todo: game title", 0, u.vs / 2 - 8, a.colors.white)
-        print("by beetroot paul", 0, u.vs / 2 + 8, a.colors.white)
+        sspr(0, 64, u.vs, u.vs, 0, 0)
 
         clip()
     end
