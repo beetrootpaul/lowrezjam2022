@@ -92,7 +92,7 @@ m > [😐]
 -->8
 -- src/screens/
 
-#include src/screens/screen_gameplay.lua
+#include build/src/screens/screen_gameplay.lua
 #include src/screens/screen_over.lua
 #include src/screens/screen_pre_gameplay.lua
 #include src/screens/screen_title.lua
