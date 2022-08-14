@@ -4,7 +4,7 @@
   "description": "> a low-rez tower defense mini-game",
   "main": "index.js",
   "scripts": {
-    "clear": "rm -rf build/ && mkdir -p build/src/screens/",
+    "clear": "rimraf build/ && mkdirp build/src/screens/",
     "minify": "luamin -f src/screens/screen_gameplay.lua > build/src/screens/screen_gameplay.lua",
     "build": "npm run minify"
   },
@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/beetrootpaul/towers-of-survival#readme",
   "devDependencies": {
-    "luamin": "1.0.4"
+    "luamin": "1.0.4",
+    "mkdirp": "1.0.4",
+    "rimraf": "3.0.2"
   }
 }
