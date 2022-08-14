@@ -6,7 +6,9 @@
   "scripts": {
     "clear": "rimraf build/ && mkdirp build/src/screens/",
     "minify": "luamin -f src/screens/screen_gameplay.lua > build/src/screens/screen_gameplay.lua",
-    "build": "npm run minify"
+    "build": "npm run minify",
+    "prebuild-watch": "npm run build",
+    "build-watch": "chokidar \"./src/**/*.lua\" -c \"npm run build\""
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   },
   "homepage": "https://github.com/beetrootpaul/towers-of-survival#readme",
   "devDependencies": {
+    "chokidar-cli": "3.0.0",
     "luamin": "1.0.4",
     "mkdirp": "1.0.4",
     "rimraf": "3.0.2"
