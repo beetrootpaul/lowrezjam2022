@@ -16,10 +16,10 @@ u = {
 }
 
 u.arrow_buttons_to_directions = {
-    [⬅️] = { x = -1, y = 0 },
-    [➡️] = { x = 1, y = 0 },
-    [⬆️] = { x = 0, y = -1 },
-    [⬇️] = { x = 0, y = 1 },
+    [0] = { x = -1, y = 0 },
+    [1] = { x = 1, y = 0 },
+    [2] = { x = 0, y = -1 },
+    [3] = { x = 0, y = 1 },
 }
 
 function u.noop()
@@ -39,8 +39,4 @@ end
 function u.set_64x64_mode()
     -- see: https://www.lexaloffle.com/bbs/?tid=2547
     poke(0x5f2c, 3)
-end
-
-function u.set_display_palette(palette)
-    pal(palette, 1)
 end

@@ -5,24 +5,23 @@ function new_warzone(params)
     local cores = new_cores {
         lives = lives,
     }
+    local ground = new_ground()
 
-    local s = {
-        ground = new_ground(),
+    return {
+        ground = ground,
+
+        path = function()
+            return road.path()
+        end,
+
+        can_have_tower_at = function(tile)
+            return not road.is_at(tile) and ground.is_at(tile)
+        end,
+
+        draw = function()
+            ground.draw()
+            road.draw()
+            cores.draw()
+        end,
     }
-
-    function s.path()
-        return road.path()
-    end
-
-    function s.can_have_tower_at(tile)
-        return not road.is_at(tile) and s.ground.is_at(tile)
-    end
-
-    function s.draw()
-        s.ground.draw()
-        road.draw()
-        cores.draw()
-    end
-
-    return s
 end
