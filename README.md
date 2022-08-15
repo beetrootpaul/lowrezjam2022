@@ -24,10 +24,12 @@ Enemies are approaching. There are 10 waves of them. We need to survive.
 There are 3 types of towers you can build:
 
 - **laser** - the fast one,
-- **booster** - this one makes all surrounding lasers and v-beams shoot longer
-  and re-charger faster,
 - **v-beam** - the stronger one; its beam covers all tiles above and below,
-  therefore you cannot build anything else on its way.
+  therefore you cannot build anything else on its way,
+- **booster** - this one makes all surrounding lasers and v-beams shoot longer
+  and re-charger faster; you can "stack" boosters to increase total boost – each
+  laser can be boosted up to 8 times and each v-beam up to 6 times (not 8,
+  because 2 tiles are reserved.
 
 Our base have 5 cores. Each enemy is capable of destroying one core. Without
 cores, we cannot survive, it's that simple.
