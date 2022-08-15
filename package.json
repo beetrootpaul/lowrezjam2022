@@ -1,8 +1,13 @@
 {
   "name": "towers-of-survival",
-  "version": "1.0.0",
-  "description": "> a low-rez tower defense mini-game",
-  "main": "index.js",
+  "description": "a low-rez tower defense mini-game",
+  "author": "Beetroot Paul <paul@beetrootpaul.com",
+  "homepage": "https://beetrootpaul.itch.io/towers-of-survival",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beetrootpaul/towers-of-survival.git"
+  },
+  "license": "MIT",
   "scripts": {
     "clear": "rimraf build/**/*",
     "build:create-dirs": "run-for-every-file --src \"src/\" --dest \"build/src/\" --file \"**/*.lua\" --run \"mkdirp build/src/{{file-path}}/\"",
@@ -12,16 +17,6 @@
     "watch-and-build": "chokidar \"src/**/*.lua\" -c \"run-s -l build:create-dirs build:copy-minified\"",
     "start": "npm run watch-and-build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/beetrootpaul/towers-of-survival.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/beetrootpaul/towers-of-survival/issues"
-  },
-  "homepage": "https://github.com/beetrootpaul/towers-of-survival#readme",
   "devDependencies": {
     "chokidar-cli": "3.0.0",
     "luamin": "github:beetrootpaul/luamin#9ef269d112c447f202dcbbf6d586d9f463f9d831",
