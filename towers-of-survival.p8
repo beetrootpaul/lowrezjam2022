@@ -4,11 +4,11 @@ __lua__
 -- towers of survival
 -- by beetroot paul
 
-#include src/debug.lua
-#include src/utils.lua
-#include src/assets.lua
-#include src/audio.lua
-#include src/main.lua
+#include build/src/debug.lua
+#include build/src/utils.lua
+#include build/src/assets.lua
+#include build/src/audio.lua
+#include build/src/main.lua
 
 --[[
 
@@ -45,83 +45,83 @@ m > [😐]
 -->8
 -- src/enemies/
 
-#include src/enemies/enemies.lua
-#include src/enemies/enemy.lua
-#include src/enemies/enemy_range.lua
-#include src/enemies/health.lua
-#include src/enemies/path_progression.lua
+#include build/src/enemies/enemies.lua
+#include build/src/enemies/enemy.lua
+#include build/src/enemies/enemy_range.lua
+#include build/src/enemies/health.lua
+#include build/src/enemies/path_progression.lua
 
 -->8
 -- src/fight/
 
-#include src/fight/fight.lua
+#include build/src/fight/fight.lua
 
 -->8
 -- src/game_state/
 
-#include src/game_state/game_state.lua
-#include src/game_state/lives.lua
-#include src/game_state/money.lua
-#include src/game_state/tower_choice.lua
+#include build/src/game_state/game_state.lua
+#include build/src/game_state/lives.lua
+#include build/src/game_state/money.lua
+#include build/src/game_state/tower_choice.lua
 
 -->8
 -- src/gui/
 
-#include src/gui/button.lua
-#include src/gui/button_glyph.lua
-#include src/gui/chosen_tower_border.lua
-#include src/gui/gui.lua
-#include src/gui/text.lua
-#include src/gui/tower_choice_gui.lua
-#include src/gui/tower_info.lua
-#include src/gui/wave_status.lua
+#include build/src/gui/button.lua
+#include build/src/gui/button_glyph.lua
+#include build/src/gui/chosen_tower_border.lua
+#include build/src/gui/gui.lua
+#include build/src/gui/text.lua
+#include build/src/gui/tower_choice_gui.lua
+#include build/src/gui/tower_info.lua
+#include build/src/gui/wave_status.lua
 
 -->8
 -- src/misc/
 
-#include src/misc/tile.lua
-#include src/misc/timer.lua
-#include src/misc/xy.lua
+#include build/src/misc/tile.lua
+#include build/src/misc/timer.lua
+#include build/src/misc/xy.lua
 
 -->8
 -- src/placement/
 
-#include src/placement/chosen_tile_border.lua
-#include src/placement/placement.lua
+#include build/src/placement/chosen_tile_border.lua
+#include build/src/placement/placement.lua
 
 -->8
 -- src/screens/
 
-#include src/screens/screen_gameplay.lua
-#include src/screens/screen_over.lua
-#include src/screens/screen_pre_gameplay.lua
-#include src/screens/screen_title.lua
-#include src/screens/screen_win.lua
+#include build/src/screens/screen_gameplay.lua
+#include build/src/screens/screen_over.lua
+#include build/src/screens/screen_pre_gameplay.lua
+#include build/src/screens/screen_title.lua
+#include build/src/screens/screen_win.lua
 
 -->8
 -- src/towers/
 
-#include src/towers/tower.lua
-#include src/towers/tower_range_booster.lua
-#include src/towers/tower_range_laser.lua
-#include src/towers/tower_range_v_beam.lua
-#include src/towers/towers.lua
+#include build/src/towers/tower.lua
+#include build/src/towers/tower_range_booster.lua
+#include build/src/towers/tower_range_laser.lua
+#include build/src/towers/tower_range_v_beam.lua
+#include build/src/towers/towers.lua
 
 -->8
 -- src/warzone/
 
-#include src/warzone/cores.lua
-#include src/warzone/ground.lua
-#include src/warzone/path.lua
-#include src/warzone/road.lua
-#include src/warzone/warzone.lua
+#include build/src/warzone/cores.lua
+#include build/src/warzone/ground.lua
+#include build/src/warzone/path.lua
+#include build/src/warzone/road.lua
+#include build/src/warzone/warzone.lua
 
 -->8
 -- src/waves/
 
-#include src/waves/wait.lua
-#include src/waves/wave.lua
-#include src/waves/waves.lua
+#include build/src/waves/wait.lua
+#include build/src/waves/wave.lua
+#include build/src/waves/waves.lua
 
 __gfx__
 00000000000000009890999008900aa0000000000000000001a00000000000000000000000000000000000000000000000000000000000000000000000000000
