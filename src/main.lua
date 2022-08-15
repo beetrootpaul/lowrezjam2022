@@ -34,5 +34,5 @@ function _draw()
 
     current_screen.draw()
 
-    u.set_display_palette(a.palette)
+    pal(a.palette, 1)
 end

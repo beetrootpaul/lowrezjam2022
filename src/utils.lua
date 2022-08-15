@@ -40,7 +40,3 @@ function u.set_64x64_mode()
     -- see: https://www.lexaloffle.com/bbs/?tid=2547
     poke(0x5f2c, 3)
 end
-
-function u.set_display_palette(palette)
-    pal(palette, 1)
-end
