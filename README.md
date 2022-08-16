@@ -57,7 +57,7 @@ constraints. Currently stats looks like:
 
 Development:
 
-1. (optional) Install [nvm]()
+1. (optional) Install [nvm](https://github.com/nvm-sh/nvm)
 2. (optional) Run `nvm install` to setup proper Node.js version
 3. (once) Run `npm install` to download dependencies
 4. Start PICO-8 and load [towers-of-survival.p8](towers-of-survival.p8) cart
