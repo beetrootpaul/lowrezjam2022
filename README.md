@@ -1,6 +1,6 @@
 # Towers of Survival
 
-> a low-rez tower defense mini-game
+> a low-rez tower defense [PICO-8](https://www.lexaloffle.com/pico-8.php) game
 
 [Beetroot Paul\'s](https://beetrootpaul.com) submission for
 the [LOWREZJAM 2022](https://itch.io/jam/lowrezjam-2022), which requires games
@@ -38,8 +38,7 @@ Good luck! You are our last hope…
 
 ---
 
-It's a [PICO-8](https://www.lexaloffle.com/pico-8.php) games, therefore this
-game had to sacrifice some clean code practices in meeting console's
+It's a [PICO-8](https://www.lexaloffle.com/pico-8.php) game, therefore I had to sacrifice some clean code practices in meeting console's
 constraints. Currently stats looks like:
 
 - the codebase uses 8136 tokens out of 8192 available (29 left, 99% used),
